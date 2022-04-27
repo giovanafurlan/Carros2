@@ -10,12 +10,19 @@
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <title>UP</title>
 </head>
 
 <style>
     body {
         padding: 0 2vw 0 2vw;
+        background-image: linear-gradient(to right, #cc169a, #2790e1);
+    }
+
+    h1,
+    p {
+        color: white;
     }
 
     .image {
@@ -23,8 +30,8 @@
         height: 600px;
         width: 550px;
         box-shadow: 0px 0px 15px gray;
-        transition: all .5s;
         float: right;
+        border-radius: 10px;
     }
 
     .image>img {
@@ -33,13 +40,28 @@
         object-fit: cover;
     }
 
-    form {
+    #form {
         width: 50vw;
+        margin-top: 2vw;
+        background-color: white;
+        padding: 1vw;
+        border-radius: 10px;
     }
 
     a {
         padding: 0.5vw !important;
         font-size: 15px !important;
+        color: white;
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: white;
+        text-decoration: none;
+    }
+
+    .btn {
+        margin-top: 1vw;
     }
 </style>
 
@@ -53,64 +75,108 @@
             perto do seu objetivo. Quem compara faz um UP Consórcios</p>
     </div>
 
-    <form class="needs-validation" id="form" novalidate action="#">
+    <form class="needs-validation" id="form" novalidate action="#" method="post">
         <div class="mb-3">
-            <label for="validationCustom01" class="form-label">First name</label>
+            <label for="validationCustom01" class="form-label">Nome</label>
             <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
             <div class="valid-feedback">
-                Looks good!
+                Tudo certo!
             </div>
         </div>
         <div class="mb-3">
-            <label for="validationCustomUsername" class="form-label">Email</label>
-            <input type="email" name="email" class="email white col-7 col-md-4 col-lg-7 ml-3 form-control" id="email"
-                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+            <label for="validationCustom02" class="form-label">Email</label>
+            <input type="email" name="email" class="email white col-7 col-md-4 col-lg-7 ml-3 form-control"
+                id="validationCustom02" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
             <div class="invalid-feedback">
-                Please input valid email
+                Por favor insira um email válido
             </div>
         </div>
-
+        <div class="mb-3">
+            <label for="validationCustom03" class="form-label">Whatsapp</label>
+            <input type="tel" class="tel white col-7 col-md-4 col-lg-7 ml-3 form-control" minlength="9"
+                id="validationCustom03" required>
+            <div class="valid-feedback">
+                Tudo certo!
+            </div>
+            <div class="invalid-feedback">
+                Por favor insira um telefone válido
+            </div>
+        </div>
         <div class="col-12">
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-                <label class="form-check-label" for="invalidCheck">
+                <input class="form-check-input" type="checkbox" value="termos" id="validationCheck01" required>
+                <label class="form-check-label" for="check">
                     Aceito receber todas as comunicações<br />
                     UP Consórcios e concordo com o Termo de Consentimento </label>
                 <div class="invalid-feedback">
-                    You must agree before submitting.
+                    Você deve concordar antes de enviar
                 </div>
             </div>
         </div>
-        <div class="col-12">
-            <button class="btn btn-primary" id="btn-envia" type="submit">Submit form</button>
+        <div class="botoes">
+            <button class="btn btn-outline-secondary" id="btn-valida" type="submit">Validar</button>
+            <button class="btn btn-secondary" id="btn-acessa" disabled><a href="slider.html">Acessar</a></button>
         </div>
     </form>
 
-
-
     <script>
-        document.getElementById('form').addEventListener('submit', () => {
+        document.getElementById("form").addEventListener('submit', () => {
             nome = document.getElementById("validationCustom01").value;
-            email = document.getElementById("email").value;
-            whats = document.getElementById("exampleInputWhatsApp1").value;
-            
+            email = document.getElementById("validationCustom02").value;
+            whats = document.getElementById("validationCustom03").value;
+
             console.log(nome);
             console.log(email);
             console.log(whats);
-            
-            termos = document.getElementById("exampleCheck1");
-            if (termos.check == true)
+
+            if (document.getElementById("validationCheck01").check) {
                 console.log("Checado");
+            }
+
+            form = document.getElementById("form");
+            var isValid = form.checkValidity();
+            console.log(isValid);
+
+            if (isValid == true) {
+                document.getElementById("btn-acessa").disabled = false;
+            }
         });
 
-        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function (console) {
+
+            console.save = function (data, filename) {
+
+                if (!data) {
+                    console.error('Console.save: No data')
+                    return;
+                }
+
+                if (!filename) filename = 'console.json'
+
+                if (typeof data === "object") {
+                    data = JSON.stringify(data, undefined, 4)
+                }
+
+                var blob = new Blob([data], {
+                        type: 'text/json'
+                    }),
+                    e = document.createEvent('MouseEvents'),
+                    a = document.createElement('a')
+
+                a.download = filename
+                a.href = window.URL.createObjectURL(blob)
+                a.dataset.downloadurl = ['text/json', a.download, a.href].join(':')
+                e.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0,
+                    null)
+                a.dispatchEvent(e)
+            }
+        })(console);
+
         (function () {
             'use strict'
 
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
             var forms = document.querySelectorAll('.needs-validation')
 
-            // Loop over them and prevent submission
             Array.prototype.slice.call(forms)
                 .forEach(function (form) {
                     form.addEventListener('submit', function (event) {
@@ -123,6 +189,13 @@
                     }, false)
                 })
         })()
+
+        $(document).ready(function () {
+            $(document).on('submit', '#form', function () {
+                // do your things
+                return false;
+            });
+        });
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
