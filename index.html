@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <!-- Required meta tags -->
@@ -11,6 +11,8 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/0a6b0f1dd1.js" crossorigin="anonymous"></script>
+
     <title>UP</title>
 </head>
 
@@ -18,6 +20,7 @@
     body {
         padding: 0 2vw 0 2vw;
         background-image: linear-gradient(to right, #cc169a, #2790e1);
+        font-family: 'Open Sans', sans-serif;
     }
 
     h1,
@@ -27,8 +30,8 @@
 
     .image {
         overflow: hidden;
-        height: 600px;
-        width: 550px;
+        height: 95vh;
+        width: 30vw;
         box-shadow: 0px 0px 15px gray;
         float: right;
         border-radius: 10px;
@@ -42,7 +45,6 @@
 
     #form {
         width: 50vw;
-        margin-top: 2vw;
         background-color: white;
         padding: 1vw;
         border-radius: 10px;
@@ -51,17 +53,29 @@
     a {
         padding: 0.5vw !important;
         font-size: 15px !important;
-        color: white;
-        text-decoration: none;
-    }
-
-    a:hover {
-        color: white;
-        text-decoration: none;
     }
 
     .btn {
         margin-top: 1vw;
+    }
+
+    .btn1 {
+        text-decoration: none;
+    }
+
+    .btn1:hover {
+        text-decoration: none;
+    }
+
+    .btn2 {
+        float: right;
+        background: none !important;
+        border: none !important;
+    }
+
+    .btn2 a {
+        color: black;
+        text-decoration: none;
     }
 </style>
 
@@ -78,15 +92,22 @@
     <form class="needs-validation" id="form" novalidate action="#" method="post">
         <div class="mb-3">
             <label for="validationCustom01" class="form-label">Nome</label>
-            <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
+            <input type="text" class="form-control" id="validationCustom01" placeholder="Primeiro nome" required>
             <div class="valid-feedback">
                 Tudo certo!
+            </div>
+            <div class="invalid-feedback">
+                Por favor insira um nome
             </div>
         </div>
         <div class="mb-3">
             <label for="validationCustom02" class="form-label">Email</label>
             <input type="email" name="email" class="email white col-7 col-md-4 col-lg-7 ml-3 form-control"
-                id="validationCustom02" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+                id="validationCustom02" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="exemplo@email.com"
+                required>
+            <div class="valid-feedback">
+                Tudo certo!
+            </div>
             <div class="invalid-feedback">
                 Por favor insira um email válido
             </div>
@@ -94,7 +115,7 @@
         <div class="mb-3">
             <label for="validationCustom03" class="form-label">Whatsapp</label>
             <input type="tel" class="tel white col-7 col-md-4 col-lg-7 ml-3 form-control" minlength="9"
-                id="validationCustom03" required>
+                id="validationCustom03" placeholder="(99) 99999-9999" required>
             <div class="valid-feedback">
                 Tudo certo!
             </div>
@@ -114,8 +135,13 @@
             </div>
         </div>
         <div class="botoes">
-            <button class="btn btn-outline-secondary" id="btn-valida" type="submit">Validar</button>
-            <button class="btn btn-secondary" id="btn-acessa" disabled><a href="slider.html">Acessar</a></button>
+            <button class="btn btn-outline-secondary btn1" id="btn-valida" type="submit">Validar</button>
+            <button class="btn btn-light btn2" id="btn-acessa" disabled><a href="slider.html">Acessar<svg
+                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-arrow-right" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                    </svg></a></button>
         </div>
     </form>
 
@@ -195,6 +221,11 @@
                 // do your things
                 return false;
             });
+        });
+
+        document.getElementById('validationCustom03').addEventListener('input', function (e) {
+            var x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
+            e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
         });
     </script>
 
