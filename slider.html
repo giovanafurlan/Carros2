@@ -8,6 +8,7 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <title>UP</title>
 </head>
 
@@ -101,16 +102,40 @@
         padding: 5px;
         border-radius: 5px;
     }
+
+    .card-text {
+        background: transparent;
+        border: none;
+        color: white;
+    }
+
+    .card-body2 {
+        margin-top: -0.5vw;
+        margin-left: 0.7vw;
+        padding-bottom: 1vw;
+    }
+
+    .periodo {
+        font-weight: 600;
+    }
+
+    .table {
+        color: white;
+    }
+
+    strong{
+        font-weight: 600;
+    }
 </style>
 
 <body>
     <div class="image mt-3 mb-3" id="sliderImages">
-        <img id="carro" class="img-fluid" src="images/a.jpg">
+        <img id="carro" class="img-fluid " src="images/a.jpg">
     </div><br>
     <div class="slider-container">
         <h1 class="display-5">Simule o seu<br />Carro novo!</h1>
         <div class="rangeslider">
-            <input type="range" class="form-range myslider" min="30000" max="240000" value="30000" id="sliderRange"
+            <input type="range" class="form-range myslider" min="30000" max="120000" value="30000" id="sliderRange"
                 oninput="this.nextElementSibling.value = this.value">
             <output id="output">30000</output>
             <div class="cartoes">
@@ -119,15 +144,28 @@
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">Antes da contemplação parcela zero taxa</h5>
-                                <p class="card-text">R$833,33</p>
+                                <div class="card-periodo">
+                                    <p><strong>Período 80:</strong> R$<input class="card-text" id="antes80" value="375.00" disabled></p>
+                                    <p><strong>Período 70:</strong> R$<input class="card-text" id="antes70" value="428.57" disabled></p>
+                                    <p><strong>Período 60:</strong> R$<input class="card-text" id="antes60" value="500.00" disabled></p>
+                                    <p><strong>Período 50:</strong> R$<input class="card-text" id="antes50" value="600.00" disabled></p>
+                                    <p><strong>Período 36:</strong> R$<input class="card-text" id="antes36" value="833.33" disabled></p>
+                                </div>
                             </div>
+                            
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="card">
-                            <div class="card-body">
+                            <div class="card-body card-body">
                                 <h5 class="card-title">Depois da contemplação só 0,35 de taxa</h5>
-                                <p class="card-text">R$938,33</p>
+                                <div class="card-periodo">
+                                    <p><strong>Período 80:</strong> R$<input class="card-text" id="depois80" value="480.00" disabled></p>
+                                    <p><strong>Período 70:</strong> R$<input class="card-text" id="depois70" value="533.57" disabled></p>
+                                    <p><strong>Período 60:</strong> R$<input class="card-text" id="depois60" value="605.00" disabled></p>
+                                    <p><strong>Período 50:</strong> R$<input class="card-text" id="depois50" value="705.00" disabled></p>
+                                    <p><strong>Período 36:</strong> R$<input class="card-text" id="depois36" value="938.33" disabled></p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -162,45 +200,88 @@
             //     document.getElementById("carro").src = "images/b.jpg"
             // }
 
+
             document.getElementById('sliderRange').addEventListener('click', () => {
 
-                const value = document.getElementById('sliderRange').value
+                const valueRange = document.getElementById('sliderRange').value;
 
-                console.log(value)
+                const valueAntes80 = document.getElementById("antes80");
+                const valueAntes70 = document.getElementById("antes70");
+                const valueAntes60 = document.getElementById("antes60");
+                const valueAntes50 = document.getElementById("antes50");
+                const valueAntes36 = document.getElementById("antes36");
 
-                if (value >= 30000 && value <= 40000) {
-                    img1 = document.getElementById("carro").src = "images/a.jpg"
-                    img1.style.transition('all .5s');
+                const valueDepois80 = document.getElementById("depois80");
+                const valueDepois70 = document.getElementById("depois70");
+                const valueDepois60 = document.getElementById("depois60");
+                const valueDepois50 = document.getElementById("depois50");
+                const valueDepois36 = document.getElementById("depois36");
+
+                const img = document.getElementById("carro");
+
+                if (valueRange >= 30000 && valueRange <= 32499) {
+                    img.src = "images/a.jpg";
+                    const novoValueAntes = valueAntes.setAttribute('value', 800);
+                    valueAntes.innerHTML.value = novoValueAntes;
+
+                    const novoValueDepois = valueDepois.setAttribute('value', 1200);
+                    valueDepois.innerHTML.value = novoValueDepois;
                 }
-                if (value >= 40001 && value <= 50000) {
-                    document.getElementById("carro").src = "images/b.jpg"
+                if (valueRange >= 32500 && valueRange <= 34999) {
+                    img.src = "images/b.jpg";
+                    const novoValueAntes = valueAntes.setAttribute('value', 866.67);
+                    valueAntes.innerHTML.value = novoValueAntes;
+
+                    const novoValueDepois = valueDepois.setAttribute('value', 1321.67);
+                    valueDepois.innerHTML.value = novoValueDepois;
                 }
-                if (value >= 50001 && value <= 60000) {
-                    document.getElementById("carro").src = "images/c.jpg"
+                if (valueRange >= 35000 && valueRange <= 37499) {
+                    img.src = "images/c.jpg";
                 }
-                if (value >= 60001 && value <= 70000) {
-                    document.getElementById("carro").src = "images/d.jpg"
+                if (valueRange >= 37500 && valueRange <= 39999) {
+                    img.src = "images/d.jpg";
                 }
-                if (value >= 70001 && value <= 80000) {
-                    document.getElementById("carro").src = "images/e.jpg"
+                if (valueRange >= 40000 && valueRange <= 42999) {
+                    img.src = "images/e.jpg";
                 }
-                if (value >= 80001 && value <= 90000) {
-                    document.getElementById("carro").src = "images/f.jpg"
+                if (valueRange >= 42500 && valueRange <= 44999) {
+                    img.src = "images/f.jpg";
                 }
-                if (value >= 90001 && value <= 100000) {
-                    document.getElementById("carro").src = "images/g.jpg"
+                if (valueRange >= 45000 && valueRange <= 49999) {
+                    img.src = "images/g.jpg";
                 }
-                if (value >= 100001 && value <= 110000) {
-                    document.getElementById("carro").src = "images/g.jpg"
+                if (valueRange >= 50000 && valueRange <= 54999) {
+                    img.src = "images/g.jpg";
                 }
-                if (value >= 110001 && value <= 120000) {
-                    document.getElementById("carro").src = "images/h.jpg"
+                if (valueRange >= 55000 && valueRange <= 59999) {
+                    img.src = "images/h.jpg";
                 }
-                if (value >= 120001 && value <= 130000) {
-                    document.getElementById("carro").src = "images/i.jpg"
+                if (valueRange >= 60000 && valueRange <= 64999) {
+                    img.src = "images/i.jpg";
                 }
-                if (value >= 130001 && value <= 140000) {
-                    document.getElementById("carro").src = "images/j.jpg"
+                if (valueRange >= 65000 && valueRange <= 69999) {
+                    img.src = "images/j.jpg";
+                }
+                if (valueRange >= 70000 && valueRange <= 74999) {
+                    img.src = "images/j.jpg";
+                }
+                if (valueRange >= 75000 && valueRange <= 79999) {
+                    img.src = "images/j.jpg";
+                }
+                if (valueRange >= 80000 && valueRange <= 89999) {
+                    img.src = "images/j.jpg";
+                }
+                if (valueRange >= 90000 && valueRange <= 99999) {
+                    img.src = "images/j.jpg";
+                }
+                if (valueRange >= 100000 && valueRange <= 109999) {
+                    img.src = "images/j.jpg";
+                }
+                if (valueRange >= 110000 && valueRange <= 119999) {
+                    img.src = "images/j.jpg";
+                }
+                if (valueRange >= 120000 && valueRange <= 12000) {
+                    img.src = "images/j.jpg";
                 }
             })
 
@@ -214,7 +295,7 @@
         //     for (var i = 3000; i < images.children.length; i+25) {
         //         images.children[i].style.display = 'none';
         //     }
-        //     i = Number(this.value) - 1;
+        //     i = Number(this.valueRange) - 1;
         //     images.children[i].style.display = 'block';
         // });
     </script>
