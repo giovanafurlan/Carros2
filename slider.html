@@ -49,10 +49,9 @@
 
     .image {
         overflow: hidden;
-        height: 600px;
-        width: 550px;
+        height: 800px;
+        width: 30vw;
         box-shadow: 0px 0px 15px gray;
-        transition: all .5s;
         float: right;
         border-radius: 10px;
     }
@@ -76,6 +75,8 @@
     .card {
         background: none;
         border: 1px solid white;
+        margin-bottom: 1vw;
+        height: min-content;
     }
 
     @media (max-width:600px) and (min-width:320px) {
@@ -97,10 +98,7 @@
     }
 
     #output {
-        border: 1px solid white;
-        width: min-content;
         padding: 5px;
-        border-radius: 5px;
     }
 
     .card-text {
@@ -123,8 +121,20 @@
         color: white;
     }
 
-    strong{
+    strong {
         font-weight: 600;
+    }
+
+    .card-title {
+        margin-bottom: 1vw;
+    }
+
+    hr {
+        margin: -0.1px;
+    }
+
+    .fw-light {
+        margin-bottom: 2px !important;
     }
 </style>
 
@@ -132,74 +142,95 @@
     <div class="image mt-3 mb-3" id="sliderImages">
         <img id="carro" class="img-fluid " src="images/a.jpg">
     </div><br>
-    <div class="slider-container">
+    <div class="slider-container form-data">
         <h1 class="display-5">Simule o seu<br />Carro novo!</h1>
         <div class="rangeslider">
-            <input type="range" class="form-range myslider" min="30000" max="120000" value="30000" id="sliderRange"
-                oninput="this.nextElementSibling.value = this.value">
-            <output id="output">30000</output>
-            <div class="cartoes">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Antes da contemplação parcela zero taxa</h5>
-                                <div class="card-periodo">
-                                    <p><strong>Período 80:</strong> R$<input class="card-text" id="antes80" value="375.00" disabled></p>
-                                    <p><strong>Período 70:</strong> R$<input class="card-text" id="antes70" value="428.57" disabled></p>
-                                    <p><strong>Período 60:</strong> R$<input class="card-text" id="antes60" value="500.00" disabled></p>
-                                    <p><strong>Período 50:</strong> R$<input class="card-text" id="antes50" value="600.00" disabled></p>
-                                    <p><strong>Período 36:</strong> R$<input class="card-text" id="antes36" value="833.33" disabled></p>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="card">
-                            <div class="card-body card-body">
-                                <h5 class="card-title">Depois da contemplação só 0,35 de taxa</h5>
-                                <div class="card-periodo">
-                                    <p><strong>Período 80:</strong> R$<input class="card-text" id="depois80" value="480.00" disabled></p>
-                                    <p><strong>Período 70:</strong> R$<input class="card-text" id="depois70" value="533.57" disabled></p>
-                                    <p><strong>Período 60:</strong> R$<input class="card-text" id="depois60" value="605.00" disabled></p>
-                                    <p><strong>Período 50:</strong> R$<input class="card-text" id="depois50" value="705.00" disabled></p>
-                                    <p><strong>Período 36:</strong> R$<input class="card-text" id="depois36" value="938.33" disabled></p>
+            <form action="" method="post" id="form">
+                <input type="range" name="range" class="form-range myslider" min="30000" max="120000" value="30000"
+                    id="sliderRange" oninput="this.nextElementSibling.value = this.value">
+                R$<output id="output">30000</output>
+                <div class="cartoes">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <p class="fw-light">Maior período</p>
+                                    <hr>
+                                    <h5 class="card-title">Antes da contemplação parcela zero taxa</h5>
+                                    <div class="card-periodo">
+                                        <p><strong>Período 80:</strong> R$<input class="card-text" name="periodoAntes80"
+                                                id="antes80" value="375.00" disabled></p>
+                                        <p><strong>Período 70:</strong> R$<input class="card-text" name="periodoAntes70"
+                                                id="antes70" value="428.57" disabled></p>
+                                        <p><strong>Período 60:</strong> R$<input class="card-text" name="periodoAntes60"
+                                                id="antes60" value="500.00" disabled></p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="col-sm-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <p class="fw-light">Menor período</p>
+                                    <hr>
+                                    <h5 class="card-title">Antes da contemplação parcela zero taxa</h5>
+                                    <div class="card-periodo">
+                                        <p><strong>Período 50:</strong> R$<input class="card-text" name="periodoAntes50"
+                                                id="antes50" value="600.00" disabled></p>
+                                        <p><strong>Período 36:</strong> R$<input class="card-text" name="periodoAntes36"
+                                                id="antes36" value="833.33" disabled></p>
+                                        <p><strong></strong><input class="card-text" disabled></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="card">
+                                <div class="card-body card-body">
+                                    <p class="fw-light">Maior período</p>
+                                    <hr>
+                                    <h5 class="card-title">Depois da contemplação só 0,35 de taxa</h5>
+                                    <div class="card-periodo">
+                                        <p><strong>Período 80:</strong> R$<input class="card-text"
+                                                name="periodoDepois80" id="depois80" value="480.00" disabled></p>
+                                        <p><strong>Período 70:</strong> R$<input class="card-text"
+                                                name="periodoDepois70" id="depois70" value="533.57" disabled></p>
+                                        <p><strong>Período 60:</strong> R$<input class="card-text"
+                                                name="periodoDepois60" id="depois60" value="605.00" disabled></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="card">
+                                <div class="card-body card-body">
+                                    <p class="fw-light">Menor período</p>
+                                    <hr>
+                                    <h5 class="card-title">Depois da contemplação só 0,35 de taxa</h5>
+                                    <div class="card-periodo">
+                                        <p><strong>Período 50:</strong> R$<input class="card-text"
+                                                name="periodoDepois50" id="depois50" value="705.00" disabled></p>
+                                        <p><strong>Período 36:</strong> R$<input class="card-text"
+                                                name="periodoDepois36" id="depois36" value="938.33" disabled></p>
+                                        <p><strong></strong><input class="card-text" disabled></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="botoes">
+                        <button class="btn btn-success btn1" type="submit">Continuar com a Uper</button>
+                        <button class="btn btn-primary btn2" type="button">Continuar sozinho</button>
                     </div>
                 </div>
-                <br>
-                <div class="botoes">
-                    <button class="btn btn-success btn1" type="button">Continuar com a Uper</button>
-                    <button class="btn btn-primary btn2" type="button">Continuar sozinho</button>
-                </div>
-            </div>
         </div>
+        </form>
     </div>
-
+    <a id="downloadAnchorElem" style="display:none"></a>
+    
     <script>
         window.addEventListener('load', function () {
-
-            // var min = document.getElementById("sliderRange").min
-            // var max = document.getElementById("sliderRange").max
-
-            // oninput = "this.nextElementSibling.value = this.value";
-            // console.log(oninput);
-
-            // console.log(min);
-            // console.log(max);
-
-            // var img = document.getElementById("carro");
-            // console.log(img)
-
-            // if (output >= 30000 && output <= 40000) {
-            //     document.getElementById("carro").src = "images/a.jpg"
-            // } else if (output >= 40001 && output <= 50000) {
-            //     document.getElementById("carro").src = "images/b.jpg"
-            // }
-
 
             document.getElementById('sliderRange').addEventListener('click', () => {
 
@@ -221,72 +252,599 @@
 
                 if (valueRange >= 30000 && valueRange <= 32499) {
                     img.src = "images/a.jpg";
-                    const novoValueAntes = valueAntes.setAttribute('value', 800);
-                    valueAntes.innerHTML.value = novoValueAntes;
 
-                    const novoValueDepois = valueDepois.setAttribute('value', 1200);
-                    valueDepois.innerHTML.value = novoValueDepois;
+                    const novoValueAntes80 = valueAntes80.setAttribute('value', 375.00);
+                    valueAntes80.innerHTML.value = novoValueAntes80;
+                    const novoValueDepois80 = valueDepois80.setAttribute('value', 480.00);
+                    valueDepois80.innerHTML.value = novoValueDepois80;
+
+                    const novoValueAntes70 = valueAntes70.setAttribute('value', 428.57);
+                    valueAntes70.innerHTML.value = novoValueAntes70;
+                    const novoValueDepois70 = valueDepois70.setAttribute('value', 533.57);
+                    valueDepois70.innerHTML.value = novoValueDepois70;
+
+                    const novoValueAntes60 = valueAntes60.setAttribute('value', 500.00);
+                    valueAntes60.innerHTML.value = novoValueAntes60;
+                    const novoValueDepois60 = valueDepois60.setAttribute('value', 605.00);
+                    valueDepois60.innerHTML.value = novoValueDepois60;
+
+                    const novoValueAntes50 = valueAntes50.setAttribute('value', 600.00);
+                    valueAntes50.innerHTML.value = novoValueAntes50;
+                    const novoValueDepois50 = valueDepois50.setAttribute('value', 705.00);
+                    valueDepois50.innerHTML.value = novoValueDepois50;
+
+                    const novoValueAntes36 = valueAntes36.setAttribute('value', 833.33);
+                    valueAntes36.innerHTML.value = novoValueAntes36;
+                    const novoValueDepois36 = valueDepois36.setAttribute('value', 938.33);
+                    valueDepois36.innerHTML.value = novoValueDepois36;
                 }
                 if (valueRange >= 32500 && valueRange <= 34999) {
                     img.src = "images/b.jpg";
-                    const novoValueAntes = valueAntes.setAttribute('value', 866.67);
-                    valueAntes.innerHTML.value = novoValueAntes;
 
-                    const novoValueDepois = valueDepois.setAttribute('value', 1321.67);
-                    valueDepois.innerHTML.value = novoValueDepois;
+                    const novoValueAntes80 = valueAntes80.setAttribute('value', 406.25);
+                    valueAntes80.innerHTML.value = novoValueAntes80;
+                    const novoValueDepois80 = valueDepois80.setAttribute('value', 520.00);
+                    valueDepois80.innerHTML.value = novoValueDepois80;
+
+                    const novoValueAntes70 = valueAntes70.setAttribute('value', 464.29);
+                    valueAntes70.innerHTML.value = novoValueAntes70;
+                    const novoValueDepois70 = valueDepois70.setAttribute('value', 578.04);
+                    valueDepois70.innerHTML.value = novoValueDepois70;
+
+                    const novoValueAntes60 = valueAntes60.setAttribute('value', 541.67);
+                    valueAntes60.innerHTML.value = novoValueAntes60;
+                    const novoValueDepois60 = valueDepois60.setAttribute('value', 655.42);
+                    valueDepois60.innerHTML.value = novoValueDepois60;
+
+                    const novoValueAntes50 = valueAntes50.setAttribute('value', 650.00);
+                    valueAntes50.innerHTML.value = novoValueAntes50;
+                    const novoValueDepois50 = valueDepois50.setAttribute('value', 763.75);
+                    valueDepois50.innerHTML.value = novoValueDepois50;
+
+                    const novoValueAntes36 = valueAntes36.setAttribute('value', 902.78);
+                    valueAntes36.innerHTML.value = novoValueAntes36;
+                    const novoValueDepois36 = valueDepois36.setAttribute('value', 1016.53);
+                    valueDepois36.innerHTML.value = novoValueDepois36;
                 }
                 if (valueRange >= 35000 && valueRange <= 37499) {
                     img.src = "images/c.jpg";
+
+                    const novoValueAntes80 = valueAntes80.setAttribute('value', 437.50);
+                    valueAntes80.innerHTML.value = novoValueAntes80;
+                    const novoValueDepois80 = valueDepois80.setAttribute('value', 560.00);
+                    valueDepois80.innerHTML.value = novoValueDepois80;
+
+                    const novoValueAntes70 = valueAntes70.setAttribute('value', 500.00);
+                    valueAntes70.innerHTML.value = novoValueAntes70;
+                    const novoValueDepois70 = valueDepois70.setAttribute('value', 622.50);
+                    valueDepois70.innerHTML.value = novoValueDepois70;
+
+                    const novoValueAntes60 = valueAntes60.setAttribute('value', 583.33);
+                    valueAntes60.innerHTML.value = novoValueAntes60;
+                    const novoValueDepois60 = valueDepois60.setAttribute('value', 705.83);
+                    valueDepois60.innerHTML.value = novoValueDepois60;
+
+                    const novoValueAntes50 = valueAntes50.setAttribute('value', 700.00);
+                    valueAntes50.innerHTML.value = novoValueAntes50;
+                    const novoValueDepois50 = valueDepois50.setAttribute('value', 822.50);
+                    valueDepois50.innerHTML.value = novoValueDepois50;
+
+                    const novoValueAntes36 = valueAntes36.setAttribute('value', 972.22);
+                    valueAntes36.innerHTML.value = novoValueAntes36;
+                    const novoValueDepois36 = valueDepois36.setAttribute('value', 1094.72);
+                    valueDepois36.innerHTML.value = novoValueDepois36;
                 }
                 if (valueRange >= 37500 && valueRange <= 39999) {
                     img.src = "images/d.jpg";
+
+                    const novoValueAntes80 = valueAntes80.setAttribute('value', 468.75);
+                    valueAntes80.innerHTML.value = novoValueAntes80;
+                    const novoValueDepois80 = valueDepois80.setAttribute('value', 600.00);
+                    valueDepois80.innerHTML.value = novoValueDepois80;
+
+                    const novoValueAntes70 = valueAntes70.setAttribute('value', 535.71);
+                    valueAntes70.innerHTML.value = novoValueAntes70;
+                    const novoValueDepois70 = valueDepois70.setAttribute('value', 666.96);
+                    valueDepois70.innerHTML.value = novoValueDepois70;
+
+                    const novoValueAntes60 = valueAntes60.setAttribute('value', 625.00);
+                    valueAntes60.innerHTML.value = novoValueAntes60;
+                    const novoValueDepois60 = valueDepois60.setAttribute('value', 756.25);
+                    valueDepois60.innerHTML.value = novoValueDepois60;
+
+                    const novoValueAntes50 = valueAntes50.setAttribute('value', 750.00);
+                    valueAntes50.innerHTML.value = novoValueAntes50;
+                    const novoValueDepois50 = valueDepois50.setAttribute('value', 881.25);
+                    valueDepois50.innerHTML.value = novoValueDepois50;
+
+                    const novoValueAntes36 = valueAntes36.setAttribute('value', 1041.67);
+                    valueAntes36.innerHTML.value = novoValueAntes36;
+                    const novoValueDepois36 = valueDepois36.setAttribute('value', 1172.92);
+                    valueDepois36.innerHTML.value = novoValueDepois36;
                 }
                 if (valueRange >= 40000 && valueRange <= 42999) {
                     img.src = "images/e.jpg";
+
+                    const novoValueAntes80 = valueAntes80.setAttribute('value', 500.00);
+                    valueAntes80.innerHTML.value = novoValueAntes80;
+                    const novoValueDepois80 = valueDepois80.setAttribute('value', 640.00);
+                    valueDepois80.innerHTML.value = novoValueDepois80;
+
+                    const novoValueAntes70 = valueAntes70.setAttribute('value', 571.43);
+                    valueAntes70.innerHTML.value = novoValueAntes70;
+                    const novoValueDepois70 = valueDepois70.setAttribute('value', 711.43);
+                    valueDepois70.innerHTML.value = novoValueDepois70;
+
+                    const novoValueAntes60 = valueAntes60.setAttribute('value', 666.67);
+                    valueAntes60.innerHTML.value = novoValueAntes60;
+                    const novoValueDepois60 = valueDepois60.setAttribute('value', 806.67);
+                    valueDepois60.innerHTML.value = novoValueDepois60;
+
+                    const novoValueAntes50 = valueAntes50.setAttribute('value', 800.00);
+                    valueAntes50.innerHTML.value = novoValueAntes50;
+                    const novoValueDepois50 = valueDepois50.setAttribute('value', 940.00);
+                    valueDepois50.innerHTML.value = novoValueDepois50;
+
+                    const novoValueAntes36 = valueAntes36.setAttribute('value', 1111.11);
+                    valueAntes36.innerHTML.value = novoValueAntes36;
+                    const novoValueDepois36 = valueDepois36.setAttribute('value', 1251.11);
+                    valueDepois36.innerHTML.value = novoValueDepois36;
                 }
                 if (valueRange >= 42500 && valueRange <= 44999) {
                     img.src = "images/f.jpg";
+
+                    const novoValueAntes80 = valueAntes80.setAttribute('value', 531.25);
+                    valueAntes80.innerHTML.value = novoValueAntes80;
+                    const novoValueDepois80 = valueDepois80.setAttribute('value', 680.00);
+                    valueDepois80.innerHTML.value = novoValueDepois80;
+
+                    const novoValueAntes70 = valueAntes70.setAttribute('value', 607.14);
+                    valueAntes70.innerHTML.value = novoValueAntes70;
+                    const novoValueDepois70 = valueDepois70.setAttribute('value', 755.89);
+                    valueDepois70.innerHTML.value = novoValueDepois70;
+
+                    const novoValueAntes60 = valueAntes60.setAttribute('value', 708.33);
+                    valueAntes60.innerHTML.value = novoValueAntes60;
+                    const novoValueDepois60 = valueDepois60.setAttribute('value', 857.08);
+                    valueDepois60.innerHTML.value = novoValueDepois60;
+
+                    const novoValueAntes50 = valueAntes50.setAttribute('value', 850.00);
+                    valueAntes50.innerHTML.value = novoValueAntes50;
+                    const novoValueDepois50 = valueDepois50.setAttribute('value', 998.75);
+                    valueDepois50.innerHTML.value = novoValueDepois50;
+
+                    const novoValueAntes36 = valueAntes36.setAttribute('value', 1180.56);
+                    valueAntes36.innerHTML.value = novoValueAntes36;
+                    const novoValueDepois36 = valueDepois36.setAttribute('value', 1329.31);
+                    valueDepois36.innerHTML.value = novoValueDepois36;
                 }
                 if (valueRange >= 45000 && valueRange <= 49999) {
                     img.src = "images/g.jpg";
+
+                    const novoValueAntes80 = valueAntes80.setAttribute('value', 562.50);
+                    valueAntes80.innerHTML.value = novoValueAntes80;
+                    const novoValueDepois80 = valueDepois80.setAttribute('value', 720.00);
+                    valueDepois80.innerHTML.value = novoValueDepois80;
+
+                    const novoValueAntes70 = valueAntes70.setAttribute('value', 642.86);
+                    valueAntes70.innerHTML.value = novoValueAntes70;
+                    const novoValueDepois70 = valueDepois70.setAttribute('value', 800.36);
+                    valueDepois70.innerHTML.value = novoValueDepois70;
+
+                    const novoValueAntes60 = valueAntes60.setAttribute('value', 750.00);
+                    valueAntes60.innerHTML.value = novoValueAntes60;
+                    const novoValueDepois60 = valueDepois60.setAttribute('value', 907.50);
+                    valueDepois60.innerHTML.value = novoValueDepois60;
+
+                    const novoValueAntes50 = valueAntes50.setAttribute('value', 900.00);
+                    valueAntes50.innerHTML.value = novoValueAntes50;
+                    const novoValueDepois50 = valueDepois50.setAttribute('value', 1057.50);
+                    valueDepois50.innerHTML.value = novoValueDepois50;
+
+                    const novoValueAntes36 = valueAntes36.setAttribute('value', 1250.00);
+                    valueAntes36.innerHTML.value = novoValueAntes36;
+                    const novoValueDepois36 = valueDepois36.setAttribute('value', 1407.50);
+                    valueDepois36.innerHTML.value = novoValueDepois36;
                 }
                 if (valueRange >= 50000 && valueRange <= 54999) {
-                    img.src = "images/g.jpg";
+                    img.src = "images/h.jpg";
+
+                    const novoValueAntes80 = valueAntes80.setAttribute('value', 625.00);
+                    valueAntes80.innerHTML.value = novoValueAntes80;
+                    const novoValueDepois80 = valueDepois80.setAttribute('value', 800.00);
+                    valueDepois80.innerHTML.value = novoValueDepois80;
+
+                    const novoValueAntes70 = valueAntes70.setAttribute('value', 714.29);
+                    valueAntes70.innerHTML.value = novoValueAntes70;
+                    const novoValueDepois70 = valueDepois70.setAttribute('value', 889.29);
+                    valueDepois70.innerHTML.value = novoValueDepois70;
+
+                    const novoValueAntes60 = valueAntes60.setAttribute('value', 833.33);
+                    valueAntes60.innerHTML.value = novoValueAntes60;
+                    const novoValueDepois60 = valueDepois60.setAttribute('value', 1008.33);
+                    valueDepois60.innerHTML.value = novoValueDepois60;
+
+                    const novoValueAntes50 = valueAntes50.setAttribute('value', 1000.00);
+                    valueAntes50.innerHTML.value = novoValueAntes50;
+                    const novoValueDepois50 = valueDepois50.setAttribute('value', 1175.00);
+                    valueDepois50.innerHTML.value = novoValueDepois50;
+
+                    const novoValueAntes36 = valueAntes36.setAttribute('value', 1388.89);
+                    valueAntes36.innerHTML.value = novoValueAntes36;
+                    const novoValueDepois36 = valueDepois36.setAttribute('value', 1563.89);
+                    valueDepois36.innerHTML.value = novoValueDepois36;
                 }
                 if (valueRange >= 55000 && valueRange <= 59999) {
-                    img.src = "images/h.jpg";
+                    img.src = "images/i.jpg";
+
+                    const novoValueAntes80 = valueAntes80.setAttribute('value', 687.50);
+                    valueAntes80.innerHTML.value = novoValueAntes80;
+                    const novoValueDepois80 = valueDepois80.setAttribute('value', 880.00);
+                    valueDepois80.innerHTML.value = novoValueDepois80;
+
+                    const novoValueAntes70 = valueAntes70.setAttribute('value', 785.71);
+                    valueAntes70.innerHTML.value = novoValueAntes70;
+                    const novoValueDepois70 = valueDepois70.setAttribute('value', 978.21);
+                    valueDepois70.innerHTML.value = novoValueDepois70;
+
+                    const novoValueAntes60 = valueAntes60.setAttribute('value', 916.67);
+                    valueAntes60.innerHTML.value = novoValueAntes60;
+                    const novoValueDepois60 = valueDepois60.setAttribute('value', 1109.17);
+                    valueDepois60.innerHTML.value = novoValueDepois60;
+
+                    const novoValueAntes50 = valueAntes50.setAttribute('value', 1100.00);
+                    valueAntes50.innerHTML.value = novoValueAntes50;
+                    const novoValueDepois50 = valueDepois50.setAttribute('value', 1292.50);
+                    valueDepois50.innerHTML.value = novoValueDepois50;
+
+                    const novoValueAntes36 = valueAntes36.setAttribute('value', 1527.78);
+                    valueAntes36.innerHTML.value = novoValueAntes36;
+                    const novoValueDepois36 = valueDepois36.setAttribute('value', 1720.28);
+                    valueDepois36.innerHTML.value = novoValueDepois36;
                 }
                 if (valueRange >= 60000 && valueRange <= 64999) {
-                    img.src = "images/i.jpg";
+                    img.src = "images/j.jpg";
+
+                    const novoValueAntes80 = valueAntes80.setAttribute('value', 750.00);
+                    valueAntes80.innerHTML.value = novoValueAntes80;
+                    const novoValueDepois80 = valueDepois80.setAttribute('value', 960.00);
+                    valueDepois80.innerHTML.value = novoValueDepois80;
+
+                    const novoValueAntes70 = valueAntes70.setAttribute('value', 857.14);
+                    valueAntes70.innerHTML.value = novoValueAntes70;
+                    const novoValueDepois70 = valueDepois70.setAttribute('value', 1067.14);
+                    valueDepois70.innerHTML.value = novoValueDepois70;
+
+                    const novoValueAntes60 = valueAntes60.setAttribute('value', 1000.00);
+                    valueAntes60.innerHTML.value = novoValueAntes60;
+                    const novoValueDepois60 = valueDepois60.setAttribute('value', 1210.00);
+                    valueDepois60.innerHTML.value = novoValueDepois60;
+
+                    const novoValueAntes50 = valueAntes50.setAttribute('value', 1200.00);
+                    valueAntes50.innerHTML.value = novoValueAntes50;
+                    const novoValueDepois50 = valueDepois50.setAttribute('value', 1410.00);
+                    valueDepois50.innerHTML.value = novoValueDepois50;
+
+                    const novoValueAntes36 = valueAntes36.setAttribute('value', 1666.67);
+                    valueAntes36.innerHTML.value = novoValueAntes36;
+                    const novoValueDepois36 = valueDepois36.setAttribute('value', 1876.67);
+                    valueDepois36.innerHTML.value = novoValueDepois36;
                 }
                 if (valueRange >= 65000 && valueRange <= 69999) {
-                    img.src = "images/j.jpg";
+                    img.src = "images/k.jpg";
+
+                    const novoValueAntes80 = valueAntes80.setAttribute('value', 0);
+                    valueAntes80.innerHTML.value = novoValueAntes80;
+                    const novoValueDepois80 = valueDepois80.setAttribute('value', 0);
+                    valueDepois80.innerHTML.value = novoValueDepois80;
+
+                    const novoValueAntes70 = valueAntes70.setAttribute('value', 928.57);
+                    valueAntes70.innerHTML.value = novoValueAntes70;
+                    const novoValueDepois70 = valueDepois70.setAttribute('value', 1156.07);
+                    valueDepois70.innerHTML.value = novoValueDepois70;
+
+                    const novoValueAntes60 = valueAntes60.setAttribute('value', 1083.33);
+                    valueAntes60.innerHTML.value = novoValueAntes60;
+                    const novoValueDepois60 = valueDepois60.setAttribute('value', 1310.83);
+                    valueDepois60.innerHTML.value = novoValueDepois60;
+
+                    const novoValueAntes50 = valueAntes50.setAttribute('value', 1300.00);
+                    valueAntes50.innerHTML.value = novoValueAntes50;
+                    const novoValueDepois50 = valueDepois50.setAttribute('value', 1527.50);
+                    valueDepois50.innerHTML.value = novoValueDepois50;
+
+                    const novoValueAntes36 = valueAntes36.setAttribute('value', 1805.56);
+                    valueAntes36.innerHTML.value = novoValueAntes36;
+                    const novoValueDepois36 = valueDepois36.setAttribute('value', 2033.06);
+                    valueDepois36.innerHTML.value = novoValueDepois36;
                 }
                 if (valueRange >= 70000 && valueRange <= 74999) {
-                    img.src = "images/j.jpg";
+                    img.src = "images/l.jpg";
+
+                    const novoValueAntes80 = valueAntes80.setAttribute('value', 0);
+                    valueAntes80.innerHTML.value = novoValueAntes80;
+                    const novoValueDepois80 = valueDepois80.setAttribute('value', 0);
+                    valueDepois80.innerHTML.value = novoValueDepois80;
+
+                    const novoValueAntes70 = valueAntes70.setAttribute('value', 1000.00);
+                    valueAntes70.innerHTML.value = novoValueAntes70;
+                    const novoValueDepois70 = valueDepois70.setAttribute('value', 1245.00);
+                    valueDepois70.innerHTML.value = novoValueDepois70;
+
+                    const novoValueAntes60 = valueAntes60.setAttribute('value', 1166.67);
+                    valueAntes60.innerHTML.value = novoValueAntes60;
+                    const novoValueDepois60 = valueDepois60.setAttribute('value', 1411.67);
+                    valueDepois60.innerHTML.value = novoValueDepois60;
+
+                    const novoValueAntes50 = valueAntes50.setAttribute('value', 1400.00);
+                    valueAntes50.innerHTML.value = novoValueAntes50;
+                    const novoValueDepois50 = valueDepois50.setAttribute('value', 1645.00);
+                    valueDepois50.innerHTML.value = novoValueDepois50;
+
+                    const novoValueAntes36 = valueAntes36.setAttribute('value', 1944.44);
+                    valueAntes36.innerHTML.value = novoValueAntes36;
+                    const novoValueDepois36 = valueDepois36.setAttribute('value', 2189.44);
+                    valueDepois36.innerHTML.value = novoValueDepois36;
                 }
                 if (valueRange >= 75000 && valueRange <= 79999) {
-                    img.src = "images/j.jpg";
+                    img.src = "images/m.jpg";
+
+                    const novoValueAntes80 = valueAntes80.setAttribute('value', 0);
+                    valueAntes80.innerHTML.value = novoValueAntes80;
+                    const novoValueDepois80 = valueDepois80.setAttribute('value', 0);
+                    valueDepois80.innerHTML.value = novoValueDepois80;
+
+                    const novoValueAntes70 = valueAntes70.setAttribute('value', 1071.43);
+                    valueAntes70.innerHTML.value = novoValueAntes70;
+                    const novoValueDepois70 = valueDepois70.setAttribute('value', 1333.93);
+                    valueDepois70.innerHTML.value = novoValueDepois70;
+
+                    const novoValueAntes60 = valueAntes60.setAttribute('value', 1250.00);
+                    valueAntes60.innerHTML.value = novoValueAntes60;
+                    const novoValueDepois60 = valueDepois60.setAttribute('value', 1512.50);
+                    valueDepois60.innerHTML.value = novoValueDepois60;
+
+                    const novoValueAntes50 = valueAntes50.setAttribute('value', 1500.00);
+                    valueAntes50.innerHTML.value = novoValueAntes50;
+                    const novoValueDepois50 = valueDepois50.setAttribute('value', 1762.50);
+                    valueDepois50.innerHTML.value = novoValueDepois50;
+
+                    const novoValueAntes36 = valueAntes36.setAttribute('value', 2083.33);
+                    valueAntes36.innerHTML.value = novoValueAntes36;
+                    const novoValueDepois36 = valueDepois36.setAttribute('value', 2345.83);
+                    valueDepois36.innerHTML.value = novoValueDepois36;
                 }
                 if (valueRange >= 80000 && valueRange <= 89999) {
-                    img.src = "images/j.jpg";
+                    img.src = "images/n.jpg";
+
+                    const novoValueAntes80 = valueAntes80.setAttribute('value', 0);
+                    valueAntes80.innerHTML.value = novoValueAntes80;
+                    const novoValueDepois80 = valueDepois80.setAttribute('value', 0);
+                    valueDepois80.innerHTML.value = novoValueDepois80;
+
+                    const novoValueAntes70 = valueAntes70.setAttribute('value', 1142.86);
+                    valueAntes70.innerHTML.value = novoValueAntes70;
+                    const novoValueDepois70 = valueDepois70.setAttribute('value', 1422.86);
+                    valueDepois70.innerHTML.value = novoValueDepois70;
+
+                    const novoValueAntes60 = valueAntes60.setAttribute('value', 1333.33);
+                    valueAntes60.innerHTML.value = novoValueAntes60;
+                    const novoValueDepois60 = valueDepois60.setAttribute('value', 1613.33);
+                    valueDepois60.innerHTML.value = novoValueDepois60;
+
+                    const novoValueAntes50 = valueAntes50.setAttribute('value', 1600.00);
+                    valueAntes50.innerHTML.value = novoValueAntes50;
+                    const novoValueDepois50 = valueDepois50.setAttribute('value', 1880.00);
+                    valueDepois50.innerHTML.value = novoValueDepois50;
+
+                    const novoValueAntes36 = valueAntes36.setAttribute('value', 2222.22);
+                    valueAntes36.innerHTML.value = novoValueAntes36;
+                    const novoValueDepois36 = valueDepois36.setAttribute('value', 2502.22);
+                    valueDepois36.innerHTML.value = novoValueDepois36;
                 }
                 if (valueRange >= 90000 && valueRange <= 99999) {
-                    img.src = "images/j.jpg";
+                    img.src = "images/o.jpg";
+
+                    const novoValueAntes80 = valueAntes80.setAttribute('value', 0);
+                    valueAntes80.innerHTML.value = novoValueAntes80;
+                    const novoValueDepois80 = valueDepois80.setAttribute('value', 0);
+                    valueDepois80.innerHTML.value = novoValueDepois80;
+
+                    const novoValueAntes70 = valueAntes70.setAttribute('value', 1285.71);
+                    valueAntes70.innerHTML.value = novoValueAntes70;
+                    const novoValueDepois70 = valueDepois70.setAttribute('value', 1600.71);
+                    valueDepois70.innerHTML.value = novoValueDepois70;
+
+                    const novoValueAntes60 = valueAntes60.setAttribute('value', 1500.00);
+                    valueAntes60.innerHTML.value = novoValueAntes60;
+                    const novoValueDepois60 = valueDepois60.setAttribute('value', 1815.00);
+                    valueDepois60.innerHTML.value = novoValueDepois60;
+
+                    const novoValueAntes50 = valueAntes50.setAttribute('value', 1800.00);
+                    valueAntes50.innerHTML.value = novoValueAntes50;
+                    const novoValueDepois50 = valueDepois50.setAttribute('value', 2115.00);
+                    valueDepois50.innerHTML.value = novoValueDepois50;
+
+                    const novoValueAntes36 = valueAntes36.setAttribute('value', 2500.00);
+                    valueAntes36.innerHTML.value = novoValueAntes36;
+                    const novoValueDepois36 = valueDepois36.setAttribute('value', 2815.00);
+                    valueDepois36.innerHTML.value = novoValueDepois36;
                 }
                 if (valueRange >= 100000 && valueRange <= 109999) {
-                    img.src = "images/j.jpg";
+                    img.src = "images/p.jpg";
+
+                    const novoValueAntes80 = valueAntes80.setAttribute('value', 0);
+                    valueAntes80.innerHTML.value = novoValueAntes80;
+                    const novoValueDepois80 = valueDepois80.setAttribute('value', 0);
+                    valueDepois80.innerHTML.value = novoValueDepois80;
+
+                    const novoValueAntes70 = valueAntes70.setAttribute('value', 1428.57);
+                    valueAntes70.innerHTML.value = novoValueAntes70;
+                    const novoValueDepois70 = valueDepois70.setAttribute('value', 1778.57);
+                    valueDepois70.innerHTML.value = novoValueDepois70;
+
+                    const novoValueAntes60 = valueAntes60.setAttribute('value', 1666.67);
+                    valueAntes60.innerHTML.value = novoValueAntes60;
+                    const novoValueDepois60 = valueDepois60.setAttribute('value', 2016.67);
+                    valueDepois60.innerHTML.value = novoValueDepois60;
+
+                    const novoValueAntes50 = valueAntes50.setAttribute('value', 2000.00);
+                    valueAntes50.innerHTML.value = novoValueAntes50;
+                    const novoValueDepois50 = valueDepois50.setAttribute('value', 2350.00);
+                    valueDepois50.innerHTML.value = novoValueDepois50;
+
+                    const novoValueAntes36 = valueAntes36.setAttribute('value', 2777.78);
+                    valueAntes36.innerHTML.value = novoValueAntes36;
+                    const novoValueDepois36 = valueDepois36.setAttribute('value', 3127.78);
+                    valueDepois36.innerHTML.value = novoValueDepois36;
                 }
                 if (valueRange >= 110000 && valueRange <= 119999) {
-                    img.src = "images/j.jpg";
+                    img.src = "images/q.jpg";
+
+                    const novoValueAntes80 = valueAntes80.setAttribute('value', 0);
+                    valueAntes80.innerHTML.value = novoValueAntes80;
+                    const novoValueDepois80 = valueDepois80.setAttribute('value', 0);
+                    valueDepois80.innerHTML.value = novoValueDepois80;
+
+                    const novoValueAntes70 = valueAntes70.setAttribute('value', 1571.43);
+                    valueAntes70.innerHTML.value = novoValueAntes70;
+                    const novoValueDepois70 = valueDepois70.setAttribute('value', 1956.43);
+                    valueDepois70.innerHTML.value = novoValueDepois70;
+
+                    const novoValueAntes60 = valueAntes60.setAttribute('value', 1833.33);
+                    valueAntes60.innerHTML.value = novoValueAntes60;
+                    const novoValueDepois60 = valueDepois60.setAttribute('value', 2218.33);
+                    valueDepois60.innerHTML.value = novoValueDepois60;
+
+                    const novoValueAntes50 = valueAntes50.setAttribute('value', 2200.00);
+                    valueAntes50.innerHTML.value = novoValueAntes50;
+                    const novoValueDepois50 = valueDepois50.setAttribute('value', 2585.00);
+                    valueDepois50.innerHTML.value = novoValueDepois50;
+
+                    const novoValueAntes36 = valueAntes36.setAttribute('value', 3055.56);
+                    valueAntes36.innerHTML.value = novoValueAntes36;
+                    const novoValueDepois36 = valueDepois36.setAttribute('value', 3440.56);
+                    valueDepois36.innerHTML.value = novoValueDepois36;
                 }
                 if (valueRange >= 120000 && valueRange <= 12000) {
-                    img.src = "images/j.jpg";
+                    img.src = "images/r.jpg";
+
+                    const novoValueAntes80 = valueAntes80.setAttribute('value', 0);
+                    valueAntes80.innerHTML.value = novoValueAntes80;
+                    const novoValueDepois80 = valueDepois80.setAttribute('value', 0);
+                    valueDepois80.innerHTML.value = novoValueDepois80;
+
+                    const novoValueAntes70 = valueAntes70.setAttribute('value', 1714.29);
+                    valueAntes70.innerHTML.value = novoValueAntes70;
+                    const novoValueDepois70 = valueDepois70.setAttribute('value', 2134.29);
+                    valueDepois70.innerHTML.value = novoValueDepois70;
+
+                    const novoValueAntes60 = valueAntes60.setAttribute('value', 2000.00);
+                    valueAntes60.innerHTML.value = novoValueAntes60;
+                    const novoValueDepois60 = valueDepois60.setAttribute('value', 2420.00);
+                    valueDepois60.innerHTML.value = novoValueDepois60;
+
+                    const novoValueAntes50 = valueAntes50.setAttribute('value', 2400.00);
+                    valueAntes50.innerHTML.value = novoValueAntes50;
+                    const novoValueDepois50 = valueDepois50.setAttribute('value', 2820.00);
+                    valueDepois50.innerHTML.value = novoValueDepois50;
+
+                    const novoValueAntes36 = valueAntes36.setAttribute('value', 3333.33);
+                    valueAntes36.innerHTML.value = novoValueAntes36;
+                    const novoValueDepois36 = valueDepois36.setAttribute('value', 3753.33);
+                    valueDepois36.innerHTML.value = novoValueDepois36;
                 }
             })
-
         });
 
+        form = document.getElementById("form");
+
+        const isValidElement = element => {
+            return element.name && element.value;
+        };
+
+        const isValidValue = element => {
+            return (!['checkbox', 'radio'].includes(element.type) || element.checked);
+        };
+
+        const isCheckbox = element => element.type === 'checkbox';
+
+        const isMultiSelect = element => element.options && element.multiple;
+
+        const getSelectValues = options => [].reduce.call(options, (values, option) => {
+            return option.selected ? values.concat(option.value) : values;
+        }, []);
+
+        const formToJSON_deconstructed = elements => {
+
+            const reducerFunction = (data, element) => {
+
+                data[element.name] = element.value;
+                console.log(JSON.stringify(data));
+                return data;
+            };
+
+            const reducerInitialValue = {};
+            console.log('Initial `data` value:', JSON.stringify(reducerInitialValue));
+            const formData = [].reduce.call(elements, reducerFunction, reducerInitialValue);
+
+            return formData;
+        };
+
+        const formToJSON = elements => [].reduce.call(elements, (data, element) => {
+
+            if (isValidElement(element) && isValidValue(element)) {
+
+                if (isCheckbox(element)) {
+                    data[element.name] = (data[element.name] || []).concat(element.value);
+                } else if (isMultiSelect(element)) {
+                    data[element.name] = getSelectValues(element);
+                } else {
+                    data[element.name] = element.value;
+                }
+            }
+
+            return data;
+        }, {});
+
+        const handleFormSubmit = event => {
+
+            event.preventDefault();
+            const data = formToJSON(form.elements);
+            console.log(data);
+
+            localStorage.setItem('data', JSON.stringify(data));
+            const storedValue = localStorage.getItem('data');
+
+            // const dataContainer = document.getElementsByClassName('results__display')[0];
+
+            // dataContainer.textContent = JSON.stringify(data, null, "  ");
+
+        };
+
+        const form2 = document.getElementsByClassName('form-data')[0];
+        form2.addEventListener('submit', handleFormSubmit);
+        
+        //Teste 1
+        // var min = document.getElementById("sliderRange").min
+        // var max = document.getElementById("sliderRange").max
+
+        // oninput = "this.nextElementSibling.value = this.value";
+        // console.log(oninput);
+
+        // console.log(min);
+        // console.log(max);
+
+        // var img = document.getElementById("carro");
+        // console.log(img)
+
+        // if (output >= 30000 && output <= 40000) {
+        //     document.getElementById("carro").src = "images/a.jpg"
+        // } else if (output >= 40001 && output <= 50000) {
+        //     document.getElementById("carro").src = "images/b.jpg"
+        // }
+
+        //Teste 2
         // var rangeslider = document.getElementById("sliderRange");
 
         // var images = document.getElementById("sliderImages");
