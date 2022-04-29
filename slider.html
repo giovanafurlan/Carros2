@@ -15,8 +15,6 @@
 <style>
     body {
         padding: 0 2vw 0 2vw;
-        background-image: linear-gradient(to right, #cc169a, #2790e1);
-        color: white;
     }
 
     .rangeslider {
@@ -104,7 +102,6 @@
     .card-text {
         background: transparent;
         border: none;
-        color: white;
     }
 
     .card-body2 {
@@ -115,10 +112,6 @@
 
     .periodo {
         font-weight: 600;
-    }
-
-    .table {
-        color: white;
     }
 
     strong {
@@ -135,6 +128,19 @@
 
     .fw-light {
         margin-bottom: 2px !important;
+    }
+
+    .myslider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 30px;
+        height: 30px;
+        background: none;
+        background-image: url('https://img.icons8.com/material-outlined/344/average-2.png');
+        background-size: contain;
+        background-position: center center;
+        background-repeat: no-repeat;
+        cursor: pointer;
     }
 </style>
 
@@ -170,22 +176,6 @@
                         </div>
                         <div class="col-sm-6">
                             <div class="card">
-                                <div class="card-body">
-                                    <p class="fw-light">Menor período</p>
-                                    <hr>
-                                    <h5 class="card-title">Antes da contemplação parcela zero taxa</h5>
-                                    <div class="card-periodo">
-                                        <p><strong>Período 50:</strong> R$<input class="card-text" name="periodoAntes50"
-                                                id="antes50" value="600.00" disabled></p>
-                                        <p><strong>Período 36:</strong> R$<input class="card-text" name="periodoAntes36"
-                                                id="antes36" value="833.33" disabled></p>
-                                        <p><strong></strong><input class="card-text" disabled></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="card">
                                 <div class="card-body card-body">
                                     <p class="fw-light">Maior período</p>
                                     <hr>
@@ -197,6 +187,22 @@
                                                 name="periodoDepois70" id="depois70" value="533.57" disabled></p>
                                         <p><strong>Período 60:</strong> R$<input class="card-text"
                                                 name="periodoDepois60" id="depois60" value="605.00" disabled></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <p class="fw-light">Menor período</p>
+                                    <hr>
+                                    <h5 class="card-title">Antes da contemplação parcela zero taxa</h5>
+                                    <div class="card-periodo">
+                                        <p><strong>Período 50:</strong> R$<input class="card-text" name="periodoAntes50"
+                                                id="antes50" value="600.00" disabled></p>
+                                        <p><strong>Período 36:</strong> R$<input class="card-text" name="periodoAntes36"
+                                                id="antes36" value="833.33" disabled></p>
+                                        <p><strong></strong><input class="card-text" disabled></p>
                                     </div>
                                 </div>
                             </div>
@@ -224,12 +230,29 @@
                         <button class="btn btn-primary btn2" type="button">Continuar sozinho</button>
                     </div>
                 </div>
+                <div id="value"></div>
         </div>
         </form>
     </div>
     <a id="downloadAnchorElem" style="display:none"></a>
-    
+
     <script>
+        function animateValue(id, start, end, duration) {
+            if (start === end) return;
+            var range = end - start;
+            var current = start;
+            var increment = end > start ? 1 : -1;
+            var stepTime = Math.abs(Math.floor(duration / range));
+            var obj = document.getElementById(id);
+            var timer = setInterval(function () {
+                current += increment;
+                obj.innerHTML = current;
+                if (current == end) {
+                    clearInterval(timer);
+                }
+            }, stepTime);
+        }
+
         window.addEventListener('load', function () {
 
             document.getElementById('sliderRange').addEventListener('click', () => {
@@ -824,7 +847,7 @@
 
         const form2 = document.getElementsByClassName('form-data')[0];
         form2.addEventListener('submit', handleFormSubmit);
-        
+
         //Teste 1
         // var min = document.getElementById("sliderRange").min
         // var max = document.getElementById("sliderRange").max

@@ -19,27 +19,29 @@
 <style>
     body {
         padding: 0 2vw 0 2vw;
-        background-image: linear-gradient(to right, #cc169a, #2790e1);
         font-family: 'Open Sans', sans-serif;
     }
 
-    h1,
-    p {
-        color: white;
+    header{
+        margin-top: 1vw;
+    }
+    .logo{
+        width: 70px;
+    }
+
+    .quadros{
+        display: flex;
+        flex-direction: row;
     }
 
     .image {
         overflow: hidden;
-        height: 800px;
-        width: 30vw;
-        box-shadow: 0px 0px 15px gray;
+        height: 500px;
+        width: 20vw;
         float: right;
-        border-radius: 10px;
     }
 
     .image>img {
-        height: 100%;
-        width: 100%;
         object-fit: cover;
     }
 
@@ -49,7 +51,6 @@
         padding: 1vw;
         border-radius: 10px;
         border: 1px solid white;
-        color: white;
     }
 
     a {
@@ -59,7 +60,6 @@
 
     .btn {
         margin-top: 1vw;
-        color: white;
         border-color: white;
     }
 
@@ -78,17 +78,23 @@
     }
 
     .btn2 a {
-        color: white;
         text-decoration: none;
     }
 </style>
 
 <body>
+    <header>
+        <img src="images/logo.png" alt="Logo - UP" class="logo">
+    </header>
+    
     <div class="image mt-3 mb-3" id="sliderImages">
-        <img id="carro" class="img-fluid" src="images/a.jpg">
+        <h1 class="display-5">Simule o seu Carro novo!</h1>
+        <div class="quadros">
+            <img id="carro" class="img-fluid" src="images/a.jpg">
+            <img id="carro" class="img-fluid" src="images/a.jpg">
+        </div>
     </div><br>
     <div class="slider-container">
-        <h1 class="display-5">Simule o seu<br />Carro novo!</h1>
         <p>Nossa meta é deixar você cada vez mais<br />
             perto do seu objetivo. Quem compara faz um UP Consórcios</p>
     </div>
