@@ -2,7 +2,6 @@
 <html lang="pt-br">
 
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -45,13 +44,13 @@
     }
 
     .image .img1 {
-        width: 23vw;
-        height: 600px;
+        width: 25vw;
+        height: 550px;
     }
 
     .image .img2 {
-        width: 20vw;
-        height: 500px;
+        width: 22vw;
+        height: 450px;
     }
 
     .image img {
@@ -62,6 +61,7 @@
         display: flex;
         flex-direction: column;
         float: right;
+        margin-top: -2vh;
     }
 
     .simule p {
@@ -72,7 +72,7 @@
     }
 
     #form {
-        width: 50vw;
+        width: 48vw;
         background: white;
         border-radius: 10px;
         padding: 1vw;
@@ -146,14 +146,14 @@
         <p>Simule seu carro novo!</p>
         <div class="image">
             <img src="images/a.jpg" class="img-thumbnail img1" alt="...">
-            <img src="images/b.jpg" class="img-thumbnail img2" alt="...">
+            <img src="images/banner.jpg" class="img-thumbnail img2" alt="...">
         </div>
     </div>
 
     <form class="needs-validation form-data" id="form" novalidate action="#" method="post">
         <img src="images/car-wheel.gif" class="img-thumbnail gif" alt="...">
         <div class="titulo">
-            <p>Nossa meta é deixar você cada vez mais<br />
+            <p class="fs-5">Nossa meta é deixar você cada vez mais<br />
                 perto do seu objetivo. Quem compara faz um UP Consórcios</p>
             <p>Preencha os dados e simule:</p>
         </div>
@@ -213,10 +213,7 @@
                     </svg></a></button>
         </div>
     </form>
-    <!-- <div class="results">
-        <h2 class="results__heading">Form Data</h2>
-        <pre class="results__display-wrapper"><code class="results__display"></code></pre>
-    </div> -->
+
     <script>
         document.getElementById("form").addEventListener('submit', () => {
             nome = document.getElementById("validationCustom01").value;

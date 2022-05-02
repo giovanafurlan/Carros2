@@ -8,13 +8,13 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <title>UP</title>
 </head>
 
 <style>
     body {
         background-color: #f1eeee;
+        font-family: 'Open Sans', sans-serif;
     }
 
     header {
@@ -61,12 +61,12 @@
 
     .image .img1 {
         width: 25vw;
-        height: 700px;
+        height: 600px;
     }
 
     .image .img2 {
         width: 22vw;
-        height: 600px;
+        height: 500px;
     }
 
     .image img {
@@ -74,17 +74,26 @@
     }
 
     #form {
+        width: 48vw;
         background-color: white;
         padding: 1vw;
         border-radius: 10px;
         margin: 2vw;
     }
 
+    .gif {
+        border: none;
+        width: 80px;
+        margin-bottom: 1vw;
+        text-align: center;
+        margin-left: 42%;
+    }
+
     .simule {
         display: flex;
         flex-direction: column;
         float: right;
-        margin-top: 5vh;
+        margin-top: 2vh;
     }
 
     .simule p {
@@ -150,9 +159,17 @@
         border-color: #7712d0;
     }
 
-    #output {
+    .result {
         padding: 5px;
-        font-size: 20px;
+        font-size: 18px;
+        text-align: center;
+        margin-left: 42%;
+        border: 1px solid rgb(119, 18, 208, .5);
+        border-radius: 20px;
+    }
+
+    .result::before{
+        content: "R$ ";
     }
 
     .card-text {
@@ -189,6 +206,10 @@
             width: 90vw;
         }
     }
+
+    .depois {
+        display: none;
+    }
 </style>
 
 <body>
@@ -198,21 +219,21 @@
     <div class="simule">
         <p>Simule seu carro novo!</p>
         <div class="image">
-            <img src="images/a.jpg" id="carro" class="img-thumbnail img1" alt="...">
-            <img src="images/b.jpg" class="img-thumbnail img2" alt="...">
+            <img src="images/a.jpg" id="carro" class="img-thumbnail img1" alt="..." style="opacity:0.5;">
+            <img src="images/banner.jpg" class="img-thumbnail img2" alt="...">
         </div>
     </div>
-    <div class="rangeslider">
+    <div class="rangeslider form-data">
         <form action="" method="post" id="form">
-            <h3 class="display-6">Escolha o valor que precisa</h3>
+            <img src="images/car-wheel.gif" class="img-thumbnail gif" alt="...">
+            <h3>Escolha o valor que precisa</h3>
             <input type="range" name="range" class="form-range myslider" min="30000" max="120000" value="30000"
-                id="sliderRange" oninput="this.nextElementSibling.value = this.value">
-            R$<output id="output">30000</output>
+                id="sliderRange" oninput="this.nextElementSibling.value = this.value" onclick="fadeIn()">
+            <output id="output" class="result">30000</output>
             <div class="cartoes">
                 <div class="row">
                     <p>Escolha o plano que mais se encaixa no seu bolso</p>
                     <div class="col-sm-6">
-                        <h5>UP</h5>
                         <div class="card">
                             <div class="card-body">
                                 <div class="card-periodo">
@@ -247,8 +268,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6">
-                        <h5>Sozinho</h5>
+                    <div class="col-sm-6 depois">
                         <div class="card">
                             <div class="card-body card-body">
                                 <div class="card-periodo">
@@ -307,7 +327,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-6 depois">
                         <div class="card">
                             <div class="card-body card-body">
                                 <div class="card-periodo">
@@ -339,661 +359,624 @@
                 </div>
             </div>
             <div id="value"></div>
-    </div>
-    </form>
-    </div>
-    </div>
+        </form>
 
-    <a id="downloadAnchorElem" style="display:none"></a>
+        <script>
+            window.addEventListener('load', function () {
 
-    <script>
-        function animateValue(id, start, end, duration) {
-            if (start === end) return;
-            var range = end - start;
-            var current = start;
-            var increment = end > start ? 1 : -1;
-            var stepTime = Math.abs(Math.floor(duration / range));
-            var obj = document.getElementById(id);
-            var timer = setInterval(function () {
-                current += increment;
-                obj.innerHTML = current;
-                if (current == end) {
-                    clearInterval(timer);
-                }
-            }, stepTime);
-        }
+                document.getElementById('sliderRange').addEventListener('click', () => {
 
-        window.addEventListener('load', function () {
+                    const valueRange = document.getElementById('sliderRange').value;
 
-            document.getElementById('sliderRange').addEventListener('click', () => {
+                    const valueAntes80 = document.getElementById("antes80");
+                    const valueAntes70 = document.getElementById("antes70");
+                    const valueAntes60 = document.getElementById("antes60");
+                    const valueAntes50 = document.getElementById("antes50");
+                    const valueAntes36 = document.getElementById("antes36");
 
-                const valueRange = document.getElementById('sliderRange').value;
+                    const valueDepois80 = document.getElementById("depois80");
+                    const valueDepois70 = document.getElementById("depois70");
+                    const valueDepois60 = document.getElementById("depois60");
+                    const valueDepois50 = document.getElementById("depois50");
+                    const valueDepois36 = document.getElementById("depois36");
 
-                const valueAntes80 = document.getElementById("antes80");
-                const valueAntes70 = document.getElementById("antes70");
-                const valueAntes60 = document.getElementById("antes60");
-                const valueAntes50 = document.getElementById("antes50");
-                const valueAntes36 = document.getElementById("antes36");
+                    const img = document.getElementById("carro");
 
-                const valueDepois80 = document.getElementById("depois80");
-                const valueDepois70 = document.getElementById("depois70");
-                const valueDepois60 = document.getElementById("depois60");
-                const valueDepois50 = document.getElementById("depois50");
-                const valueDepois36 = document.getElementById("depois36");
+                    if (valueRange >= 30000 && valueRange <= 32499) {
+                        img.src = "images/a.jpg";
 
+                        const novoValueAntes80 = valueAntes80.setAttribute('value', 375.00);
+                        valueAntes80.innerHTML.value = novoValueAntes80;
+                        const novoValueDepois80 = valueDepois80.setAttribute('value', 480.00);
+                        valueDepois80.innerHTML.value = novoValueDepois80;
+
+                        const novoValueAntes70 = valueAntes70.setAttribute('value', 428.57);
+                        valueAntes70.innerHTML.value = novoValueAntes70;
+                        const novoValueDepois70 = valueDepois70.setAttribute('value', 533.57);
+                        valueDepois70.innerHTML.value = novoValueDepois70;
+
+                        const novoValueAntes60 = valueAntes60.setAttribute('value', 500.00);
+                        valueAntes60.innerHTML.value = novoValueAntes60;
+                        const novoValueDepois60 = valueDepois60.setAttribute('value', 605.00);
+                        valueDepois60.innerHTML.value = novoValueDepois60;
+
+                        const novoValueAntes50 = valueAntes50.setAttribute('value', 600.00);
+                        valueAntes50.innerHTML.value = novoValueAntes50;
+                        const novoValueDepois50 = valueDepois50.setAttribute('value', 705.00);
+                        valueDepois50.innerHTML.value = novoValueDepois50;
+
+                        const novoValueAntes36 = valueAntes36.setAttribute('value', 833.33);
+                        valueAntes36.innerHTML.value = novoValueAntes36;
+                        const novoValueDepois36 = valueDepois36.setAttribute('value', 938.33);
+                        valueDepois36.innerHTML.value = novoValueDepois36;
+                    }
+                    if (valueRange >= 32500 && valueRange <= 34999) {
+                        img.src = "images/b.jpg";
+
+                        const novoValueAntes80 = valueAntes80.setAttribute('value', 406.25);
+                        valueAntes80.innerHTML.value = novoValueAntes80;
+                        const novoValueDepois80 = valueDepois80.setAttribute('value', 520.00);
+                        valueDepois80.innerHTML.value = novoValueDepois80;
+
+                        const novoValueAntes70 = valueAntes70.setAttribute('value', 464.29);
+                        valueAntes70.innerHTML.value = novoValueAntes70;
+                        const novoValueDepois70 = valueDepois70.setAttribute('value', 578.04);
+                        valueDepois70.innerHTML.value = novoValueDepois70;
+
+                        const novoValueAntes60 = valueAntes60.setAttribute('value', 541.67);
+                        valueAntes60.innerHTML.value = novoValueAntes60;
+                        const novoValueDepois60 = valueDepois60.setAttribute('value', 655.42);
+                        valueDepois60.innerHTML.value = novoValueDepois60;
+
+                        const novoValueAntes50 = valueAntes50.setAttribute('value', 650.00);
+                        valueAntes50.innerHTML.value = novoValueAntes50;
+                        const novoValueDepois50 = valueDepois50.setAttribute('value', 763.75);
+                        valueDepois50.innerHTML.value = novoValueDepois50;
+
+                        const novoValueAntes36 = valueAntes36.setAttribute('value', 902.78);
+                        valueAntes36.innerHTML.value = novoValueAntes36;
+                        const novoValueDepois36 = valueDepois36.setAttribute('value', 1016.53);
+                        valueDepois36.innerHTML.value = novoValueDepois36;
+                    }
+                    if (valueRange >= 35000 && valueRange <= 37499) {
+                        img.src = "images/c.jpg";
+
+                        const novoValueAntes80 = valueAntes80.setAttribute('value', 437.50);
+                        valueAntes80.innerHTML.value = novoValueAntes80;
+                        const novoValueDepois80 = valueDepois80.setAttribute('value', 560.00);
+                        valueDepois80.innerHTML.value = novoValueDepois80;
+
+                        const novoValueAntes70 = valueAntes70.setAttribute('value', 500.00);
+                        valueAntes70.innerHTML.value = novoValueAntes70;
+                        const novoValueDepois70 = valueDepois70.setAttribute('value', 622.50);
+                        valueDepois70.innerHTML.value = novoValueDepois70;
+
+                        const novoValueAntes60 = valueAntes60.setAttribute('value', 583.33);
+                        valueAntes60.innerHTML.value = novoValueAntes60;
+                        const novoValueDepois60 = valueDepois60.setAttribute('value', 705.83);
+                        valueDepois60.innerHTML.value = novoValueDepois60;
+
+                        const novoValueAntes50 = valueAntes50.setAttribute('value', 700.00);
+                        valueAntes50.innerHTML.value = novoValueAntes50;
+                        const novoValueDepois50 = valueDepois50.setAttribute('value', 822.50);
+                        valueDepois50.innerHTML.value = novoValueDepois50;
+
+                        const novoValueAntes36 = valueAntes36.setAttribute('value', 972.22);
+                        valueAntes36.innerHTML.value = novoValueAntes36;
+                        const novoValueDepois36 = valueDepois36.setAttribute('value', 1094.72);
+                        valueDepois36.innerHTML.value = novoValueDepois36;
+                    }
+                    if (valueRange >= 37500 && valueRange <= 39999) {
+                        img.src = "images/d.jpg";
+
+                        const novoValueAntes80 = valueAntes80.setAttribute('value', 468.75);
+                        valueAntes80.innerHTML.value = novoValueAntes80;
+                        const novoValueDepois80 = valueDepois80.setAttribute('value', 600.00);
+                        valueDepois80.innerHTML.value = novoValueDepois80;
+
+                        const novoValueAntes70 = valueAntes70.setAttribute('value', 535.71);
+                        valueAntes70.innerHTML.value = novoValueAntes70;
+                        const novoValueDepois70 = valueDepois70.setAttribute('value', 666.96);
+                        valueDepois70.innerHTML.value = novoValueDepois70;
+
+                        const novoValueAntes60 = valueAntes60.setAttribute('value', 625.00);
+                        valueAntes60.innerHTML.value = novoValueAntes60;
+                        const novoValueDepois60 = valueDepois60.setAttribute('value', 756.25);
+                        valueDepois60.innerHTML.value = novoValueDepois60;
+
+                        const novoValueAntes50 = valueAntes50.setAttribute('value', 750.00);
+                        valueAntes50.innerHTML.value = novoValueAntes50;
+                        const novoValueDepois50 = valueDepois50.setAttribute('value', 881.25);
+                        valueDepois50.innerHTML.value = novoValueDepois50;
+
+                        const novoValueAntes36 = valueAntes36.setAttribute('value', 1041.67);
+                        valueAntes36.innerHTML.value = novoValueAntes36;
+                        const novoValueDepois36 = valueDepois36.setAttribute('value', 1172.92);
+                        valueDepois36.innerHTML.value = novoValueDepois36;
+                    }
+                    if (valueRange >= 40000 && valueRange <= 42999) {
+                        img.src = "images/e.jpg";
+
+                        const novoValueAntes80 = valueAntes80.setAttribute('value', 500.00);
+                        valueAntes80.innerHTML.value = novoValueAntes80;
+                        const novoValueDepois80 = valueDepois80.setAttribute('value', 640.00);
+                        valueDepois80.innerHTML.value = novoValueDepois80;
+
+                        const novoValueAntes70 = valueAntes70.setAttribute('value', 571.43);
+                        valueAntes70.innerHTML.value = novoValueAntes70;
+                        const novoValueDepois70 = valueDepois70.setAttribute('value', 711.43);
+                        valueDepois70.innerHTML.value = novoValueDepois70;
+
+                        const novoValueAntes60 = valueAntes60.setAttribute('value', 666.67);
+                        valueAntes60.innerHTML.value = novoValueAntes60;
+                        const novoValueDepois60 = valueDepois60.setAttribute('value', 806.67);
+                        valueDepois60.innerHTML.value = novoValueDepois60;
+
+                        const novoValueAntes50 = valueAntes50.setAttribute('value', 800.00);
+                        valueAntes50.innerHTML.value = novoValueAntes50;
+                        const novoValueDepois50 = valueDepois50.setAttribute('value', 940.00);
+                        valueDepois50.innerHTML.value = novoValueDepois50;
+
+                        const novoValueAntes36 = valueAntes36.setAttribute('value', 1111.11);
+                        valueAntes36.innerHTML.value = novoValueAntes36;
+                        const novoValueDepois36 = valueDepois36.setAttribute('value', 1251.11);
+                        valueDepois36.innerHTML.value = novoValueDepois36;
+                    }
+                    if (valueRange >= 42500 && valueRange <= 44999) {
+                        img.src = "images/f.jpg";
+
+                        const novoValueAntes80 = valueAntes80.setAttribute('value', 531.25);
+                        valueAntes80.innerHTML.value = novoValueAntes80;
+                        const novoValueDepois80 = valueDepois80.setAttribute('value', 680.00);
+                        valueDepois80.innerHTML.value = novoValueDepois80;
+
+                        const novoValueAntes70 = valueAntes70.setAttribute('value', 607.14);
+                        valueAntes70.innerHTML.value = novoValueAntes70;
+                        const novoValueDepois70 = valueDepois70.setAttribute('value', 755.89);
+                        valueDepois70.innerHTML.value = novoValueDepois70;
+
+                        const novoValueAntes60 = valueAntes60.setAttribute('value', 708.33);
+                        valueAntes60.innerHTML.value = novoValueAntes60;
+                        const novoValueDepois60 = valueDepois60.setAttribute('value', 857.08);
+                        valueDepois60.innerHTML.value = novoValueDepois60;
+
+                        const novoValueAntes50 = valueAntes50.setAttribute('value', 850.00);
+                        valueAntes50.innerHTML.value = novoValueAntes50;
+                        const novoValueDepois50 = valueDepois50.setAttribute('value', 998.75);
+                        valueDepois50.innerHTML.value = novoValueDepois50;
+
+                        const novoValueAntes36 = valueAntes36.setAttribute('value', 1180.56);
+                        valueAntes36.innerHTML.value = novoValueAntes36;
+                        const novoValueDepois36 = valueDepois36.setAttribute('value', 1329.31);
+                        valueDepois36.innerHTML.value = novoValueDepois36;
+                    }
+                    if (valueRange >= 45000 && valueRange <= 49999) {
+                        img.src = "images/g.jpg";
+
+                        const novoValueAntes80 = valueAntes80.setAttribute('value', 562.50);
+                        valueAntes80.innerHTML.value = novoValueAntes80;
+                        const novoValueDepois80 = valueDepois80.setAttribute('value', 720.00);
+                        valueDepois80.innerHTML.value = novoValueDepois80;
+
+                        const novoValueAntes70 = valueAntes70.setAttribute('value', 642.86);
+                        valueAntes70.innerHTML.value = novoValueAntes70;
+                        const novoValueDepois70 = valueDepois70.setAttribute('value', 800.36);
+                        valueDepois70.innerHTML.value = novoValueDepois70;
+
+                        const novoValueAntes60 = valueAntes60.setAttribute('value', 750.00);
+                        valueAntes60.innerHTML.value = novoValueAntes60;
+                        const novoValueDepois60 = valueDepois60.setAttribute('value', 907.50);
+                        valueDepois60.innerHTML.value = novoValueDepois60;
+
+                        const novoValueAntes50 = valueAntes50.setAttribute('value', 900.00);
+                        valueAntes50.innerHTML.value = novoValueAntes50;
+                        const novoValueDepois50 = valueDepois50.setAttribute('value', 1057.50);
+                        valueDepois50.innerHTML.value = novoValueDepois50;
+
+                        const novoValueAntes36 = valueAntes36.setAttribute('value', 1250.00);
+                        valueAntes36.innerHTML.value = novoValueAntes36;
+                        const novoValueDepois36 = valueDepois36.setAttribute('value', 1407.50);
+                        valueDepois36.innerHTML.value = novoValueDepois36;
+                    }
+                    if (valueRange >= 50000 && valueRange <= 54999) {
+                        img.src = "images/h.jpg";
+
+                        const novoValueAntes80 = valueAntes80.setAttribute('value', 625.00);
+                        valueAntes80.innerHTML.value = novoValueAntes80;
+                        const novoValueDepois80 = valueDepois80.setAttribute('value', 800.00);
+                        valueDepois80.innerHTML.value = novoValueDepois80;
+
+                        const novoValueAntes70 = valueAntes70.setAttribute('value', 714.29);
+                        valueAntes70.innerHTML.value = novoValueAntes70;
+                        const novoValueDepois70 = valueDepois70.setAttribute('value', 889.29);
+                        valueDepois70.innerHTML.value = novoValueDepois70;
+
+                        const novoValueAntes60 = valueAntes60.setAttribute('value', 833.33);
+                        valueAntes60.innerHTML.value = novoValueAntes60;
+                        const novoValueDepois60 = valueDepois60.setAttribute('value', 1008.33);
+                        valueDepois60.innerHTML.value = novoValueDepois60;
+
+                        const novoValueAntes50 = valueAntes50.setAttribute('value', 1000.00);
+                        valueAntes50.innerHTML.value = novoValueAntes50;
+                        const novoValueDepois50 = valueDepois50.setAttribute('value', 1175.00);
+                        valueDepois50.innerHTML.value = novoValueDepois50;
+
+                        const novoValueAntes36 = valueAntes36.setAttribute('value', 1388.89);
+                        valueAntes36.innerHTML.value = novoValueAntes36;
+                        const novoValueDepois36 = valueDepois36.setAttribute('value', 1563.89);
+                        valueDepois36.innerHTML.value = novoValueDepois36;
+                    }
+                    if (valueRange >= 55000 && valueRange <= 59999) {
+                        img.src = "images/i.jpg";
+
+                        const novoValueAntes80 = valueAntes80.setAttribute('value', 687.50);
+                        valueAntes80.innerHTML.value = novoValueAntes80;
+                        const novoValueDepois80 = valueDepois80.setAttribute('value', 880.00);
+                        valueDepois80.innerHTML.value = novoValueDepois80;
+
+                        const novoValueAntes70 = valueAntes70.setAttribute('value', 785.71);
+                        valueAntes70.innerHTML.value = novoValueAntes70;
+                        const novoValueDepois70 = valueDepois70.setAttribute('value', 978.21);
+                        valueDepois70.innerHTML.value = novoValueDepois70;
+
+                        const novoValueAntes60 = valueAntes60.setAttribute('value', 916.67);
+                        valueAntes60.innerHTML.value = novoValueAntes60;
+                        const novoValueDepois60 = valueDepois60.setAttribute('value', 1109.17);
+                        valueDepois60.innerHTML.value = novoValueDepois60;
+
+                        const novoValueAntes50 = valueAntes50.setAttribute('value', 1100.00);
+                        valueAntes50.innerHTML.value = novoValueAntes50;
+                        const novoValueDepois50 = valueDepois50.setAttribute('value', 1292.50);
+                        valueDepois50.innerHTML.value = novoValueDepois50;
+
+                        const novoValueAntes36 = valueAntes36.setAttribute('value', 1527.78);
+                        valueAntes36.innerHTML.value = novoValueAntes36;
+                        const novoValueDepois36 = valueDepois36.setAttribute('value', 1720.28);
+                        valueDepois36.innerHTML.value = novoValueDepois36;
+                    }
+                    if (valueRange >= 60000 && valueRange <= 64999) {
+                        img.src = "images/j.jpg";
+
+                        const novoValueAntes80 = valueAntes80.setAttribute('value', 750.00);
+                        valueAntes80.innerHTML.value = novoValueAntes80;
+                        const novoValueDepois80 = valueDepois80.setAttribute('value', 960.00);
+                        valueDepois80.innerHTML.value = novoValueDepois80;
+
+                        const novoValueAntes70 = valueAntes70.setAttribute('value', 857.14);
+                        valueAntes70.innerHTML.value = novoValueAntes70;
+                        const novoValueDepois70 = valueDepois70.setAttribute('value', 1067.14);
+                        valueDepois70.innerHTML.value = novoValueDepois70;
+
+                        const novoValueAntes60 = valueAntes60.setAttribute('value', 1000.00);
+                        valueAntes60.innerHTML.value = novoValueAntes60;
+                        const novoValueDepois60 = valueDepois60.setAttribute('value', 1210.00);
+                        valueDepois60.innerHTML.value = novoValueDepois60;
+
+                        const novoValueAntes50 = valueAntes50.setAttribute('value', 1200.00);
+                        valueAntes50.innerHTML.value = novoValueAntes50;
+                        const novoValueDepois50 = valueDepois50.setAttribute('value', 1410.00);
+                        valueDepois50.innerHTML.value = novoValueDepois50;
+
+                        const novoValueAntes36 = valueAntes36.setAttribute('value', 1666.67);
+                        valueAntes36.innerHTML.value = novoValueAntes36;
+                        const novoValueDepois36 = valueDepois36.setAttribute('value', 1876.67);
+                        valueDepois36.innerHTML.value = novoValueDepois36;
+                    }
+                    if (valueRange >= 65000 && valueRange <= 69999) {
+                        img.src = "images/k.jpg";
+
+                        const novoValueAntes80 = valueAntes80.setAttribute('value', 0);
+                        valueAntes80.innerHTML.value = novoValueAntes80;
+                        const novoValueDepois80 = valueDepois80.setAttribute('value', 0);
+                        valueDepois80.innerHTML.value = novoValueDepois80;
+
+                        const novoValueAntes70 = valueAntes70.setAttribute('value', 928.57);
+                        valueAntes70.innerHTML.value = novoValueAntes70;
+                        const novoValueDepois70 = valueDepois70.setAttribute('value', 1156.07);
+                        valueDepois70.innerHTML.value = novoValueDepois70;
+
+                        const novoValueAntes60 = valueAntes60.setAttribute('value', 1083.33);
+                        valueAntes60.innerHTML.value = novoValueAntes60;
+                        const novoValueDepois60 = valueDepois60.setAttribute('value', 1310.83);
+                        valueDepois60.innerHTML.value = novoValueDepois60;
+
+                        const novoValueAntes50 = valueAntes50.setAttribute('value', 1300.00);
+                        valueAntes50.innerHTML.value = novoValueAntes50;
+                        const novoValueDepois50 = valueDepois50.setAttribute('value', 1527.50);
+                        valueDepois50.innerHTML.value = novoValueDepois50;
+
+                        const novoValueAntes36 = valueAntes36.setAttribute('value', 1805.56);
+                        valueAntes36.innerHTML.value = novoValueAntes36;
+                        const novoValueDepois36 = valueDepois36.setAttribute('value', 2033.06);
+                        valueDepois36.innerHTML.value = novoValueDepois36;
+                    }
+                    if (valueRange >= 70000 && valueRange <= 74999) {
+                        img.src = "images/l.jpg";
+
+                        const novoValueAntes80 = valueAntes80.setAttribute('value', 0);
+                        valueAntes80.innerHTML.value = novoValueAntes80;
+                        const novoValueDepois80 = valueDepois80.setAttribute('value', 0);
+                        valueDepois80.innerHTML.value = novoValueDepois80;
+
+                        const novoValueAntes70 = valueAntes70.setAttribute('value', 1000.00);
+                        valueAntes70.innerHTML.value = novoValueAntes70;
+                        const novoValueDepois70 = valueDepois70.setAttribute('value', 1245.00);
+                        valueDepois70.innerHTML.value = novoValueDepois70;
+
+                        const novoValueAntes60 = valueAntes60.setAttribute('value', 1166.67);
+                        valueAntes60.innerHTML.value = novoValueAntes60;
+                        const novoValueDepois60 = valueDepois60.setAttribute('value', 1411.67);
+                        valueDepois60.innerHTML.value = novoValueDepois60;
+
+                        const novoValueAntes50 = valueAntes50.setAttribute('value', 1400.00);
+                        valueAntes50.innerHTML.value = novoValueAntes50;
+                        const novoValueDepois50 = valueDepois50.setAttribute('value', 1645.00);
+                        valueDepois50.innerHTML.value = novoValueDepois50;
+
+                        const novoValueAntes36 = valueAntes36.setAttribute('value', 1944.44);
+                        valueAntes36.innerHTML.value = novoValueAntes36;
+                        const novoValueDepois36 = valueDepois36.setAttribute('value', 2189.44);
+                        valueDepois36.innerHTML.value = novoValueDepois36;
+                    }
+                    if (valueRange >= 75000 && valueRange <= 79999) {
+                        img.src = "images/m.jpg";
+
+                        const novoValueAntes80 = valueAntes80.setAttribute('value', 0);
+                        valueAntes80.innerHTML.value = novoValueAntes80;
+                        const novoValueDepois80 = valueDepois80.setAttribute('value', 0);
+                        valueDepois80.innerHTML.value = novoValueDepois80;
+
+                        const novoValueAntes70 = valueAntes70.setAttribute('value', 1071.43);
+                        valueAntes70.innerHTML.value = novoValueAntes70;
+                        const novoValueDepois70 = valueDepois70.setAttribute('value', 1333.93);
+                        valueDepois70.innerHTML.value = novoValueDepois70;
+
+                        const novoValueAntes60 = valueAntes60.setAttribute('value', 1250.00);
+                        valueAntes60.innerHTML.value = novoValueAntes60;
+                        const novoValueDepois60 = valueDepois60.setAttribute('value', 1512.50);
+                        valueDepois60.innerHTML.value = novoValueDepois60;
+
+                        const novoValueAntes50 = valueAntes50.setAttribute('value', 1500.00);
+                        valueAntes50.innerHTML.value = novoValueAntes50;
+                        const novoValueDepois50 = valueDepois50.setAttribute('value', 1762.50);
+                        valueDepois50.innerHTML.value = novoValueDepois50;
+
+                        const novoValueAntes36 = valueAntes36.setAttribute('value', 2083.33);
+                        valueAntes36.innerHTML.value = novoValueAntes36;
+                        const novoValueDepois36 = valueDepois36.setAttribute('value', 2345.83);
+                        valueDepois36.innerHTML.value = novoValueDepois36;
+                    }
+                    if (valueRange >= 80000 && valueRange <= 89999) {
+                        img.src = "images/n.jpg";
+
+                        const novoValueAntes80 = valueAntes80.setAttribute('value', 0);
+                        valueAntes80.innerHTML.value = novoValueAntes80;
+                        const novoValueDepois80 = valueDepois80.setAttribute('value', 0);
+                        valueDepois80.innerHTML.value = novoValueDepois80;
+
+                        const novoValueAntes70 = valueAntes70.setAttribute('value', 1142.86);
+                        valueAntes70.innerHTML.value = novoValueAntes70;
+                        const novoValueDepois70 = valueDepois70.setAttribute('value', 1422.86);
+                        valueDepois70.innerHTML.value = novoValueDepois70;
+
+                        const novoValueAntes60 = valueAntes60.setAttribute('value', 1333.33);
+                        valueAntes60.innerHTML.value = novoValueAntes60;
+                        const novoValueDepois60 = valueDepois60.setAttribute('value', 1613.33);
+                        valueDepois60.innerHTML.value = novoValueDepois60;
+
+                        const novoValueAntes50 = valueAntes50.setAttribute('value', 1600.00);
+                        valueAntes50.innerHTML.value = novoValueAntes50;
+                        const novoValueDepois50 = valueDepois50.setAttribute('value', 1880.00);
+                        valueDepois50.innerHTML.value = novoValueDepois50;
+
+                        const novoValueAntes36 = valueAntes36.setAttribute('value', 2222.22);
+                        valueAntes36.innerHTML.value = novoValueAntes36;
+                        const novoValueDepois36 = valueDepois36.setAttribute('value', 2502.22);
+                        valueDepois36.innerHTML.value = novoValueDepois36;
+                    }
+                    if (valueRange >= 90000 && valueRange <= 99999) {
+                        img.src = "images/o.jpg";
+
+                        const novoValueAntes80 = valueAntes80.setAttribute('value', 0);
+                        valueAntes80.innerHTML.value = novoValueAntes80;
+                        const novoValueDepois80 = valueDepois80.setAttribute('value', 0);
+                        valueDepois80.innerHTML.value = novoValueDepois80;
+
+                        const novoValueAntes70 = valueAntes70.setAttribute('value', 1285.71);
+                        valueAntes70.innerHTML.value = novoValueAntes70;
+                        const novoValueDepois70 = valueDepois70.setAttribute('value', 1600.71);
+                        valueDepois70.innerHTML.value = novoValueDepois70;
+
+                        const novoValueAntes60 = valueAntes60.setAttribute('value', 1500.00);
+                        valueAntes60.innerHTML.value = novoValueAntes60;
+                        const novoValueDepois60 = valueDepois60.setAttribute('value', 1815.00);
+                        valueDepois60.innerHTML.value = novoValueDepois60;
+
+                        const novoValueAntes50 = valueAntes50.setAttribute('value', 1800.00);
+                        valueAntes50.innerHTML.value = novoValueAntes50;
+                        const novoValueDepois50 = valueDepois50.setAttribute('value', 2115.00);
+                        valueDepois50.innerHTML.value = novoValueDepois50;
+
+                        const novoValueAntes36 = valueAntes36.setAttribute('value', 2500.00);
+                        valueAntes36.innerHTML.value = novoValueAntes36;
+                        const novoValueDepois36 = valueDepois36.setAttribute('value', 2815.00);
+                        valueDepois36.innerHTML.value = novoValueDepois36;
+                    }
+                    if (valueRange >= 100000 && valueRange <= 109999) {
+                        img.src = "images/p.jpg";
+
+                        const novoValueAntes80 = valueAntes80.setAttribute('value', 0);
+                        valueAntes80.innerHTML.value = novoValueAntes80;
+                        const novoValueDepois80 = valueDepois80.setAttribute('value', 0);
+                        valueDepois80.innerHTML.value = novoValueDepois80;
+
+                        const novoValueAntes70 = valueAntes70.setAttribute('value', 1428.57);
+                        valueAntes70.innerHTML.value = novoValueAntes70;
+                        const novoValueDepois70 = valueDepois70.setAttribute('value', 1778.57);
+                        valueDepois70.innerHTML.value = novoValueDepois70;
+
+                        const novoValueAntes60 = valueAntes60.setAttribute('value', 1666.67);
+                        valueAntes60.innerHTML.value = novoValueAntes60;
+                        const novoValueDepois60 = valueDepois60.setAttribute('value', 2016.67);
+                        valueDepois60.innerHTML.value = novoValueDepois60;
+
+                        const novoValueAntes50 = valueAntes50.setAttribute('value', 2000.00);
+                        valueAntes50.innerHTML.value = novoValueAntes50;
+                        const novoValueDepois50 = valueDepois50.setAttribute('value', 2350.00);
+                        valueDepois50.innerHTML.value = novoValueDepois50;
+
+                        const novoValueAntes36 = valueAntes36.setAttribute('value', 2777.78);
+                        valueAntes36.innerHTML.value = novoValueAntes36;
+                        const novoValueDepois36 = valueDepois36.setAttribute('value', 3127.78);
+                        valueDepois36.innerHTML.value = novoValueDepois36;
+                    }
+                    if (valueRange >= 110000 && valueRange <= 119999) {
+                        img.src = "images/q.jpg";
+
+                        const novoValueAntes80 = valueAntes80.setAttribute('value', 0);
+                        valueAntes80.innerHTML.value = novoValueAntes80;
+                        const novoValueDepois80 = valueDepois80.setAttribute('value', 0);
+                        valueDepois80.innerHTML.value = novoValueDepois80;
+
+                        const novoValueAntes70 = valueAntes70.setAttribute('value', 1571.43);
+                        valueAntes70.innerHTML.value = novoValueAntes70;
+                        const novoValueDepois70 = valueDepois70.setAttribute('value', 1956.43);
+                        valueDepois70.innerHTML.value = novoValueDepois70;
+
+                        const novoValueAntes60 = valueAntes60.setAttribute('value', 1833.33);
+                        valueAntes60.innerHTML.value = novoValueAntes60;
+                        const novoValueDepois60 = valueDepois60.setAttribute('value', 2218.33);
+                        valueDepois60.innerHTML.value = novoValueDepois60;
+
+                        const novoValueAntes50 = valueAntes50.setAttribute('value', 2200.00);
+                        valueAntes50.innerHTML.value = novoValueAntes50;
+                        const novoValueDepois50 = valueDepois50.setAttribute('value', 2585.00);
+                        valueDepois50.innerHTML.value = novoValueDepois50;
+
+                        const novoValueAntes36 = valueAntes36.setAttribute('value', 3055.56);
+                        valueAntes36.innerHTML.value = novoValueAntes36;
+                        const novoValueDepois36 = valueDepois36.setAttribute('value', 3440.56);
+                        valueDepois36.innerHTML.value = novoValueDepois36;
+                    }
+                    if (valueRange >= 120000 && valueRange <= 12000) {
+                        img.src = "images/r.jpg";
+
+                        const novoValueAntes80 = valueAntes80.setAttribute('value', 0);
+                        valueAntes80.innerHTML.value = novoValueAntes80;
+                        const novoValueDepois80 = valueDepois80.setAttribute('value', 0);
+                        valueDepois80.innerHTML.value = novoValueDepois80;
+
+                        const novoValueAntes70 = valueAntes70.setAttribute('value', 1714.29);
+                        valueAntes70.innerHTML.value = novoValueAntes70;
+                        const novoValueDepois70 = valueDepois70.setAttribute('value', 2134.29);
+                        valueDepois70.innerHTML.value = novoValueDepois70;
+
+                        const novoValueAntes60 = valueAntes60.setAttribute('value', 2000.00);
+                        valueAntes60.innerHTML.value = novoValueAntes60;
+                        const novoValueDepois60 = valueDepois60.setAttribute('value', 2420.00);
+                        valueDepois60.innerHTML.value = novoValueDepois60;
+
+                        const novoValueAntes50 = valueAntes50.setAttribute('value', 2400.00);
+                        valueAntes50.innerHTML.value = novoValueAntes50;
+                        const novoValueDepois50 = valueDepois50.setAttribute('value', 2820.00);
+                        valueDepois50.innerHTML.value = novoValueDepois50;
+
+                        const novoValueAntes36 = valueAntes36.setAttribute('value', 3333.33);
+                        valueAntes36.innerHTML.value = novoValueAntes36;
+                        const novoValueDepois36 = valueDepois36.setAttribute('value', 3753.33);
+                        valueDepois36.innerHTML.value = novoValueDepois36;
+                    }
+                })
+            });
+
+            const slider = document.getElementById("sliderRange");
+
+            slider.addEventListener("change", () => {
                 const img = document.getElementById("carro");
 
-                if (valueRange >= 30000 && valueRange <= 32499) {
-                    img.src = "images/a.jpg";
-
-                    const novoValueAntes80 = valueAntes80.setAttribute('value', 375.00);
-                    valueAntes80.innerHTML.value = novoValueAntes80;
-                    const novoValueDepois80 = valueDepois80.setAttribute('value', 480.00);
-                    valueDepois80.innerHTML.value = novoValueDepois80;
-
-                    const novoValueAntes70 = valueAntes70.setAttribute('value', 428.57);
-                    valueAntes70.innerHTML.value = novoValueAntes70;
-                    const novoValueDepois70 = valueDepois70.setAttribute('value', 533.57);
-                    valueDepois70.innerHTML.value = novoValueDepois70;
-
-                    const novoValueAntes60 = valueAntes60.setAttribute('value', 500.00);
-                    valueAntes60.innerHTML.value = novoValueAntes60;
-                    const novoValueDepois60 = valueDepois60.setAttribute('value', 605.00);
-                    valueDepois60.innerHTML.value = novoValueDepois60;
-
-                    const novoValueAntes50 = valueAntes50.setAttribute('value', 600.00);
-                    valueAntes50.innerHTML.value = novoValueAntes50;
-                    const novoValueDepois50 = valueDepois50.setAttribute('value', 705.00);
-                    valueDepois50.innerHTML.value = novoValueDepois50;
-
-                    const novoValueAntes36 = valueAntes36.setAttribute('value', 833.33);
-                    valueAntes36.innerHTML.value = novoValueAntes36;
-                    const novoValueDepois36 = valueDepois36.setAttribute('value', 938.33);
-                    valueDepois36.innerHTML.value = novoValueDepois36;
-                }
-                if (valueRange >= 32500 && valueRange <= 34999) {
-                    img.src = "images/b.jpg";
-
-                    const novoValueAntes80 = valueAntes80.setAttribute('value', 406.25);
-                    valueAntes80.innerHTML.value = novoValueAntes80;
-                    const novoValueDepois80 = valueDepois80.setAttribute('value', 520.00);
-                    valueDepois80.innerHTML.value = novoValueDepois80;
-
-                    const novoValueAntes70 = valueAntes70.setAttribute('value', 464.29);
-                    valueAntes70.innerHTML.value = novoValueAntes70;
-                    const novoValueDepois70 = valueDepois70.setAttribute('value', 578.04);
-                    valueDepois70.innerHTML.value = novoValueDepois70;
-
-                    const novoValueAntes60 = valueAntes60.setAttribute('value', 541.67);
-                    valueAntes60.innerHTML.value = novoValueAntes60;
-                    const novoValueDepois60 = valueDepois60.setAttribute('value', 655.42);
-                    valueDepois60.innerHTML.value = novoValueDepois60;
-
-                    const novoValueAntes50 = valueAntes50.setAttribute('value', 650.00);
-                    valueAntes50.innerHTML.value = novoValueAntes50;
-                    const novoValueDepois50 = valueDepois50.setAttribute('value', 763.75);
-                    valueDepois50.innerHTML.value = novoValueDepois50;
-
-                    const novoValueAntes36 = valueAntes36.setAttribute('value', 902.78);
-                    valueAntes36.innerHTML.value = novoValueAntes36;
-                    const novoValueDepois36 = valueDepois36.setAttribute('value', 1016.53);
-                    valueDepois36.innerHTML.value = novoValueDepois36;
-                }
-                if (valueRange >= 35000 && valueRange <= 37499) {
-                    img.src = "images/c.jpg";
-
-                    const novoValueAntes80 = valueAntes80.setAttribute('value', 437.50);
-                    valueAntes80.innerHTML.value = novoValueAntes80;
-                    const novoValueDepois80 = valueDepois80.setAttribute('value', 560.00);
-                    valueDepois80.innerHTML.value = novoValueDepois80;
-
-                    const novoValueAntes70 = valueAntes70.setAttribute('value', 500.00);
-                    valueAntes70.innerHTML.value = novoValueAntes70;
-                    const novoValueDepois70 = valueDepois70.setAttribute('value', 622.50);
-                    valueDepois70.innerHTML.value = novoValueDepois70;
-
-                    const novoValueAntes60 = valueAntes60.setAttribute('value', 583.33);
-                    valueAntes60.innerHTML.value = novoValueAntes60;
-                    const novoValueDepois60 = valueDepois60.setAttribute('value', 705.83);
-                    valueDepois60.innerHTML.value = novoValueDepois60;
-
-                    const novoValueAntes50 = valueAntes50.setAttribute('value', 700.00);
-                    valueAntes50.innerHTML.value = novoValueAntes50;
-                    const novoValueDepois50 = valueDepois50.setAttribute('value', 822.50);
-                    valueDepois50.innerHTML.value = novoValueDepois50;
-
-                    const novoValueAntes36 = valueAntes36.setAttribute('value', 972.22);
-                    valueAntes36.innerHTML.value = novoValueAntes36;
-                    const novoValueDepois36 = valueDepois36.setAttribute('value', 1094.72);
-                    valueDepois36.innerHTML.value = novoValueDepois36;
-                }
-                if (valueRange >= 37500 && valueRange <= 39999) {
-                    img.src = "images/d.jpg";
-
-                    const novoValueAntes80 = valueAntes80.setAttribute('value', 468.75);
-                    valueAntes80.innerHTML.value = novoValueAntes80;
-                    const novoValueDepois80 = valueDepois80.setAttribute('value', 600.00);
-                    valueDepois80.innerHTML.value = novoValueDepois80;
-
-                    const novoValueAntes70 = valueAntes70.setAttribute('value', 535.71);
-                    valueAntes70.innerHTML.value = novoValueAntes70;
-                    const novoValueDepois70 = valueDepois70.setAttribute('value', 666.96);
-                    valueDepois70.innerHTML.value = novoValueDepois70;
-
-                    const novoValueAntes60 = valueAntes60.setAttribute('value', 625.00);
-                    valueAntes60.innerHTML.value = novoValueAntes60;
-                    const novoValueDepois60 = valueDepois60.setAttribute('value', 756.25);
-                    valueDepois60.innerHTML.value = novoValueDepois60;
-
-                    const novoValueAntes50 = valueAntes50.setAttribute('value', 750.00);
-                    valueAntes50.innerHTML.value = novoValueAntes50;
-                    const novoValueDepois50 = valueDepois50.setAttribute('value', 881.25);
-                    valueDepois50.innerHTML.value = novoValueDepois50;
-
-                    const novoValueAntes36 = valueAntes36.setAttribute('value', 1041.67);
-                    valueAntes36.innerHTML.value = novoValueAntes36;
-                    const novoValueDepois36 = valueDepois36.setAttribute('value', 1172.92);
-                    valueDepois36.innerHTML.value = novoValueDepois36;
-                }
-                if (valueRange >= 40000 && valueRange <= 42999) {
-                    img.src = "images/e.jpg";
-
-                    const novoValueAntes80 = valueAntes80.setAttribute('value', 500.00);
-                    valueAntes80.innerHTML.value = novoValueAntes80;
-                    const novoValueDepois80 = valueDepois80.setAttribute('value', 640.00);
-                    valueDepois80.innerHTML.value = novoValueDepois80;
-
-                    const novoValueAntes70 = valueAntes70.setAttribute('value', 571.43);
-                    valueAntes70.innerHTML.value = novoValueAntes70;
-                    const novoValueDepois70 = valueDepois70.setAttribute('value', 711.43);
-                    valueDepois70.innerHTML.value = novoValueDepois70;
-
-                    const novoValueAntes60 = valueAntes60.setAttribute('value', 666.67);
-                    valueAntes60.innerHTML.value = novoValueAntes60;
-                    const novoValueDepois60 = valueDepois60.setAttribute('value', 806.67);
-                    valueDepois60.innerHTML.value = novoValueDepois60;
-
-                    const novoValueAntes50 = valueAntes50.setAttribute('value', 800.00);
-                    valueAntes50.innerHTML.value = novoValueAntes50;
-                    const novoValueDepois50 = valueDepois50.setAttribute('value', 940.00);
-                    valueDepois50.innerHTML.value = novoValueDepois50;
-
-                    const novoValueAntes36 = valueAntes36.setAttribute('value', 1111.11);
-                    valueAntes36.innerHTML.value = novoValueAntes36;
-                    const novoValueDepois36 = valueDepois36.setAttribute('value', 1251.11);
-                    valueDepois36.innerHTML.value = novoValueDepois36;
-                }
-                if (valueRange >= 42500 && valueRange <= 44999) {
-                    img.src = "images/f.jpg";
-
-                    const novoValueAntes80 = valueAntes80.setAttribute('value', 531.25);
-                    valueAntes80.innerHTML.value = novoValueAntes80;
-                    const novoValueDepois80 = valueDepois80.setAttribute('value', 680.00);
-                    valueDepois80.innerHTML.value = novoValueDepois80;
-
-                    const novoValueAntes70 = valueAntes70.setAttribute('value', 607.14);
-                    valueAntes70.innerHTML.value = novoValueAntes70;
-                    const novoValueDepois70 = valueDepois70.setAttribute('value', 755.89);
-                    valueDepois70.innerHTML.value = novoValueDepois70;
-
-                    const novoValueAntes60 = valueAntes60.setAttribute('value', 708.33);
-                    valueAntes60.innerHTML.value = novoValueAntes60;
-                    const novoValueDepois60 = valueDepois60.setAttribute('value', 857.08);
-                    valueDepois60.innerHTML.value = novoValueDepois60;
-
-                    const novoValueAntes50 = valueAntes50.setAttribute('value', 850.00);
-                    valueAntes50.innerHTML.value = novoValueAntes50;
-                    const novoValueDepois50 = valueDepois50.setAttribute('value', 998.75);
-                    valueDepois50.innerHTML.value = novoValueDepois50;
-
-                    const novoValueAntes36 = valueAntes36.setAttribute('value', 1180.56);
-                    valueAntes36.innerHTML.value = novoValueAntes36;
-                    const novoValueDepois36 = valueDepois36.setAttribute('value', 1329.31);
-                    valueDepois36.innerHTML.value = novoValueDepois36;
-                }
-                if (valueRange >= 45000 && valueRange <= 49999) {
-                    img.src = "images/g.jpg";
-
-                    const novoValueAntes80 = valueAntes80.setAttribute('value', 562.50);
-                    valueAntes80.innerHTML.value = novoValueAntes80;
-                    const novoValueDepois80 = valueDepois80.setAttribute('value', 720.00);
-                    valueDepois80.innerHTML.value = novoValueDepois80;
-
-                    const novoValueAntes70 = valueAntes70.setAttribute('value', 642.86);
-                    valueAntes70.innerHTML.value = novoValueAntes70;
-                    const novoValueDepois70 = valueDepois70.setAttribute('value', 800.36);
-                    valueDepois70.innerHTML.value = novoValueDepois70;
-
-                    const novoValueAntes60 = valueAntes60.setAttribute('value', 750.00);
-                    valueAntes60.innerHTML.value = novoValueAntes60;
-                    const novoValueDepois60 = valueDepois60.setAttribute('value', 907.50);
-                    valueDepois60.innerHTML.value = novoValueDepois60;
-
-                    const novoValueAntes50 = valueAntes50.setAttribute('value', 900.00);
-                    valueAntes50.innerHTML.value = novoValueAntes50;
-                    const novoValueDepois50 = valueDepois50.setAttribute('value', 1057.50);
-                    valueDepois50.innerHTML.value = novoValueDepois50;
-
-                    const novoValueAntes36 = valueAntes36.setAttribute('value', 1250.00);
-                    valueAntes36.innerHTML.value = novoValueAntes36;
-                    const novoValueDepois36 = valueDepois36.setAttribute('value', 1407.50);
-                    valueDepois36.innerHTML.value = novoValueDepois36;
-                }
-                if (valueRange >= 50000 && valueRange <= 54999) {
-                    img.src = "images/h.jpg";
-
-                    const novoValueAntes80 = valueAntes80.setAttribute('value', 625.00);
-                    valueAntes80.innerHTML.value = novoValueAntes80;
-                    const novoValueDepois80 = valueDepois80.setAttribute('value', 800.00);
-                    valueDepois80.innerHTML.value = novoValueDepois80;
-
-                    const novoValueAntes70 = valueAntes70.setAttribute('value', 714.29);
-                    valueAntes70.innerHTML.value = novoValueAntes70;
-                    const novoValueDepois70 = valueDepois70.setAttribute('value', 889.29);
-                    valueDepois70.innerHTML.value = novoValueDepois70;
-
-                    const novoValueAntes60 = valueAntes60.setAttribute('value', 833.33);
-                    valueAntes60.innerHTML.value = novoValueAntes60;
-                    const novoValueDepois60 = valueDepois60.setAttribute('value', 1008.33);
-                    valueDepois60.innerHTML.value = novoValueDepois60;
-
-                    const novoValueAntes50 = valueAntes50.setAttribute('value', 1000.00);
-                    valueAntes50.innerHTML.value = novoValueAntes50;
-                    const novoValueDepois50 = valueDepois50.setAttribute('value', 1175.00);
-                    valueDepois50.innerHTML.value = novoValueDepois50;
-
-                    const novoValueAntes36 = valueAntes36.setAttribute('value', 1388.89);
-                    valueAntes36.innerHTML.value = novoValueAntes36;
-                    const novoValueDepois36 = valueDepois36.setAttribute('value', 1563.89);
-                    valueDepois36.innerHTML.value = novoValueDepois36;
-                }
-                if (valueRange >= 55000 && valueRange <= 59999) {
-                    img.src = "images/i.jpg";
-
-                    const novoValueAntes80 = valueAntes80.setAttribute('value', 687.50);
-                    valueAntes80.innerHTML.value = novoValueAntes80;
-                    const novoValueDepois80 = valueDepois80.setAttribute('value', 880.00);
-                    valueDepois80.innerHTML.value = novoValueDepois80;
-
-                    const novoValueAntes70 = valueAntes70.setAttribute('value', 785.71);
-                    valueAntes70.innerHTML.value = novoValueAntes70;
-                    const novoValueDepois70 = valueDepois70.setAttribute('value', 978.21);
-                    valueDepois70.innerHTML.value = novoValueDepois70;
-
-                    const novoValueAntes60 = valueAntes60.setAttribute('value', 916.67);
-                    valueAntes60.innerHTML.value = novoValueAntes60;
-                    const novoValueDepois60 = valueDepois60.setAttribute('value', 1109.17);
-                    valueDepois60.innerHTML.value = novoValueDepois60;
-
-                    const novoValueAntes50 = valueAntes50.setAttribute('value', 1100.00);
-                    valueAntes50.innerHTML.value = novoValueAntes50;
-                    const novoValueDepois50 = valueDepois50.setAttribute('value', 1292.50);
-                    valueDepois50.innerHTML.value = novoValueDepois50;
-
-                    const novoValueAntes36 = valueAntes36.setAttribute('value', 1527.78);
-                    valueAntes36.innerHTML.value = novoValueAntes36;
-                    const novoValueDepois36 = valueDepois36.setAttribute('value', 1720.28);
-                    valueDepois36.innerHTML.value = novoValueDepois36;
-                }
-                if (valueRange >= 60000 && valueRange <= 64999) {
-                    img.src = "images/j.jpg";
-
-                    const novoValueAntes80 = valueAntes80.setAttribute('value', 750.00);
-                    valueAntes80.innerHTML.value = novoValueAntes80;
-                    const novoValueDepois80 = valueDepois80.setAttribute('value', 960.00);
-                    valueDepois80.innerHTML.value = novoValueDepois80;
-
-                    const novoValueAntes70 = valueAntes70.setAttribute('value', 857.14);
-                    valueAntes70.innerHTML.value = novoValueAntes70;
-                    const novoValueDepois70 = valueDepois70.setAttribute('value', 1067.14);
-                    valueDepois70.innerHTML.value = novoValueDepois70;
-
-                    const novoValueAntes60 = valueAntes60.setAttribute('value', 1000.00);
-                    valueAntes60.innerHTML.value = novoValueAntes60;
-                    const novoValueDepois60 = valueDepois60.setAttribute('value', 1210.00);
-                    valueDepois60.innerHTML.value = novoValueDepois60;
-
-                    const novoValueAntes50 = valueAntes50.setAttribute('value', 1200.00);
-                    valueAntes50.innerHTML.value = novoValueAntes50;
-                    const novoValueDepois50 = valueDepois50.setAttribute('value', 1410.00);
-                    valueDepois50.innerHTML.value = novoValueDepois50;
-
-                    const novoValueAntes36 = valueAntes36.setAttribute('value', 1666.67);
-                    valueAntes36.innerHTML.value = novoValueAntes36;
-                    const novoValueDepois36 = valueDepois36.setAttribute('value', 1876.67);
-                    valueDepois36.innerHTML.value = novoValueDepois36;
-                }
-                if (valueRange >= 65000 && valueRange <= 69999) {
-                    img.src = "images/k.jpg";
-
-                    const novoValueAntes80 = valueAntes80.setAttribute('value', 0);
-                    valueAntes80.innerHTML.value = novoValueAntes80;
-                    const novoValueDepois80 = valueDepois80.setAttribute('value', 0);
-                    valueDepois80.innerHTML.value = novoValueDepois80;
-
-                    const novoValueAntes70 = valueAntes70.setAttribute('value', 928.57);
-                    valueAntes70.innerHTML.value = novoValueAntes70;
-                    const novoValueDepois70 = valueDepois70.setAttribute('value', 1156.07);
-                    valueDepois70.innerHTML.value = novoValueDepois70;
-
-                    const novoValueAntes60 = valueAntes60.setAttribute('value', 1083.33);
-                    valueAntes60.innerHTML.value = novoValueAntes60;
-                    const novoValueDepois60 = valueDepois60.setAttribute('value', 1310.83);
-                    valueDepois60.innerHTML.value = novoValueDepois60;
-
-                    const novoValueAntes50 = valueAntes50.setAttribute('value', 1300.00);
-                    valueAntes50.innerHTML.value = novoValueAntes50;
-                    const novoValueDepois50 = valueDepois50.setAttribute('value', 1527.50);
-                    valueDepois50.innerHTML.value = novoValueDepois50;
-
-                    const novoValueAntes36 = valueAntes36.setAttribute('value', 1805.56);
-                    valueAntes36.innerHTML.value = novoValueAntes36;
-                    const novoValueDepois36 = valueDepois36.setAttribute('value', 2033.06);
-                    valueDepois36.innerHTML.value = novoValueDepois36;
-                }
-                if (valueRange >= 70000 && valueRange <= 74999) {
-                    img.src = "images/l.jpg";
-
-                    const novoValueAntes80 = valueAntes80.setAttribute('value', 0);
-                    valueAntes80.innerHTML.value = novoValueAntes80;
-                    const novoValueDepois80 = valueDepois80.setAttribute('value', 0);
-                    valueDepois80.innerHTML.value = novoValueDepois80;
-
-                    const novoValueAntes70 = valueAntes70.setAttribute('value', 1000.00);
-                    valueAntes70.innerHTML.value = novoValueAntes70;
-                    const novoValueDepois70 = valueDepois70.setAttribute('value', 1245.00);
-                    valueDepois70.innerHTML.value = novoValueDepois70;
-
-                    const novoValueAntes60 = valueAntes60.setAttribute('value', 1166.67);
-                    valueAntes60.innerHTML.value = novoValueAntes60;
-                    const novoValueDepois60 = valueDepois60.setAttribute('value', 1411.67);
-                    valueDepois60.innerHTML.value = novoValueDepois60;
-
-                    const novoValueAntes50 = valueAntes50.setAttribute('value', 1400.00);
-                    valueAntes50.innerHTML.value = novoValueAntes50;
-                    const novoValueDepois50 = valueDepois50.setAttribute('value', 1645.00);
-                    valueDepois50.innerHTML.value = novoValueDepois50;
-
-                    const novoValueAntes36 = valueAntes36.setAttribute('value', 1944.44);
-                    valueAntes36.innerHTML.value = novoValueAntes36;
-                    const novoValueDepois36 = valueDepois36.setAttribute('value', 2189.44);
-                    valueDepois36.innerHTML.value = novoValueDepois36;
-                }
-                if (valueRange >= 75000 && valueRange <= 79999) {
-                    img.src = "images/m.jpg";
-
-                    const novoValueAntes80 = valueAntes80.setAttribute('value', 0);
-                    valueAntes80.innerHTML.value = novoValueAntes80;
-                    const novoValueDepois80 = valueDepois80.setAttribute('value', 0);
-                    valueDepois80.innerHTML.value = novoValueDepois80;
-
-                    const novoValueAntes70 = valueAntes70.setAttribute('value', 1071.43);
-                    valueAntes70.innerHTML.value = novoValueAntes70;
-                    const novoValueDepois70 = valueDepois70.setAttribute('value', 1333.93);
-                    valueDepois70.innerHTML.value = novoValueDepois70;
-
-                    const novoValueAntes60 = valueAntes60.setAttribute('value', 1250.00);
-                    valueAntes60.innerHTML.value = novoValueAntes60;
-                    const novoValueDepois60 = valueDepois60.setAttribute('value', 1512.50);
-                    valueDepois60.innerHTML.value = novoValueDepois60;
-
-                    const novoValueAntes50 = valueAntes50.setAttribute('value', 1500.00);
-                    valueAntes50.innerHTML.value = novoValueAntes50;
-                    const novoValueDepois50 = valueDepois50.setAttribute('value', 1762.50);
-                    valueDepois50.innerHTML.value = novoValueDepois50;
-
-                    const novoValueAntes36 = valueAntes36.setAttribute('value', 2083.33);
-                    valueAntes36.innerHTML.value = novoValueAntes36;
-                    const novoValueDepois36 = valueDepois36.setAttribute('value', 2345.83);
-                    valueDepois36.innerHTML.value = novoValueDepois36;
-                }
-                if (valueRange >= 80000 && valueRange <= 89999) {
-                    img.src = "images/n.jpg";
-
-                    const novoValueAntes80 = valueAntes80.setAttribute('value', 0);
-                    valueAntes80.innerHTML.value = novoValueAntes80;
-                    const novoValueDepois80 = valueDepois80.setAttribute('value', 0);
-                    valueDepois80.innerHTML.value = novoValueDepois80;
-
-                    const novoValueAntes70 = valueAntes70.setAttribute('value', 1142.86);
-                    valueAntes70.innerHTML.value = novoValueAntes70;
-                    const novoValueDepois70 = valueDepois70.setAttribute('value', 1422.86);
-                    valueDepois70.innerHTML.value = novoValueDepois70;
-
-                    const novoValueAntes60 = valueAntes60.setAttribute('value', 1333.33);
-                    valueAntes60.innerHTML.value = novoValueAntes60;
-                    const novoValueDepois60 = valueDepois60.setAttribute('value', 1613.33);
-                    valueDepois60.innerHTML.value = novoValueDepois60;
-
-                    const novoValueAntes50 = valueAntes50.setAttribute('value', 1600.00);
-                    valueAntes50.innerHTML.value = novoValueAntes50;
-                    const novoValueDepois50 = valueDepois50.setAttribute('value', 1880.00);
-                    valueDepois50.innerHTML.value = novoValueDepois50;
-
-                    const novoValueAntes36 = valueAntes36.setAttribute('value', 2222.22);
-                    valueAntes36.innerHTML.value = novoValueAntes36;
-                    const novoValueDepois36 = valueDepois36.setAttribute('value', 2502.22);
-                    valueDepois36.innerHTML.value = novoValueDepois36;
-                }
-                if (valueRange >= 90000 && valueRange <= 99999) {
-                    img.src = "images/o.jpg";
-
-                    const novoValueAntes80 = valueAntes80.setAttribute('value', 0);
-                    valueAntes80.innerHTML.value = novoValueAntes80;
-                    const novoValueDepois80 = valueDepois80.setAttribute('value', 0);
-                    valueDepois80.innerHTML.value = novoValueDepois80;
-
-                    const novoValueAntes70 = valueAntes70.setAttribute('value', 1285.71);
-                    valueAntes70.innerHTML.value = novoValueAntes70;
-                    const novoValueDepois70 = valueDepois70.setAttribute('value', 1600.71);
-                    valueDepois70.innerHTML.value = novoValueDepois70;
-
-                    const novoValueAntes60 = valueAntes60.setAttribute('value', 1500.00);
-                    valueAntes60.innerHTML.value = novoValueAntes60;
-                    const novoValueDepois60 = valueDepois60.setAttribute('value', 1815.00);
-                    valueDepois60.innerHTML.value = novoValueDepois60;
-
-                    const novoValueAntes50 = valueAntes50.setAttribute('value', 1800.00);
-                    valueAntes50.innerHTML.value = novoValueAntes50;
-                    const novoValueDepois50 = valueDepois50.setAttribute('value', 2115.00);
-                    valueDepois50.innerHTML.value = novoValueDepois50;
-
-                    const novoValueAntes36 = valueAntes36.setAttribute('value', 2500.00);
-                    valueAntes36.innerHTML.value = novoValueAntes36;
-                    const novoValueDepois36 = valueDepois36.setAttribute('value', 2815.00);
-                    valueDepois36.innerHTML.value = novoValueDepois36;
-                }
-                if (valueRange >= 100000 && valueRange <= 109999) {
-                    img.src = "images/p.jpg";
-
-                    const novoValueAntes80 = valueAntes80.setAttribute('value', 0);
-                    valueAntes80.innerHTML.value = novoValueAntes80;
-                    const novoValueDepois80 = valueDepois80.setAttribute('value', 0);
-                    valueDepois80.innerHTML.value = novoValueDepois80;
-
-                    const novoValueAntes70 = valueAntes70.setAttribute('value', 1428.57);
-                    valueAntes70.innerHTML.value = novoValueAntes70;
-                    const novoValueDepois70 = valueDepois70.setAttribute('value', 1778.57);
-                    valueDepois70.innerHTML.value = novoValueDepois70;
-
-                    const novoValueAntes60 = valueAntes60.setAttribute('value', 1666.67);
-                    valueAntes60.innerHTML.value = novoValueAntes60;
-                    const novoValueDepois60 = valueDepois60.setAttribute('value', 2016.67);
-                    valueDepois60.innerHTML.value = novoValueDepois60;
-
-                    const novoValueAntes50 = valueAntes50.setAttribute('value', 2000.00);
-                    valueAntes50.innerHTML.value = novoValueAntes50;
-                    const novoValueDepois50 = valueDepois50.setAttribute('value', 2350.00);
-                    valueDepois50.innerHTML.value = novoValueDepois50;
-
-                    const novoValueAntes36 = valueAntes36.setAttribute('value', 2777.78);
-                    valueAntes36.innerHTML.value = novoValueAntes36;
-                    const novoValueDepois36 = valueDepois36.setAttribute('value', 3127.78);
-                    valueDepois36.innerHTML.value = novoValueDepois36;
-                }
-                if (valueRange >= 110000 && valueRange <= 119999) {
-                    img.src = "images/q.jpg";
-
-                    const novoValueAntes80 = valueAntes80.setAttribute('value', 0);
-                    valueAntes80.innerHTML.value = novoValueAntes80;
-                    const novoValueDepois80 = valueDepois80.setAttribute('value', 0);
-                    valueDepois80.innerHTML.value = novoValueDepois80;
-
-                    const novoValueAntes70 = valueAntes70.setAttribute('value', 1571.43);
-                    valueAntes70.innerHTML.value = novoValueAntes70;
-                    const novoValueDepois70 = valueDepois70.setAttribute('value', 1956.43);
-                    valueDepois70.innerHTML.value = novoValueDepois70;
-
-                    const novoValueAntes60 = valueAntes60.setAttribute('value', 1833.33);
-                    valueAntes60.innerHTML.value = novoValueAntes60;
-                    const novoValueDepois60 = valueDepois60.setAttribute('value', 2218.33);
-                    valueDepois60.innerHTML.value = novoValueDepois60;
-
-                    const novoValueAntes50 = valueAntes50.setAttribute('value', 2200.00);
-                    valueAntes50.innerHTML.value = novoValueAntes50;
-                    const novoValueDepois50 = valueDepois50.setAttribute('value', 2585.00);
-                    valueDepois50.innerHTML.value = novoValueDepois50;
-
-                    const novoValueAntes36 = valueAntes36.setAttribute('value', 3055.56);
-                    valueAntes36.innerHTML.value = novoValueAntes36;
-                    const novoValueDepois36 = valueDepois36.setAttribute('value', 3440.56);
-                    valueDepois36.innerHTML.value = novoValueDepois36;
-                }
-                if (valueRange >= 120000 && valueRange <= 12000) {
-                    img.src = "images/r.jpg";
-
-                    const novoValueAntes80 = valueAntes80.setAttribute('value', 0);
-                    valueAntes80.innerHTML.value = novoValueAntes80;
-                    const novoValueDepois80 = valueDepois80.setAttribute('value', 0);
-                    valueDepois80.innerHTML.value = novoValueDepois80;
-
-                    const novoValueAntes70 = valueAntes70.setAttribute('value', 1714.29);
-                    valueAntes70.innerHTML.value = novoValueAntes70;
-                    const novoValueDepois70 = valueDepois70.setAttribute('value', 2134.29);
-                    valueDepois70.innerHTML.value = novoValueDepois70;
-
-                    const novoValueAntes60 = valueAntes60.setAttribute('value', 2000.00);
-                    valueAntes60.innerHTML.value = novoValueAntes60;
-                    const novoValueDepois60 = valueDepois60.setAttribute('value', 2420.00);
-                    valueDepois60.innerHTML.value = novoValueDepois60;
-
-                    const novoValueAntes50 = valueAntes50.setAttribute('value', 2400.00);
-                    valueAntes50.innerHTML.value = novoValueAntes50;
-                    const novoValueDepois50 = valueDepois50.setAttribute('value', 2820.00);
-                    valueDepois50.innerHTML.value = novoValueDepois50;
-
-                    const novoValueAntes36 = valueAntes36.setAttribute('value', 3333.33);
-                    valueAntes36.innerHTML.value = novoValueAntes36;
-                    const novoValueDepois36 = valueDepois36.setAttribute('value', 3753.33);
-                    valueDepois36.innerHTML.value = novoValueDepois36;
-                }
             })
-        });
 
-        form = document.getElementById("form");
+            function fadeIn() {
+                var fade = document.getElementById("carro");
+                var opacity = 0;
+                var intervalID = setInterval(function () {
 
-        const isValidElement = element => {
-            return element.name && element.value;
-        };
-
-        const isValidValue = element => {
-            return (!['checkbox', 'radio'].includes(element.type) || element.checked);
-        };
-
-        const isCheckbox = element => element.type === 'checkbox';
-
-        const isMultiSelect = element => element.options && element.multiple;
-
-        const getSelectValues = options => [].reduce.call(options, (values, option) => {
-            return option.selected ? values.concat(option.value) : values;
-        }, []);
-
-        const formToJSON_deconstructed = elements => {
-
-            const reducerFunction = (data, element) => {
-
-                data[element.name] = element.value;
-                console.log(JSON.stringify(data));
-                return data;
-            };
-
-            const reducerInitialValue = {};
-            console.log('Initial `data` value:', JSON.stringify(reducerInitialValue));
-            const formData = [].reduce.call(elements, reducerFunction, reducerInitialValue);
-
-            return formData;
-        };
-
-        const formToJSON = elements => [].reduce.call(elements, (data, element) => {
-
-            if (isValidElement(element) && isValidValue(element)) {
-
-                if (isCheckbox(element)) {
-                    data[element.name] = (data[element.name] || []).concat(element.value);
-                } else if (isMultiSelect(element)) {
-                    data[element.name] = getSelectValues(element);
-                } else {
-                    data[element.name] = element.value;
-                }
+                    if (opacity < 1) {
+                        opacity = opacity + 0.1
+                        fade.style.opacity = opacity;
+                    } else {
+                        clearInterval(intervalID);
+                    }
+                }, 50);
             }
 
-            return data;
-        }, {});
+            form = document.getElementById("form");
 
-        const handleFormSubmit = event => {
+            const isValidElement = element => {
+                return element.name && element.value;
+            };
 
-            event.preventDefault();
-            const data = formToJSON(form.elements);
-            console.log(data);
+            const isValidValue = element => {
+                return (!['checkbox', 'radio'].includes(element.type) || element.checked);
+            };
 
-            localStorage.setItem('data', JSON.stringify(data));
-            const storedValue = localStorage.getItem('data');
+            const isCheckbox = element => element.type === 'checkbox';
 
-            // const dataContainer = document.getElementsByClassName('results__display')[0];
+            const isMultiSelect = element => element.options && element.multiple;
 
-            // dataContainer.textContent = JSON.stringify(data, null, "  ");
+            const getSelectValues = options => [].reduce.call(options, (values, option) => {
+                return option.selected ? values.concat(option.value) : values;
+            }, []);
 
-        };
+            const formToJSON_deconstructed = elements => {
 
-        const form2 = document.getElementsByClassName('form-data')[0];
-        form2.addEventListener('submit', handleFormSubmit);
+                const reducerFunction = (data, element) => {
 
-        //Teste 1
-        // var min = document.getElementById("sliderRange").min
-        // var max = document.getElementById("sliderRange").max
+                    data[element.name] = element.value;
+                    console.log(JSON.stringify(data));
+                    return data;
+                };
 
-        // oninput = "this.nextElementSibling.value = this.value";
-        // console.log(oninput);
+                const reducerInitialValue = {};
+                console.log('Initial `data` value:', JSON.stringify(reducerInitialValue));
+                const formData = [].reduce.call(elements, reducerFunction, reducerInitialValue);
 
-        // console.log(min);
-        // console.log(max);
+                return formData;
+            };
 
-        // var img = document.getElementById("carro");
-        // console.log(img)
+            const formToJSON = elements => [].reduce.call(elements, (data, element) => {
 
-        // if (output >= 30000 && output <= 40000) {
-        //     document.getElementById("carro").src = "images/a.jpg"
-        // } else if (output >= 40001 && output <= 50000) {
-        //     document.getElementById("carro").src = "images/b.jpg"
-        // }
+                if (isValidElement(element) && isValidValue(element)) {
 
-        //Teste 2
-        // var rangeslider = document.getElementById("sliderRange");
+                    if (isCheckbox(element)) {
+                        data[element.name] = (data[element.name] || []).concat(element.value);
+                    } else if (isMultiSelect(element)) {
+                        data[element.name] = getSelectValues(element);
+                    } else {
+                        data[element.name] = element.value;
+                    }
+                }
 
-        // var images = document.getElementById("sliderImages");
+                return data;
+            }, {});
 
-        // rangeslider.addEventListener('input', function () {
-        //     for (var i = 3000; i < images.children.length; i+25) {
-        //         images.children[i].style.display = 'none';
-        //     }
-        //     i = Number(this.valueRange) - 1;
-        //     images.children[i].style.display = 'block';
-        // });
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-    </script>
+            const handleFormSubmit = event => {
 
+                event.preventDefault();
+                const data = formToJSON(form.elements);
+                console.log(data);
+
+                localStorage.setItem('data', JSON.stringify(data));
+                const storedValue = localStorage.getItem('data');
+            };
+
+            const form2 = document.getElementsByClassName('form-data')[0];
+            form2.addEventListener('submit', handleFormSubmit);
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+        </script>
 </body>
 
 </html>
