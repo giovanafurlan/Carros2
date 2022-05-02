@@ -14,7 +14,17 @@
 
 <style>
     body {
-        padding: 0 2vw 0 2vw;
+        background-color: #f1eeee;
+    }
+
+    header {
+        width: 90vw;
+        height: 50px;
+        padding: 1vw;
+    }
+
+    .logo {
+        width: 70px;
     }
 
     .rangeslider {
@@ -46,35 +56,73 @@
     }
 
     .image {
-        overflow: hidden;
-        height: 800px;
-        width: 30vw;
-        box-shadow: 0px 0px 15px gray;
         float: right;
+    }
+
+    .image .img1 {
+        width: 25vw;
+        height: 700px;
+    }
+
+    .image .img2 {
+        width: 22vw;
+        height: 600px;
+    }
+
+    .image img {
+        border-radius: 50px;
+    }
+
+    #form {
+        background-color: white;
+        padding: 1vw;
         border-radius: 10px;
+        margin: 2vw;
     }
 
-    .image>img {
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-        transition: 5s ease-in;
+    .simule {
+        display: flex;
+        flex-direction: column;
+        float: right;
+        margin-top: 5vh;
     }
 
-    .image>img.visible,
-    .image>img:first-child {
-        display: block;
+    .simule p {
+        font-size: 35px;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-style: italic;
     }
 
     .cartoes {
         margin-top: 2vw;
     }
 
+    .cartoes .row>p {
+        font-size: 20px;
+        text-align: center;
+        margin-top: -1vw;
+    }
+
     .card {
         background: none;
-        border: 1px solid white;
+        border: 1px solid rgb(132, 50, 195, .5);
         margin-bottom: 1vw;
         height: min-content;
+    }
+
+    .card-body {
+        padding: 0;
+    }
+
+    .credito {
+        font-size: 18px;
+        width: max-content;
+        padding: 10px;
+    }
+
+    h3 {
+        text-align: center;
     }
 
     @media (max-width:600px) and (min-width:320px) {
@@ -93,10 +141,18 @@
 
     .botoes .btn1 {
         margin-right: 1vw;
+        background: none;
+        color: black;
+    }
+
+    .botoes .btn2 {
+        background-color: #7712d0;
+        border-color: #7712d0;
     }
 
     #output {
         padding: 5px;
+        font-size: 20px;
     }
 
     .card-text {
@@ -104,136 +160,190 @@
         border: none;
     }
 
-    .card-body2 {
-        margin-top: -0.5vw;
-        margin-left: 0.7vw;
-        padding-bottom: 1vw;
-    }
-
-    .periodo {
-        font-weight: 600;
-    }
-
     strong {
         font-weight: 600;
-    }
-
-    .card-title {
-        margin-bottom: 1vw;
-    }
-
-    hr {
-        margin: -0.1px;
-    }
-
-    .fw-light {
-        margin-bottom: 2px !important;
     }
 
     .myslider::-webkit-slider-thumb {
         -webkit-appearance: none;
         appearance: none;
-        width: 30px;
-        height: 30px;
-        background: none;
-        background-image: url('https://img.icons8.com/material-outlined/344/average-2.png');
-        background-size: contain;
-        background-position: center center;
-        background-repeat: no-repeat;
+        width: 18px;
+        height: 18px;
+        background-color: #7712d0;
         cursor: pointer;
+    }
+
+    .myslider::-webkit-slider-runnable-track {
+        width: 100%;
+        cursor: pointer;
+        background: #d10672;
+        border-radius: 5px;
+    }
+
+    @media (max-width: 960px) and (min-width: 200px) {
+        .image {
+            display: none;
+        }
+
+        .rangeslider {
+            width: 90vw;
+        }
     }
 </style>
 
 <body>
-    <div class="image mt-3 mb-3" id="sliderImages">
-        <img id="carro" class="img-fluid " src="images/a.jpg">
-    </div><br>
-    <div class="slider-container form-data">
-        <h1 class="display-5">Simule o seu<br />Carro novo!</h1>
-        <div class="rangeslider">
-            <form action="" method="post" id="form">
-                <input type="range" name="range" class="form-range myslider" min="30000" max="120000" value="30000"
-                    id="sliderRange" oninput="this.nextElementSibling.value = this.value">
-                R$<output id="output">30000</output>
-                <div class="cartoes">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="card">
-                                <div class="card-body">
-                                    <p class="fw-light">Maior período</p>
-                                    <hr>
-                                    <h5 class="card-title">Antes da contemplação parcela zero taxa</h5>
-                                    <div class="card-periodo">
-                                        <p><strong>Período 80:</strong> R$<input class="card-text" name="periodoAntes80"
-                                                id="antes80" value="375.00" disabled></p>
-                                        <p><strong>Período 70:</strong> R$<input class="card-text" name="periodoAntes70"
-                                                id="antes70" value="428.57" disabled></p>
-                                        <p><strong>Período 60:</strong> R$<input class="card-text" name="periodoAntes60"
-                                                id="antes60" value="500.00" disabled></p>
-                                    </div>
+    <header>
+        <img src="images/logo.png" alt="Logo - UP" class="logo">
+    </header>
+    <div class="simule">
+        <p>Simule seu carro novo!</p>
+        <div class="image">
+            <img src="images/a.jpg" id="carro" class="img-thumbnail img1" alt="...">
+            <img src="images/b.jpg" class="img-thumbnail img2" alt="...">
+        </div>
+    </div>
+    <div class="rangeslider">
+        <form action="" method="post" id="form">
+            <h3 class="display-6">Escolha o valor que precisa</h3>
+            <input type="range" name="range" class="form-range myslider" min="30000" max="120000" value="30000"
+                id="sliderRange" oninput="this.nextElementSibling.value = this.value">
+            R$<output id="output">30000</output>
+            <div class="cartoes">
+                <div class="row">
+                    <p>Escolha o plano que mais se encaixa no seu bolso</p>
+                    <div class="col-sm-6">
+                        <h5>UP</h5>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-periodo">
+                                    <p class="credito">
+                                        <strong>Crédito de</strong>
+                                        R$<input class="card-text" name="periodoAntes80" id="antes80" value="375.00"
+                                            disabled><br><strong>em 80 parcelas</strong>
+                                    </p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6">
-                            <div class="card">
-                                <div class="card-body card-body">
-                                    <p class="fw-light">Maior período</p>
-                                    <hr>
-                                    <h5 class="card-title">Depois da contemplação só 0,35 de taxa</h5>
-                                    <div class="card-periodo">
-                                        <p><strong>Período 80:</strong> R$<input class="card-text"
-                                                name="periodoDepois80" id="depois80" value="480.00" disabled></p>
-                                        <p><strong>Período 70:</strong> R$<input class="card-text"
-                                                name="periodoDepois70" id="depois70" value="533.57" disabled></p>
-                                        <p><strong>Período 60:</strong> R$<input class="card-text"
-                                                name="periodoDepois60" id="depois60" value="605.00" disabled></p>
-                                    </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-periodo">
+                                    <p class="credito">
+                                        <strong>Crédito de</strong>
+                                        R$<input class="card-text" name="periodoAntes70" id="antes70" value="428.57"
+                                            disabled><br><strong>em 70 parcelas</strong>
+                                    </p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6">
-                            <div class="card">
-                                <div class="card-body">
-                                    <p class="fw-light">Menor período</p>
-                                    <hr>
-                                    <h5 class="card-title">Antes da contemplação parcela zero taxa</h5>
-                                    <div class="card-periodo">
-                                        <p><strong>Período 50:</strong> R$<input class="card-text" name="periodoAntes50"
-                                                id="antes50" value="600.00" disabled></p>
-                                        <p><strong>Período 36:</strong> R$<input class="card-text" name="periodoAntes36"
-                                                id="antes36" value="833.33" disabled></p>
-                                        <p><strong></strong><input class="card-text" disabled></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="card">
-                                <div class="card-body card-body">
-                                    <p class="fw-light">Menor período</p>
-                                    <hr>
-                                    <h5 class="card-title">Depois da contemplação só 0,35 de taxa</h5>
-                                    <div class="card-periodo">
-                                        <p><strong>Período 50:</strong> R$<input class="card-text"
-                                                name="periodoDepois50" id="depois50" value="705.00" disabled></p>
-                                        <p><strong>Período 36:</strong> R$<input class="card-text"
-                                                name="periodoDepois36" id="depois36" value="938.33" disabled></p>
-                                        <p><strong></strong><input class="card-text" disabled></p>
-                                    </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-periodo">
+                                    <p class="credito">
+                                        <strong>Crédito de</strong>
+                                        R$<input class="card-text" name="periodoAntes60" id="antes60" value="500.00"
+                                            disabled><br><strong>em 60 parcelas</strong>
+                                    </p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <br>
-                    <div class="botoes">
-                        <button class="btn btn-success btn1" type="submit">Continuar com a Uper</button>
-                        <button class="btn btn-primary btn2" type="button">Continuar sozinho</button>
+                    <div class="col-sm-6">
+                        <h5>Sozinho</h5>
+                        <div class="card">
+                            <div class="card-body card-body">
+                                <div class="card-periodo">
+                                    <p class="credito">
+                                        <strong>Crédito de</strong>
+                                        R$<input class="card-text" name="periodoDepois80" id="depois80" value="480.00"
+                                            disabled><br><strong>em 80 parcelas</strong>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body card-body">
+                                <div class="card-periodo">
+                                    <p class="credito">
+                                        <strong>Crédito de</strong>
+                                        R$<input class="card-text" name="periodoDepois70" id="depois70" value="533.57"
+                                            disabled><br><strong>em 70 parcelas</strong>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body card-body">
+                                <div class="card-periodo">
+                                    <p class="credito">
+                                        <strong>Crédito de</strong>
+                                        R$<input class="card-text" name="periodoDepois60" id="depois60" value="605.00"
+                                            disabled><br><strong>em 60 parcelas</strong>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-periodo">
+                                    <p class="credito">
+                                        <strong>Crédito de</strong>
+                                        R$<input class="card-text" name="periodoAntes50" id="antes50" value="600.00"
+                                            disabled><br><strong>em 50 parcelas</strong>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-periodo">
+                                    <p class="credito">
+                                        <strong>Crédito de</strong>
+                                        R$<input class="card-text" name="periodoAntes36" id="antes36" value="833.33"
+                                            disabled><br><strong>em 36 parcelas</strong>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-body card-body">
+                                <div class="card-periodo">
+                                    <p class="credito">
+                                        <strong>Crédito de</strong>
+                                        R$<input class="card-text" name="periodoDepois50" id="depois50" value="705.00"
+                                            disabled><br><strong>em 50 parcelas</strong>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body card-body">
+                                <div class="card-periodo">
+                                    <p class="credito">
+                                        <strong>Crédito de</strong>
+                                        R$<input class="card-text" name="periodoDepois36" id="depois36" value="938.33"
+                                            disabled><br><strong>em 36 parcelas</strong>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div id="value"></div>
-        </div>
-        </form>
+                <br>
+                <div class="botoes">
+                    <button class="btn btn-success btn1" type="submit">Continuar com a Uper</button>
+                    <button class="btn btn-primary btn2" type="button">Continuar sozinho</button>
+                </div>
+            </div>
+            <div id="value"></div>
     </div>
+    </form>
+    </div>
+    </div>
+
     <a id="downloadAnchorElem" style="display:none"></a>
 
     <script>
