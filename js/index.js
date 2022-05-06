@@ -138,7 +138,10 @@ const handleFormSubmit = event => {
 
     const data = formToJSON(form.elements);
 
-    console.log(data);
+    localStorage.setItem('login', JSON.stringify(data));
+    const storedValue = localStorage.getItem('login');
+
+    console.log(storedValue);
 
 };
 

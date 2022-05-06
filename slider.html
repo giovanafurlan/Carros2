@@ -25,8 +25,8 @@
         color: white;
     }
 
-    header {
-        height: 12vh;
+    header{
+        padding-bottom: 1vw;
     }
 
     .logo {
@@ -113,8 +113,12 @@
         opacity: 1;
     }
 
-    .range{
-        padding: 0.5vw 0 1vw 0;
+    .range {
+        padding: 0.5vw 0 0 0;
+    }
+
+    .result::before {
+        content: "R$ ";
     }
 
     .cartoes {
@@ -124,7 +128,7 @@
     .cartoes .row>p {
         font-size: 20px;
         text-align: center;
-        margin-top: -1vw;
+        margin-top: -2vw;
     }
 
     .card {
@@ -136,14 +140,24 @@
     }
 
     .card-body {
-        padding: 0;
+        padding: 0 !important;
+        margin-left: 10px;
+    }
+
+    .check {
+        margin: 10px;
+    }
+
+    .card:hover {
+        background-color: rgb(119, 18, 208, .4);
     }
 
     .credito {
         font-size: 18px;
-        width: max-content;
-        padding: 10px;
-        word-break: break-all;
+    }
+
+    .real::after{
+        content: "R$";
     }
 
     h3 {
@@ -175,13 +189,8 @@
         padding: 5px;
         font-size: 18px;
         text-align: center;
-        margin-left: 45%;
         border: 1px solid rgb(119, 18, 208, .5);
         border-radius: 20px;
-    }
-
-    .result::before {
-        content: "R$ ";
     }
 
     .card-text {
@@ -207,13 +216,6 @@
         cursor: pointer;
         background: #d10672;
         border-radius: 5px;
-    }
-
-
-    @media (max-width:600px) and (min-width:320px) {
-        .row {
-            margin-top: 20vw;
-        }
     }
 
     @media (max-width: 960px) and (min-width: 200px) {
@@ -253,32 +255,35 @@
                 <img src="images/carro.gif" class="img-thumbnail gif" alt="Gif de um carro - UP">
                 <h3>Escolha o valor que precisa</h3>
                 <div class="range">
-                    <input type="range" name="range" class="form-range myslider" min="30000" max="120000" value="30000"
-                        id="sliderRange" oninput="this.nextElementSibling.value = this.value" onclick="fadeIn()">
+                    <input type="range" name="precoCarro" class="form-range myslider" min="30000" max="120000"
+                        value="30000" id="sliderRange" oninput="this.nextElementSibling.value = this.value"
+                        onclick="fadeIn()">
+                    <output id="output" class="result">30000</output>
                 </div>
-                <output id="output" class="result">30000</output>
                 <div class="cartoes">
                     <div class="row">
                         <p>Escolha o plano que mais se encaixa no seu bolso</p>
                         <div class="col-sm-6">
                             <div class="card">
+                                <input type="checkbox" value="375.00" name="opcao80" id="opcao80" class="check">
                                 <div class="card-body">
                                     <div class="card-periodo">
                                         <p class="credito">
-                                            <strong>Crédito de</strong>
-                                            R$<input class="card-text" name="periodoAntes80" id="antes80" value="375.00"
-                                                disabled><br><strong>em 80 parcelas</strong>
+                                            <strong class="real">Crédito de</strong>
+                                            R$<input class="card-text" id="antes80" value="375.00" disabled><br><strong
+                                                class="parcelas">em 80 parcelas</strong>
                                         </p>
                                     </div>
                                 </div>
                             </div>
                             <div class="card">
+                                <input type="checkbox" value="600.00" name="opcao50" id="opcao50" class="check">
                                 <div class="card-body">
                                     <div class="card-periodo">
                                         <p class="credito">
                                             <strong>Crédito de</strong>
-                                            R$<input class="card-text" name="periodoAntes60" id="antes60" value="500.00"
-                                                disabled><br><strong>em 60 parcelas</strong>
+                                            R$<input class="card-text" id="antes50" value="600.00" disabled><br><strong
+                                                class="parcelas">em 50 parcelas</strong>
                                         </p>
                                     </div>
                                 </div>
@@ -286,23 +291,26 @@
                         </div>
                         <div class="col-sm-6">
                             <div class="card">
+                                <input type="checkbox" value="500.00" name="opcao60" id="opcao60" class="check">
                                 <div class="card-body">
                                     <div class="card-periodo">
                                         <p class="credito">
                                             <strong>Crédito de</strong>
-                                            R$<input class="card-text" name="periodoAntes50" id="antes50" value="600.00"
-                                                disabled><br><strong>em 50 parcelas</strong>
+                                            <input class="card-text" id="antes60" value="500.00" disabled><br><strong
+                                                class="parcelas">em 60 parcelas</strong>
                                         </p>
                                     </div>
                                 </div>
                             </div>
+
                             <div class="card">
+                                <input type="checkbox" value="833.33" name="opcao36" id="opcao36" class="check">
                                 <div class="card-body">
                                     <div class="card-periodo">
                                         <p class="credito">
                                             <strong>Crédito de</strong>
-                                            R$<input class="card-text" name="periodoAntes36" id="antes36" value="833.33"
-                                                disabled><br><strong>em 36 parcelas</strong>
+                                            R$<input class="card-text" id="antes36" value="833.33" disabled><br><strong
+                                                class="parcelas">em 36 parcelas</strong>
                                         </p>
                                     </div>
                                 </div>
@@ -311,8 +319,8 @@
                     </div>
                     <br>
                     <div class="botoes">
-                        <button class="btn btn-success btn1" type="submit">Continuar com a Uper</button>
-                        <button class="btn btn-primary btn2" type="button">Continuar sozinho</button>
+                        <button class="btn btn-success btn1" type="button">Continuar com humano</button>
+                        <button class="btn btn-primary btn2" type="submit">Continuar com Lupi</button>
                     </div>
                 </div>
             </form>
