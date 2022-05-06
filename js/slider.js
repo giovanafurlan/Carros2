@@ -12,7 +12,7 @@ window.addEventListener('load', function () {
         const img = document.getElementById("carro");
 
         if (valueRange >= 30000 && valueRange <= 32499) {
-            img.src = "images/a.jpg";
+            img.src = "images/auto.png";
 
             const novoValueAntes80 = valueAntes80.setAttribute('value', 375.00);
             valueAntes80.innerHTML.value = novoValueAntes80;
@@ -27,7 +27,7 @@ window.addEventListener('load', function () {
             valueAntes36.innerHTML.value = novoValueAntes36;
         }
         if (valueRange >= 32500 && valueRange <= 34999) {
-            img.src = "images/b.jpg";
+            img.src = "images/auto.png";
 
             const novoValueAntes80 = valueAntes80.setAttribute('value', 406.25);
             valueAntes80.innerHTML.value = novoValueAntes80;
@@ -42,7 +42,7 @@ window.addEventListener('load', function () {
             valueAntes36.innerHTML.value = novoValueAntes36;
         }
         if (valueRange >= 35000 && valueRange <= 37499) {
-            img.src = "images/c.jpg";
+            img.src = "images/auto.png";
 
             const novoValueAntes80 = valueAntes80.setAttribute('value', 437.50);
             valueAntes80.innerHTML.value = novoValueAntes80;
@@ -57,7 +57,7 @@ window.addEventListener('load', function () {
             valueAntes36.innerHTML.value = novoValueAntes36;
         }
         if (valueRange >= 37500 && valueRange <= 39999) {
-            img.src = "images/d.jpg";
+            img.src = "images/auto.png";
 
             const novoValueAntes80 = valueAntes80.setAttribute('value', 468.75);
             valueAntes80.innerHTML.value = novoValueAntes80;
@@ -72,7 +72,7 @@ window.addEventListener('load', function () {
             valueAntes36.innerHTML.value = novoValueAntes36;
         }
         if (valueRange >= 40000 && valueRange <= 42999) {
-            img.src = "images/e.jpg";
+            img.src = "images/auto.png";
 
             const novoValueAntes80 = valueAntes80.setAttribute('value', 500.00);
             valueAntes80.innerHTML.value = novoValueAntes80;
@@ -87,7 +87,7 @@ window.addEventListener('load', function () {
             valueAntes36.innerHTML.value = novoValueAntes36;
         }
         if (valueRange >= 42500 && valueRange <= 44999) {
-            img.src = "images/f.jpg";
+            img.src = "images/auto.png";
 
             const novoValueAntes80 = valueAntes80.setAttribute('value', 531.25);
             valueAntes80.innerHTML.value = novoValueAntes80;
@@ -102,7 +102,7 @@ window.addEventListener('load', function () {
             valueAntes36.innerHTML.value = novoValueAntes36;
         }
         if (valueRange >= 45000 && valueRange <= 49999) {
-            img.src = "images/g.jpg";
+            img.src = "images/auto.png";
 
             const novoValueAntes80 = valueAntes80.setAttribute('value', 562.50);
             valueAntes80.innerHTML.value = novoValueAntes80;
@@ -117,7 +117,7 @@ window.addEventListener('load', function () {
             valueAntes36.innerHTML.value = novoValueAntes36;
         }
         if (valueRange >= 50000 && valueRange <= 54999) {
-            img.src = "images/h.jpg";
+            img.src = "images/auto.png";
 
             const novoValueAntes80 = valueAntes80.setAttribute('value', 625.00);
             valueAntes80.innerHTML.value = novoValueAntes80;
@@ -132,7 +132,7 @@ window.addEventListener('load', function () {
             valueAntes36.innerHTML.value = novoValueAntes36;
         }
         if (valueRange >= 55000 && valueRange <= 59999) {
-            img.src = "images/i.jpg";
+            img.src = "images/auto.png";
 
             const novoValueAntes80 = valueAntes80.setAttribute('value', 687.50);
             valueAntes80.innerHTML.value = novoValueAntes80;
@@ -147,7 +147,7 @@ window.addEventListener('load', function () {
             valueAntes36.innerHTML.value = novoValueAntes36;
         }
         if (valueRange >= 60000 && valueRange <= 64999) {
-            img.src = "images/j.jpg";
+            img.src = "images/auto.png";
 
             const novoValueAntes80 = valueAntes80.setAttribute('value', 750.00);
             valueAntes80.innerHTML.value = novoValueAntes80;
@@ -162,7 +162,7 @@ window.addEventListener('load', function () {
             valueAntes36.innerHTML.value = novoValueAntes36;
         }
         if (valueRange >= 65000 && valueRange <= 69999) {
-            img.src = "images/k.jpg";
+            img.src = "images/auto.png";
 
             const novoValueAntes80 = valueAntes80.setAttribute('value', 0);
             valueAntes80.innerHTML.value = novoValueAntes80;
@@ -177,7 +177,7 @@ window.addEventListener('load', function () {
             valueAntes36.innerHTML.value = novoValueAntes36;
         }
         if (valueRange >= 70000 && valueRange <= 74999) {
-            img.src = "images/l.jpg";
+            img.src = "images/auto.png";
 
             const novoValueAntes80 = valueAntes80.setAttribute('value', 0);
             valueAntes80.innerHTML.value = novoValueAntes80;
@@ -192,7 +192,7 @@ window.addEventListener('load', function () {
             valueAntes36.innerHTML.value = novoValueAntes36;
         }
         if (valueRange >= 75000 && valueRange <= 79999) {
-            img.src = "images/m.jpg";
+            img.src = "images/auto.png";
 
             const novoValueAntes80 = valueAntes80.setAttribute('value', 0);
             valueAntes80.innerHTML.value = novoValueAntes80;
@@ -207,7 +207,7 @@ window.addEventListener('load', function () {
             valueAntes36.innerHTML.value = novoValueAntes36;
         }
         if (valueRange >= 80000 && valueRange <= 89999) {
-            img.src = "images/n.jpg";
+            img.src = "images/auto.png";
 
             const novoValueAntes80 = valueAntes80.setAttribute('value', 0);
             valueAntes80.innerHTML.value = novoValueAntes80;
@@ -222,7 +222,7 @@ window.addEventListener('load', function () {
             valueAntes36.innerHTML.value = novoValueAntes36;
         }
         if (valueRange >= 90000 && valueRange <= 99999) {
-            img.src = "images/o.jpg";
+            img.src = "images/auto.png";
 
             const novoValueAntes80 = valueAntes80.setAttribute('value', 0);
             valueAntes80.innerHTML.value = novoValueAntes80;
@@ -237,7 +237,7 @@ window.addEventListener('load', function () {
             valueAntes36.innerHTML.value = novoValueAntes36;
         }
         if (valueRange >= 100000 && valueRange <= 109999) {
-            img.src = "images/p.jpg";
+            img.src = "images/auto.png";
 
             const novoValueAntes80 = valueAntes80.setAttribute('value', 0);
             valueAntes80.innerHTML.value = novoValueAntes80;
@@ -252,7 +252,7 @@ window.addEventListener('load', function () {
             valueAntes36.innerHTML.value = novoValueAntes36;
         }
         if (valueRange >= 110000 && valueRange <= 119999) {
-            img.src = "images/q.jpg";
+            img.src = "images/auto.png";
 
             const novoValueAntes80 = valueAntes80.setAttribute('value', 0);
             valueAntes80.innerHTML.value = novoValueAntes80;
@@ -267,7 +267,7 @@ window.addEventListener('load', function () {
             valueAntes36.innerHTML.value = novoValueAntes36;
         }
         if (valueRange >= 120000 && valueRange <= 12000) {
-            img.src = "images/r.jpg";
+            img.src = "images/auto.png";
 
             const novoValueAntes80 = valueAntes80.setAttribute('value', 0);
             valueAntes80.innerHTML.value = novoValueAntes80;

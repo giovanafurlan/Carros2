@@ -11,7 +11,6 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/0a6b0f1dd1.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/index.css">
 
     <title>UP</title>
 </head>
@@ -23,30 +22,17 @@
         background-color: #f1eeee;
     }
 
-    body p::selection,
-    body h1::selection,
-    body h3::selection,
-    body input::selection,
-    body strong::selection,
-    body output::selection,
-    body img::selection,
-    body br::selection,
-    body label::selection,
-    body div::selection {
+    *::selection {
         background: rgb(118, 18, 206, .7);
         color: white;
     }
 
     header {
-        width: 50vw;
+        height: 12vh;
     }
 
     .logo {
-        width: 70px;
-    }
-
-    .titulo {
-        width: 50vw;
+        width: 5vw;
     }
 
     .quadros {
@@ -59,24 +45,25 @@
     }
 
     .image .img1 {
+        background-color: #f1eeee;
+        border: 0;
         width: 25vw;
-        height: 550px;
+        height: 520px;
+
     }
 
     .image .img2 {
+        background-color: #f1eeee;
+        border: 0;
         width: 22vw;
-        height: 450px;
-    }
-
-    .image img {
-        border-radius: 50px;
+        height: 400px;
     }
 
     .simule {
         display: flex;
         flex-direction: column;
         float: right;
-        margin-top: -2vh;
+        width: 50vw;
     }
 
     .simule p {
@@ -87,7 +74,7 @@
     }
 
     #form {
-        width: 48vw;
+        width: 45vw;
         background: white;
         border-radius: 10px;
         padding: 1vw;
@@ -146,8 +133,8 @@
             display: none;
         }
 
-        .titulo {
-            width: 90vw;
+        .logo {
+            width: 10vw;
         }
     }
 </style>
@@ -160,12 +147,12 @@
         <div class="simule">
             <p>Simule seu carro novo!</p>
             <div class="image">
-                <img src="images/a.jpg" class="img-thumbnail img1" alt="Carro - UP">
-                <img src="images/banner.jpg" class="img-thumbnail img2" alt="Mulher segurando celular - UP">
+                <img src="images/auto.png" class="img-thumbnail img1" alt="Carro - UP">
+                <img src="images/imagem-simula2.png" class="img-thumbnail img2" alt="Homem segurando celular - UP">
             </div>
         </div>
         <form class="needs-validation form-data" id="form" novalidate action="#" method="post">
-            <img src="images/car-wheel.gif" class="img-thumbnail gif" alt="Gif de um carro - UP">
+            <img src="images/carro.gif" class="img-thumbnail gif" alt="Gif de um carro - UP">
             <div class="titulo">
                 <p class="fs-5">Nossa meta é deixar você cada vez mais<br />
                     perto do seu objetivo. Quem compara faz um UP Consórcios</p>

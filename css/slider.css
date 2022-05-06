@@ -1,6 +1,7 @@
 body {
-    background-color: #f1eeee;
+    padding: 1vw;
     font-family: 'Open Sans', sans-serif;
+    background-color: #f1eeee;
 }
 
 *::selection {
@@ -9,62 +10,42 @@ body {
 }
 
 header {
-    width: 90vw;
-    height: 50px;
-    padding: 1vw;
+    height: 12vh;
 }
 
 .logo {
-    width: 70px;
+    width: 5vw;
 }
 
-.rangeslider {
-    position: absolute;
-    width: 50vw;
-    float: left;
+.quadros {
+    display: flex;
+    flex-direction: row;
 }
 
-.myslider {
-    -webkit-appearance: none;
-    width: 100%;
-    height: 15px;
-    background: #000;
-    outline: none;
-    border-radius: 50px;
-}
-
-.myslider:hover {
-    opacity: 1;
-}
-
-#sliderRange {
-    -webkit-appearance: none;
-    width: 100%;
-    height: 10px;
-    outline: none;
-    border-radius: 50px;
-    background-color: #ccc;
+.image {
+    float: right;
 }
 
 .image .img1 {
+    background-color: #f1eeee;
+    border: 0;
     width: 25vw;
-    height: 550px;
+    height: 520px;
+
 }
 
 .image .img2 {
+    background-color: #f1eeee;
+    border: 0;
     width: 22vw;
-    height: 450px;
-}
-
-.image img {
-    border-radius: 50px;
+    height: 400px;
 }
 
 .simule {
     display: flex;
     flex-direction: column;
     float: right;
-    margin-top: -2vh;
+    width: 50vw;
 }
 
 .simule p {
@@ -75,11 +56,14 @@ header {
 }
 
 #form {
-    width: 48vw;
-    background-color: white;
-    padding: 1vw;
+    width: 45vw;
+    background: white;
     border-radius: 10px;
-    margin: 2vw;
+    padding: 1vw;
+}
+
+#form .titulo {
+    text-align: center;
 }
 
 .gif {
@@ -87,7 +71,34 @@ header {
     width: 80px;
     margin-bottom: 1vw;
     text-align: center;
-    margin-left: 42%;
+    margin-left: 45%;
+}
+
+a {
+    padding: 0.5vw !important;
+    font-size: 15px !important;
+}
+
+.rangeslider {
+    position: absolute;
+    width: 45vw;
+    float: left;
+}
+
+.myslider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 15px;
+    outline: none;
+    border-radius: 50px;
+}
+
+.myslider:hover {
+    opacity: 1;
+}
+
+.range{
+    padding: 0.5vw 0 1vw 0;
 }
 
 .cartoes {
@@ -105,6 +116,7 @@ header {
     border: 1px solid rgb(132, 50, 195, .5);
     margin-bottom: 1vw;
     height: min-content;
+    margin-top: 1vw;
 }
 
 .card-body {
@@ -124,6 +136,8 @@ h3 {
 
 .botoes {
     display: flex;
+    margin-top: 1vw;
+
 }
 
 .botoes button {
@@ -145,7 +159,7 @@ h3 {
     padding: 5px;
     font-size: 18px;
     text-align: center;
-    margin-left: 42%;
+    margin-left: 45%;
     border: 1px solid rgb(119, 18, 208, .5);
     border-radius: 20px;
 }
@@ -179,9 +193,6 @@ strong {
     border-radius: 5px;
 }
 
-.depois {
-    display: none;
-}
 
 @media (max-width:600px) and (min-width:320px) {
     .row {
@@ -200,5 +211,9 @@ strong {
 
     .botoes button {
         width: 50vw;
+    }
+
+    .logo {
+        width: 10vw;
     }
 }

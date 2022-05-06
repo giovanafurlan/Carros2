@@ -7,7 +7,6 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/slider.css">
 
     </script>
 
@@ -16,8 +15,9 @@
 
 <style>
     body {
-        background-color: #f1eeee;
+        padding: 1vw;
         font-family: 'Open Sans', sans-serif;
+        background-color: #f1eeee;
     }
 
     *::selection {
@@ -26,62 +26,42 @@
     }
 
     header {
-        width: 90vw;
-        height: 50px;
-        padding: 1vw;
+        height: 12vh;
     }
 
     .logo {
-        width: 70px;
+        width: 5vw;
     }
 
-    .rangeslider {
-        position: absolute;
-        width: 50vw;
-        float: left;
+    .quadros {
+        display: flex;
+        flex-direction: row;
     }
 
-    .myslider {
-        -webkit-appearance: none;
-        width: 100%;
-        height: 15px;
-        background: #000;
-        outline: none;
-        border-radius: 50px;
-    }
-
-    .myslider:hover {
-        opacity: 1;
-    }
-
-    #sliderRange {
-        -webkit-appearance: none;
-        width: 100%;
-        height: 10px;
-        outline: none;
-        border-radius: 50px;
-        background-color: #ccc;
+    .image {
+        float: right;
     }
 
     .image .img1 {
+        background-color: #f1eeee;
+        border: 0;
         width: 25vw;
-        height: 550px;
+        height: 520px;
+
     }
 
     .image .img2 {
+        background-color: #f1eeee;
+        border: 0;
         width: 22vw;
-        height: 450px;
-    }
-
-    .image img {
-        border-radius: 50px;
+        height: 400px;
     }
 
     .simule {
         display: flex;
         flex-direction: column;
         float: right;
-        margin-top: -2vh;
+        width: 50vw;
     }
 
     .simule p {
@@ -92,11 +72,14 @@
     }
 
     #form {
-        width: 48vw;
-        background-color: white;
-        padding: 1vw;
+        width: 45vw;
+        background: white;
         border-radius: 10px;
-        margin: 2vw;
+        padding: 1vw;
+    }
+
+    #form .titulo {
+        text-align: center;
     }
 
     .gif {
@@ -104,7 +87,34 @@
         width: 80px;
         margin-bottom: 1vw;
         text-align: center;
-        margin-left: 42%;
+        margin-left: 45%;
+    }
+
+    a {
+        padding: 0.5vw !important;
+        font-size: 15px !important;
+    }
+
+    .rangeslider {
+        position: absolute;
+        width: 45vw;
+        float: left;
+    }
+
+    .myslider {
+        -webkit-appearance: none;
+        width: 100%;
+        height: 15px;
+        outline: none;
+        border-radius: 50px;
+    }
+
+    .myslider:hover {
+        opacity: 1;
+    }
+
+    .range{
+        padding: 0.5vw 0 1vw 0;
     }
 
     .cartoes {
@@ -122,6 +132,7 @@
         border: 1px solid rgb(132, 50, 195, .5);
         margin-bottom: 1vw;
         height: min-content;
+        margin-top: 1vw;
     }
 
     .card-body {
@@ -141,6 +152,8 @@
 
     .botoes {
         display: flex;
+        margin-top: 1vw;
+
     }
 
     .botoes button {
@@ -162,7 +175,7 @@
         padding: 5px;
         font-size: 18px;
         text-align: center;
-        margin-left: 42%;
+        margin-left: 45%;
         border: 1px solid rgb(119, 18, 208, .5);
         border-radius: 20px;
     }
@@ -196,9 +209,6 @@
         border-radius: 5px;
     }
 
-    .depois {
-        display: none;
-    }
 
     @media (max-width:600px) and (min-width:320px) {
         .row {
@@ -218,6 +228,10 @@
         .botoes button {
             width: 50vw;
         }
+
+        .logo {
+            width: 10vw;
+        }
     }
 </style>
 
@@ -229,17 +243,19 @@
         <section class="simule">
             <p>Simule seu carro novo!</p>
             <div class="image">
-                <img src="images/a.jpg" id="carro" class="img-thumbnail img1" alt="Carros - UP" style="opacity:0.9;">
-                <img src="images/banner.jpg" id="banner" class="img-thumbnail img2"
-                    alt="Mulher com celular na mão - UP">
+                <img src="images/auto.png" id="carro" class="img-thumbnail img1" alt="Carros - UP" style="opacity:0.9;">
+                <img src="images/imagem-simula2.png" id="banner" class="img-thumbnail img2"
+                    alt="Homem com celular na mão - UP">
             </div>
         </section>
         <main class="rangeslider form-data">
             <form action="" method="post" id="form">
-                <img src="images/car-wheel.gif" class="img-thumbnail gif" alt="Gif de um carro - UP">
+                <img src="images/carro.gif" class="img-thumbnail gif" alt="Gif de um carro - UP">
                 <h3>Escolha o valor que precisa</h3>
-                <input type="range" name="range" class="form-range myslider" min="30000" max="120000" value="30000"
-                    id="sliderRange" oninput="this.nextElementSibling.value = this.value" onclick="fadeIn()">
+                <div class="range">
+                    <input type="range" name="range" class="form-range myslider" min="30000" max="120000" value="30000"
+                        id="sliderRange" oninput="this.nextElementSibling.value = this.value" onclick="fadeIn()">
+                </div>
                 <output id="output" class="result">30000</output>
                 <div class="cartoes">
                     <div class="row">
@@ -302,6 +318,7 @@
             </form>
         </main>
     </div>
+    <script src="js/slider.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
