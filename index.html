@@ -10,7 +10,7 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="https://kit.fontawesome.com/0a6b0f1dd1.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="#">
 
     <title>UP</title>
 </head>
@@ -27,21 +27,9 @@
         color: white;
     }
 
-    header {
-        height: 12vh;
-    }
-
     .logo {
         width: 5vw;
-    }
-
-    .quadros {
-        display: flex;
-        flex-direction: row;
-    }
-
-    .image {
-        float: right;
+        padding: 0 0.5vw 0.5vw 0.5vw;
     }
 
     .image .img1 {
@@ -49,7 +37,6 @@
         border: 0;
         width: 25vw;
         height: 520px;
-
     }
 
     .image .img2 {
@@ -73,15 +60,28 @@
         font-style: italic;
     }
 
-    #form {
+    #form1 {
         width: 45vw;
         background: white;
         border-radius: 10px;
         padding: 1vw;
     }
 
-    #form .titulo {
+    #form1 .titulo {
         text-align: center;
+    }
+
+    .botoes {
+        margin-top: 1vw;
+        padding-bottom: 2vw;
+    }
+
+    .botoes button{
+        float: right;
+    }
+
+    .btn-link {
+        color: #7712d0;
     }
 
     .gif {
@@ -92,49 +92,189 @@
         margin-left: 47%;
     }
 
-    a {
-        padding: 0.5vw !important;
-        font-size: 15px !important;
-    }
-
-    .btn {
-        margin-top: 1vw;
-        border-color: white;
-    }
-
-    .btn1 {
-        text-decoration: none;
-    }
-
-    .btn1:hover {
-        text-decoration: none;
-    }
-
-    .btn2 {
-        float: right;
-        background: none !important;
-        border: none !important;
-    }
-
-    .btn2 a {
-        text-decoration: none;
-    }
-
     @media (max-width: 960px) and (min-width: 200px) {
         .image {
             display: none;
         }
 
-        #form {
+        #form1 {
             width: 90vw;
         }
 
         .simule p {
             display: none;
         }
+    }
+
+    #form2 {
+        width: 45vw;
+        background: white;
+        border-radius: 10px;
+        padding: 1vw;
+    }
+
+    #form2 .titulo {
+        text-align: center;
+    }
+
+    .rangeslider {
+        position: absolute;
+        width: 45vw;
+        float: left;
+    }
+
+    .myslider {
+        -webkit-appearance: none;
+        width: 100%;
+        height: 15px;
+        outline: none;
+        border-radius: 50px;
+    }
+
+    .myslider:hover {
+        opacity: 1;
+    }
+
+    .range {
+        padding: 0 5vw 0 5vw;
+    }
+
+    .result::before {
+        content: "R$ ";
+    }
+
+    .cartoes {
+        margin-top: 2vw;
+    }
+
+    .cartoes .row>p {
+        font-size: 20px;
+        text-align: center;
+        margin-bottom: -0.5vw;
+    }
+
+    .card {
+        background: none;
+        border: 1px solid rgb(132, 50, 195, .5);
+        margin-bottom: 1vw;
+        height: min-content;
+        margin-top: 1vw;
+    }
+
+    .card-body {
+        padding: 1vw;
+    }
+
+    .check {
+        margin: 10px;
+    }
+
+    .card:hover {
+        background-color: rgb(119, 18, 208, .4);
+    }
+
+    .credito {
+        font-size: 18px;
+    }
+
+    h3 {
+        text-align: center;
+    }
+
+    .botoes2 {
+        display: flex;
+        margin-top: 1vw;
+    }
+
+    .botoes2 button {
+        width: 24.5vw;
+    }
+
+    .botoes2 .btn1 {
+        margin-right: 1vw;
+    }
+
+    .botoes2 .btn2 {
+        color: #7712d0;
+        background: none;
+        border-color: #7712d0;
+    }
+
+    .result {
+        padding: 5px;
+        font-size: 18px;
+        text-align: center;
+        border: 1px solid rgb(119, 18, 208, .5);
+        border-radius: 20px;
+    }
+
+    .card-text {
+        background: transparent;
+        border: none;
+        font-weight: normal;
+        color: black;
+    }
+
+    .real::before {
+        content: "R$";
+    }
+
+    strong {
+        font-weight: 600;
+    }
+
+    .myslider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 18px;
+        height: 18px;
+        background-color: #7712d0;
+        cursor: pointer;
+    }
+
+    input[type=range]::-moz-range-thumb {
+        background-color: #7712d0;
+    }
+
+    .myslider::-webkit-slider-runnable-track {
+        width: 100%;
+        cursor: pointer;
+        background: #d10672;
+        border-radius: 5px;
+    }
+
+    input[type=range]::-moz-range-track {
+        background: #d10672;
+    }
+
+    .check {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .check:checked+.card-body {
+        background-color: rgb(119, 18, 208, .4);
+    }
+
+    @media (max-width: 960px) and (min-width: 200px) {
+        .simule {
+            display: none;
+        }
+
+        form {
+            width: 95vw !important;
+        }
+
+        .botoes2 button {
+            width: 50vw;
+        }
 
         .logo {
             width: 10vw;
+            padding: 0 1vw 1vw 1vw;
         }
     }
 </style>
@@ -142,81 +282,166 @@
 <body>
     <div>
         <header>
-            <img src="images/logo.png" alt="Logo - UP" class="logo">
+            <img class="logo"
+                src="https://uploads-ssl.webflow.com/6273d0f394159549d01b49ee/62752f45083c6bcfe094383c_logo.png"
+                alt="Logo - UP">
         </header>
-        <div class="simule">
+        <section class="simule">
             <p>Simule seu carro novo!</p>
             <div class="image">
-                <img src="images/auto.png" class="img-thumbnail img1" alt="Carro - UP">
-                <img src="images/imagem-simula2.png" class="img-thumbnail img2" alt="Homem segurando celular - UP">
+                <img id="carro" class="img-thumbnail img1"
+                    src="https://uploads-ssl.webflow.com/6273d0f394159549d01b49ee/62751ad3a2f8ea4b94a21e73_auto.png"
+                    alt="Carros - UP" style="opacity:0.9;">
+                <img id="banner" class="img-thumbnail img2"
+                    src="https://uploads-ssl.webflow.com/6273d0f394159549d01b49ee/62751ad3686f79e54e8d8b70_imagem-simula2.png"
+                    alt="Homem com celular na mão - UP">
             </div>
-        </div>
-        <form class="needs-validation form-data" id="form" novalidate action="#" method="post">
-            <img src="images/carro.gif" class="img-thumbnail gif" alt="Gif de um carro - UP">
-            <div class="titulo">
-                <p class="fs-5">Nossa meta é deixar você cada vez mais<br />
-                    perto do seu objetivo. Quem compara faz um UP Consórcios</p>
-                <p>Preencha os dados e simule:</p>
-            </div>
-            <div class="mb-3">
-                <label for="validationCustom01" class="form-label">Nome</label>
-                <input type="text" name="nome" class="form-control" id="validationCustom01" placeholder="Primeiro nome"
-                    required>
-                <div class="valid-feedback">
-                    Tudo certo!
+        </section>
+        <main class="form-data" style="display: inline-block;">
+            <form id="form1" class="needs-validation" novalidate action="#" method="post">
+                <img class="img-thumbnail gif"
+                    src="https://uploads-ssl.webflow.com/6273d0f394159549d01b49ee/62751ad417e4eecc3df43387_carro.gif"
+                    alt="Gif de um carro - UP">
+                <div class="titulo">
+                    <p class="fs-5">Nossa meta é deixar você cada vez mais<br />
+                        perto do seu objetivo. Quem compara faz um UP Consórcios</p>
+                    <p>Preencha os dados e simule:</p>
                 </div>
-                <div class="invalid-feedback">
-                    Por favor insira um nome
-                </div>
-            </div>
-            <div class="mb-3">
-                <label for="validationCustom02" class="form-label">Email</label>
-                <input type="email" name="email" class="email white col-7 col-md-4 col-lg-7 ml-3 form-control"
-                    id="validationCustom02" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-                    placeholder="exemplo@email.com" required>
-                <div class="valid-feedback">
-                    Tudo certo!
-                </div>
-                <div class="invalid-feedback">
-                    Por favor insira um email válido
-                </div>
-            </div>
-            <div class="mb-3">
-                <label for="validationCustom03" class="form-label">Whatsapp</label>
-                <input type="tel" name="whatsapp" class="tel white col-7 col-md-4 col-lg-7 ml-3 form-control"
-                    minlength="9" id="validationCustom03" placeholder="(99) 99999-9999" required>
-                <div class="valid-feedback">
-                    Tudo certo!
-                </div>
-                <div class="invalid-feedback">
-                    Por favor insira um telefone válido
-                </div>
-            </div>
-            <div class="col-12">
-                <div class="form-check">
-                    <input class="form-check-input" name="termos" type="checkbox" value="true" id="validationCheck01"
-                        required>
-                    <label class="form-check-label" for="check">
-                        Aceito receber todas as comunicações<br />
-                        UP Consórcios e concordo com o Termo de Consentimento </label>
+                <div class="mb-3">
+                    <label class="form-label" for="validationCustom01">Nome</label>
+                    <input id="validationCustom01" class="form-control" name="nome" type="text"
+                        placeholder="Primeiro nome" required>
+                    <div class="valid-feedback">
+                        Tudo certo!
+                    </div>
                     <div class="invalid-feedback">
-                        Você deve concordar antes de enviar
+                        Por favor insira um nome
                     </div>
                 </div>
-            </div>
-            <div class="botoes">
-                <button class="btn btn-outline-secondary btn1" id="btn-valida" type="submit">Validar</button>
-                <button class="btn btn-light btn2" id="btn-acessa" disabled><a href="slider.html">Acessar<svg
-                            xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-arrow-right" viewBox="0 0 16 16">
+                <div class="mb-3">
+                    <label class="form-label" for="validationCustom02">Email</label>
+                    <input id="validationCustom02" class="email white col-7 col-md-4 col-lg-7 ml-3 form-control"
+                        name="email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                        placeholder="exemplo@email.com" required>
+                    <div class="valid-feedback">
+                        Tudo certo!
+                    </div>
+                    <div class="invalid-feedback">
+                        Por favor insira um email válido
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="validationCustom03">Whatsapp</label>
+                    <input id="validationCustom03" class="tel white col-7 col-md-4 col-lg-7 ml-3 form-control"
+                        name="whatsapp" type="tel" minlength="9" placeholder="(99) 99999-9999" required>
+                    <div class="valid-feedback">
+                        Tudo certo!
+                    </div>
+                    <div class="invalid-feedback">
+                        Por favor insira um telefone válido
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="form-check">
+                        <input id="validationCheck01" class="form-check-input" name="termos" type="checkbox"
+                            value="true" required>
+                        <label class="form-check-label" for="check">
+                            Aceito receber todas as comunicações<br />
+                            UP Consórcios e concordo com o Termo de Consentimento </label>
+                        <div class="invalid-feedback">
+                            Você deve concordar antes de enviar
+                        </div>
+                    </div>
+                </div>
+                <div class="botoes">
+                    <button id="btn-acessa" class="btn btn-link" type="submit">Acessar
+                        <svg class="bi bi-arrow-right" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                            fill="currentColor" viewBox="0 0 16 16">
                             <path fill-rule="evenodd"
                                 d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
-                        </svg></a></button>
-            </div>
-        </form>
+                        </svg>
+                    </button>
+                </div>
+            </form>
+        </main>
+
+        <main id="rangeslider" class="rangeslider form-data2" style="display: none;">
+            <form id="form2" action="#" method="post">
+                <img class="img-thumbnail gif"
+                    src="https://uploads-ssl.webflow.com/6273d0f394159549d01b49ee/62751ad417e4eecc3df43387_carro.gif"
+                    alt="Gif de um carro - UP">
+                <h3>Escolha o valor que precisa</h3>
+                <div class="range">
+                    <output id="output" class="result">30000</output>
+                    <input id="sliderRange" class="form-range myslider" name="precoCarro" type="range" min="30000"
+                        max="120000" value="30000" oninput="this.previousElementSibling.value = this.value"
+                        onclick="fadeIn()">
+                </div>
+                <div class="cartoes">
+                    <div class="row">
+                        <p>Escolha o plano que mais se encaixa no seu bolso</p>
+                        <div class="col-sm-6">
+                            <div class="card">
+                                <input id="opcao80" class="check" name="opcao80" type="checkbox" value="375.00">
+                                <div class="card-body">
+                                    <label for="opcao80" class="credito">
+                                        <strong>Crédito de</strong>
+                                        <input id="antes80" class="card-text" value="R$ 375.00" disabled>
+                                        <br>
+                                        <strong class="parcelas">em 80 parcelas</strong>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <input id="opcao50" class="check" name="opcao50" type="checkbox" value="600.00">
+                                <div class="card-body">
+                                    <label class="credito" for="opcao50">
+                                        <strong>Crédito de</strong>
+                                        <input id="antes50" class="card-text" value="R$ 600.00" disabled>
+                                        <br>
+                                        <strong class="parcelas">em 50 parcelas</strong>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="card">
+                                <input id="opcao60" class="check" name="opcao60" type="checkbox" value="500.00">
+                                <div class="card-body">
+                                    <label for="opcao60" class="credito">
+                                        <strong>Crédito de</strong>
+                                        <input class="card-text" id="antes60" value="R$ 500.00" disabled>
+                                        <br>
+                                        <strong class="parcelas">em 60 parcelas</strong>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <input id="opcao36" class="check" name="opcao36" type="checkbox" value="833.33">
+                                <div class="card-body">
+                                    <label for="opcao36" class="credito">
+                                        <strong>Crédito de</strong>
+                                        <input id="antes36" class="card-text" value="R$ 833.33" disabled>
+                                        <br>
+                                        <strong class="parcelas">em 36 parcelas</strong>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="botoes2">
+                        <button class="btn btn-outline-success btn1" type="button">Continuar com humano</button>
+                        <button class="btn btn-primary btn2" type="submit">Continuar com Lupi</button>
+                    </div>
+                </div>
+            </form>
+        </main>
     </div>
 
     <script src="js/index.js"></script>
+    <script src="js/slider.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>

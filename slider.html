@@ -7,7 +7,7 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
+    <link rel="shortcut icon" href="#">
     </script>
 
     <title>UP</title>
@@ -25,7 +25,7 @@
         color: white;
     }
 
-    header{
+    header {
         padding-bottom: 1vw;
     }
 
@@ -114,7 +114,7 @@
     }
 
     .range {
-        padding: 0.5vw 0 0 0;
+        padding: 0 5vw 0 5vw;
     }
 
     .result::before {
@@ -128,7 +128,7 @@
     .cartoes .row>p {
         font-size: 20px;
         text-align: center;
-        margin-top: -2vw;
+        margin-bottom: -0.5vw;
     }
 
     .card {
@@ -140,8 +140,7 @@
     }
 
     .card-body {
-        padding: 0 !important;
-        margin-left: 10px;
+        padding: 1vw;
     }
 
     .check {
@@ -154,10 +153,6 @@
 
     .credito {
         font-size: 18px;
-    }
-
-    .real::after{
-        content: "R$";
     }
 
     h3 {
@@ -196,6 +191,12 @@
     .card-text {
         background: transparent;
         border: none;
+        font-weight: normal;
+        color: black;
+    }
+
+    .real::before{
+        content: "R$";
     }
 
     strong {
@@ -211,11 +212,19 @@
         cursor: pointer;
     }
 
+    input[type=range]::-moz-range-thumb {
+        background-color: #7712d0;
+    }
+
     .myslider::-webkit-slider-runnable-track {
         width: 100%;
         cursor: pointer;
         background: #d10672;
         border-radius: 5px;
+    }
+
+    input[type=range]::-moz-range-track {
+        background: #d10672;
     }
 
     @media (max-width: 960px) and (min-width: 200px) {
@@ -235,30 +244,48 @@
             width: 10vw;
         }
     }
+
+    /*Input*/
+    .check {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    /* Checked styles */
+    .check:checked+.card-body {
+        background-color: rgb(119, 18, 208, .4);
+        ;
+    }
 </style>
 
 <body>
     <div>
         <header>
-            <img src="images/logo.png" alt="Logo - UP" class="logo">
+            <img src="https://uploads-ssl.webflow.com/6273d0f394159549d01b49ee/62752f45083c6bcfe094383c_logo.png"
+                alt="Logo - UP" class="logo">
         </header>
         <section class="simule">
             <p>Simule seu carro novo!</p>
             <div class="image">
-                <img src="images/auto.png" id="carro" class="img-thumbnail img1" alt="Carros - UP" style="opacity:0.9;">
-                <img src="images/imagem-simula2.png" id="banner" class="img-thumbnail img2"
-                    alt="Homem com celular na mão - UP">
+                <img src="https://uploads-ssl.webflow.com/6273d0f394159549d01b49ee/62751ad3a2f8ea4b94a21e73_auto.png"
+                    id="carro" class="img-thumbnail img1" alt="Carros - UP" style="opacity:0.9;">
+                <img src="https://uploads-ssl.webflow.com/6273d0f394159549d01b49ee/62751ad3686f79e54e8d8b70_imagem-simula2.png"
+                    id="banner" class="img-thumbnail img2" alt="Homem com celular na mão - UP">
             </div>
         </section>
         <main class="rangeslider form-data">
             <form action="" method="post" id="form">
-                <img src="images/carro.gif" class="img-thumbnail gif" alt="Gif de um carro - UP">
+                <img src="https://uploads-ssl.webflow.com/6273d0f394159549d01b49ee/62751ad417e4eecc3df43387_carro.gif"
+                    class="img-thumbnail gif" alt="Gif de um carro - UP">
                 <h3>Escolha o valor que precisa</h3>
                 <div class="range">
-                    <input type="range" name="precoCarro" class="form-range myslider" min="30000" max="120000"
-                        value="30000" id="sliderRange" oninput="this.nextElementSibling.value = this.value"
-                        onclick="fadeIn()">
                     <output id="output" class="result">30000</output>
+                    <input type="range" name="precoCarro" class="form-range myslider" min="30000" max="120000"
+                        value="30000" id="sliderRange" oninput="this.previousElementSibling.value = this.value"
+                        onclick="fadeIn()">
                 </div>
                 <div class="cartoes">
                     <div class="row">
@@ -267,25 +294,21 @@
                             <div class="card">
                                 <input type="checkbox" value="375.00" name="opcao80" id="opcao80" class="check">
                                 <div class="card-body">
-                                    <div class="card-periodo">
-                                        <p class="credito">
-                                            <strong class="real">Crédito de</strong>
-                                            R$<input class="card-text" id="antes80" value="375.00" disabled><br><strong
+                                    <label for="opcao80" class="credito">
+                                        <strong>Crédito de</strong>
+                                        <input class="card-text" id="antes80" value="R$ 375.00" disabled><br><strong
                                                 class="parcelas">em 80 parcelas</strong>
-                                        </p>
-                                    </div>
+                                    </label>
                                 </div>
                             </div>
                             <div class="card">
                                 <input type="checkbox" value="600.00" name="opcao50" id="opcao50" class="check">
                                 <div class="card-body">
-                                    <div class="card-periodo">
-                                        <p class="credito">
-                                            <strong>Crédito de</strong>
-                                            R$<input class="card-text" id="antes50" value="600.00" disabled><br><strong
-                                                class="parcelas">em 50 parcelas</strong>
-                                        </p>
-                                    </div>
+                                    <label for="opcao50" class="credito">
+                                        <strong>Crédito de</strong>
+                                        <input class="card-text" id="antes50" value="R$ 600.00" disabled><br><strong
+                                            class="parcelas">em 50 parcelas</strong>
+                                    </label>
                                 </div>
                             </div>
                         </div>
@@ -293,26 +316,22 @@
                             <div class="card">
                                 <input type="checkbox" value="500.00" name="opcao60" id="opcao60" class="check">
                                 <div class="card-body">
-                                    <div class="card-periodo">
-                                        <p class="credito">
-                                            <strong>Crédito de</strong>
-                                            <input class="card-text" id="antes60" value="500.00" disabled><br><strong
-                                                class="parcelas">em 60 parcelas</strong>
-                                        </p>
-                                    </div>
+                                    <label for="opcao60" class="credito">
+                                        <strong>Crédito de</strong>
+                                        <input class="card-text" id="antes60" value="R$ 500.00" disabled><br><strong
+                                            class="parcelas">em 60 parcelas</strong>
+                                    </label>
                                 </div>
                             </div>
 
                             <div class="card">
                                 <input type="checkbox" value="833.33" name="opcao36" id="opcao36" class="check">
                                 <div class="card-body">
-                                    <div class="card-periodo">
-                                        <p class="credito">
-                                            <strong>Crédito de</strong>
-                                            R$<input class="card-text" id="antes36" value="833.33" disabled><br><strong
-                                                class="parcelas">em 36 parcelas</strong>
-                                        </p>
-                                    </div>
+                                    <label for="opcao36" class="credito">
+                                        <strong>Crédito de</strong>
+                                        <input class="card-text" id="antes36" value="R$ 833.33" disabled><br><strong
+                                            class="parcelas">em 36 parcelas</strong>
+                                    </label>
                                 </div>
                             </div>
                         </div>
@@ -325,6 +344,8 @@
                 </div>
             </form>
         </main>
+        
+
     </div>
     <script src="js/slider.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
