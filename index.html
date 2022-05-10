@@ -32,11 +32,16 @@
         padding: 0 0.5vw 0.5vw 0.5vw;
     }
 
+    .image {
+        display: flex;
+    }
+
     .image .img1 {
         background-color: #f1eeee;
-        border: 0;
         width: 25vw;
-        height: 520px;
+        height: 510px;
+        border-radius: 20px;
+        border: transparent;
     }
 
     .image .img2 {
@@ -44,6 +49,11 @@
         border: 0;
         width: 22vw;
         height: 400px;
+        margin-top: 50px;
+    }
+
+    .tamanhoImagem {
+        width: 25vw;
     }
 
     .simule {
@@ -51,6 +61,7 @@
         flex-direction: column;
         float: right;
         width: 50vw;
+        margin-top: -0.5vw;
     }
 
     .simule p {
@@ -72,11 +83,10 @@
     }
 
     .botoes {
-        margin-top: 1vw;
-        padding-bottom: 2vw;
+        height: 5vh;
     }
 
-    .botoes button{
+    .botoes button {
         float: right;
     }
 
@@ -92,20 +102,6 @@
         margin-left: 47%;
     }
 
-    @media (max-width: 960px) and (min-width: 200px) {
-        .image {
-            display: none;
-        }
-
-        #form1 {
-            width: 90vw;
-        }
-
-        .simule p {
-            display: none;
-        }
-    }
-
     #form2 {
         width: 45vw;
         background: white;
@@ -115,12 +111,6 @@
 
     #form2 .titulo {
         text-align: center;
-    }
-
-    .rangeslider {
-        position: absolute;
-        width: 45vw;
-        float: left;
     }
 
     .myslider {
@@ -141,10 +131,6 @@
 
     .result::before {
         content: "R$ ";
-    }
-
-    .cartoes {
-        margin-top: 2vw;
     }
 
     .cartoes .row>p {
@@ -260,21 +246,43 @@
     }
 
     @media (max-width: 960px) and (min-width: 200px) {
-        .simule {
-            display: none;
+        #form1, #form2 {
+            width: 100vw;
         }
-
-        form {
-            width: 95vw !important;
+        .logo{
+            width: 15vw;
         }
-
-        .botoes2 button {
+        .simule{
+            width: 100%;
+        }
+        .simule p{
+            font-size: 30px;
+        }
+        .gif{
+            margin-left: 40%;
+        }
+        .tamanhoImagem{
+            width: 100%;
+        }
+        .image .img1{
+            width: 90%;
+            height: 300px;
+        }
+        .image .img2{
+            width: 50%;
+            height: 200px;
+        }
+        .simule .image{
+            display: flex;
+        }
+        .botoes2 button{
             width: 50vw;
         }
+    }
 
-        .logo {
-            width: 10vw;
-            padding: 0 1vw 1vw 1vw;
+    @media (min-width: 1200px) and (max-width: 1600px) {
+        .simule .image {
+            margin-top: -1vw;
         }
     }
 </style>
@@ -289,15 +297,17 @@
         <section class="simule">
             <p>Simule seu carro novo!</p>
             <div class="image">
-                <img id="carro" class="img-thumbnail img1"
-                    src="https://uploads-ssl.webflow.com/6273d0f394159549d01b49ee/62751ad3a2f8ea4b94a21e73_auto.png"
-                    alt="Carros - UP" style="opacity:0.9;">
+                <div class="tamanhoImagem">
+                    <img id="carro" class="img-thumbnail img1"
+                        src="https://uploads-ssl.webflow.com/6273d0f394159549d01b49ee/62751ad3a2f8ea4b94a21e73_auto.png"
+                        alt="Carros - UP">
+                </div>
                 <img id="banner" class="img-thumbnail img2"
                     src="https://uploads-ssl.webflow.com/6273d0f394159549d01b49ee/62751ad3686f79e54e8d8b70_imagem-simula2.png"
                     alt="Homem com celular na mão - UP">
             </div>
         </section>
-        <main class="form-data" style="display: inline-block;">
+        <main class="form-data1" style="display: inline-block;">
             <form id="form1" class="needs-validation" novalidate action="#" method="post">
                 <img class="img-thumbnail gif"
                     src="https://uploads-ssl.webflow.com/6273d0f394159549d01b49ee/62751ad417e4eecc3df43387_carro.gif"
@@ -311,46 +321,26 @@
                     <label class="form-label" for="validationCustom01">Nome</label>
                     <input id="validationCustom01" class="form-control" name="nome" type="text"
                         placeholder="Primeiro nome" required>
-                    <div class="valid-feedback">
-                        Tudo certo!
-                    </div>
-                    <div class="invalid-feedback">
-                        Por favor insira um nome
-                    </div>
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="validationCustom02">Email</label>
                     <input id="validationCustom02" class="email white col-7 col-md-4 col-lg-7 ml-3 form-control"
                         name="email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                         placeholder="exemplo@email.com" required>
-                    <div class="valid-feedback">
-                        Tudo certo!
-                    </div>
-                    <div class="invalid-feedback">
-                        Por favor insira um email válido
-                    </div>
+
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="validationCustom03">Whatsapp</label>
                     <input id="validationCustom03" class="tel white col-7 col-md-4 col-lg-7 ml-3 form-control"
                         name="whatsapp" type="tel" minlength="9" placeholder="(99) 99999-9999" required>
-                    <div class="valid-feedback">
-                        Tudo certo!
-                    </div>
-                    <div class="invalid-feedback">
-                        Por favor insira um telefone válido
-                    </div>
                 </div>
                 <div class="col-12">
                     <div class="form-check">
                         <input id="validationCheck01" class="form-check-input" name="termos" type="checkbox"
                             value="true" required>
                         <label class="form-check-label" for="check">
-                            Aceito receber todas as comunicações<br />
-                            UP Consórcios e concordo com o Termo de Consentimento </label>
-                        <div class="invalid-feedback">
-                            Você deve concordar antes de enviar
-                        </div>
+                            Aceito receber todas as comunicações UP Consórcios e concordo com o Termo de Consentimento
+                        </label>
                     </div>
                 </div>
                 <div class="botoes">
@@ -374,8 +364,7 @@
                 <div class="range">
                     <output id="output" class="result">30000</output>
                     <input id="sliderRange" class="form-range myslider" name="precoCarro" type="range" min="30000"
-                        max="120000" value="30000" oninput="this.previousElementSibling.value = this.value"
-                        onclick="fadeIn()">
+                        max="120000" value="30000" oninput="this.previousElementSibling.value = this.value">
                 </div>
                 <div class="cartoes">
                     <div class="row">
@@ -441,7 +430,12 @@
     </div>
 
     <script src="js/index.js"></script>
-    <script src="js/slider.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"
+        integrity="sha512-DkPsH9LzNzZaZjCszwKrooKwgjArJDiEjA5tTgr3YX4E6TYv93ICS8T41yFHJnnSmGpnf0Mvb5NhScYbwvhn2w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js"
+        integrity="sha512-0xrMWUXzEAc+VY7k48pWd5YT6ig03p4KARKxs4Bqxb9atrcn2fV41fWs+YXTKb8lD2sbPAmZMjKENiyzM/Gagw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>

@@ -9,21 +9,9 @@ body {
     color: white;
 }
 
-header {
-    height: 12vh;
-}
-
 .logo {
     width: 5vw;
-}
-
-.quadros {
-    display: flex;
-    flex-direction: row;
-}
-
-.image {
-    float: right;
+    padding: 0 0.5vw 0.5vw 0.5vw;
 }
 
 .image .img1 {
@@ -31,7 +19,6 @@ header {
     border: 0;
     width: 25vw;
     height: 520px;
-
 }
 
 .image .img2 {
@@ -55,15 +42,28 @@ header {
     font-style: italic;
 }
 
-#form {
+#form1 {
     width: 45vw;
     background: white;
     border-radius: 10px;
     padding: 1vw;
 }
 
-#form .titulo {
+#form1 .titulo {
     text-align: center;
+}
+
+.botoes {
+    margin-top: 1vw;
+    padding-bottom: 2vw;
+}
+
+.botoes button{
+    float: right;
+}
+
+.btn-link {
+    color: #7712d0;
 }
 
 .gif {
@@ -74,48 +74,188 @@ header {
     margin-left: 47%;
 }
 
-a {
-    padding: 0.5vw !important;
-    font-size: 15px !important;
-}
-
-.btn {
-    margin-top: 1vw;
-    border-color: white;
-}
-
-.btn1 {
-    text-decoration: none;
-}
-
-.btn1:hover {
-    text-decoration: none;
-}
-
-.btn2 {
-    float: right;
-    background: none !important;
-    border: none !important;
-}
-
-.btn2 a {
-    text-decoration: none;
-}
-
 @media (max-width: 960px) and (min-width: 200px) {
     .image {
         display: none;
     }
 
-    #form {
+    #form1 {
         width: 90vw;
     }
 
     .simule p {
         display: none;
     }
+}
+
+#form2 {
+    width: 45vw;
+    background: white;
+    border-radius: 10px;
+    padding: 1vw;
+}
+
+#form2 .titulo {
+    text-align: center;
+}
+
+.rangeslider {
+    position: absolute;
+    width: 45vw;
+    float: left;
+}
+
+.myslider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 15px;
+    outline: none;
+    border-radius: 50px;
+}
+
+.myslider:hover {
+    opacity: 1;
+}
+
+.range {
+    padding: 0 5vw 0 5vw;
+}
+
+.result::before {
+    content: "R$ ";
+}
+
+.cartoes {
+    margin-top: 2vw;
+}
+
+.cartoes .row>p {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: -0.5vw;
+}
+
+.card {
+    background: none;
+    border: 1px solid rgb(132, 50, 195, .5);
+    margin-bottom: 1vw;
+    height: min-content;
+    margin-top: 1vw;
+}
+
+.card-body {
+    padding: 1vw;
+}
+
+.check {
+    margin: 10px;
+}
+
+.card:hover {
+    background-color: rgb(119, 18, 208, .4);
+}
+
+.credito {
+    font-size: 18px;
+}
+
+h3 {
+    text-align: center;
+}
+
+.botoes2 {
+    display: flex;
+    margin-top: 1vw;
+}
+
+.botoes2 button {
+    width: 24.5vw;
+}
+
+.botoes2 .btn1 {
+    margin-right: 1vw;
+}
+
+.botoes2 .btn2 {
+    color: #7712d0;
+    background: none;
+    border-color: #7712d0;
+}
+
+.result {
+    padding: 5px;
+    font-size: 18px;
+    text-align: center;
+    border: 1px solid rgb(119, 18, 208, .5);
+    border-radius: 20px;
+}
+
+.card-text {
+    background: transparent;
+    border: none;
+    font-weight: normal;
+    color: black;
+}
+
+.real::before {
+    content: "R$";
+}
+
+strong {
+    font-weight: 600;
+}
+
+.myslider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    background-color: #7712d0;
+    cursor: pointer;
+}
+
+input[type=range]::-moz-range-thumb {
+    background-color: #7712d0;
+}
+
+.myslider::-webkit-slider-runnable-track {
+    width: 100%;
+    cursor: pointer;
+    background: #d10672;
+    border-radius: 5px;
+}
+
+input[type=range]::-moz-range-track {
+    background: #d10672;
+}
+
+.check {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.check:checked+.card-body {
+    background-color: rgb(119, 18, 208, .4);
+}
+
+@media (max-width: 960px) and (min-width: 200px) {
+    .simule {
+        display: none;
+    }
+
+    form {
+        width: 95vw !important;
+    }
+
+    .botoes2 button {
+        width: 50vw;
+    }
 
     .logo {
         width: 10vw;
+        padding: 0 1vw 1vw 1vw;
     }
 }
