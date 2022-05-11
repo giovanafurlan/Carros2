@@ -136,7 +136,8 @@
     .cartoes .row>p {
         font-size: 20px;
         text-align: center;
-        margin-bottom: -0.5vw;
+        margin-bottom: -0.2vw;
+        margin-top: 1vw;
     }
 
     .card {
@@ -145,10 +146,7 @@
         margin-bottom: 1vw;
         height: min-content;
         margin-top: 1vw;
-    }
-
-    .card-body {
-        padding: 1vw;
+        font-weight: bold;
     }
 
     .check {
@@ -161,6 +159,14 @@
 
     .credito {
         font-size: 18px;
+    }
+
+    .valorCredito {
+        font-weight: normal;
+    }
+
+    .valorCredito::before {
+        content: "R$ ";
     }
 
     h3 {
@@ -194,15 +200,12 @@
         border-radius: 20px;
     }
 
-    .card-text {
+    .valorParcela .card-text {
         background: transparent;
         border: none;
         font-weight: normal;
         color: black;
-    }
-
-    .real::before {
-        content: "R$";
+        width: 110px;
     }
 
     strong {
@@ -246,36 +249,47 @@
     }
 
     @media (max-width: 960px) and (min-width: 200px) {
-        #form1, #form2 {
+
+        #form1,
+        #form2 {
             width: 100vw;
         }
-        .logo{
+
+        .logo {
             width: 15vw;
         }
-        .simule{
+
+        .simule {
             width: 100%;
         }
-        .simule p{
+
+        .simule p {
             font-size: 30px;
         }
-        .gif{
+
+        .gif {
             margin-left: 40%;
         }
-        .tamanhoImagem{
+
+        .tamanhoImagem {
             width: 100%;
         }
-        .image .img1{
+
+        .image .img1 {
             width: 90%;
             height: 300px;
         }
-        .image .img2{
+
+        .image .img2 {
             width: 50%;
             height: 200px;
         }
-        .simule .image{
+
+        .simule .image {
             display: flex;
         }
-        .botoes2 button{
+
+        .botoes2 button {
             width: 50vw;
         }
     }
@@ -307,7 +321,7 @@
                     alt="Homem com celular na mão - UP">
             </div>
         </section>
-        <main class="form-data1" style="display: inline-block;">
+        <main class="form-data1" style="display: none;">
             <form id="form1" class="needs-validation" novalidate action="#" method="post">
                 <img class="img-thumbnail gif"
                     src="https://uploads-ssl.webflow.com/6273d0f394159549d01b49ee/62751ad417e4eecc3df43387_carro.gif"
@@ -355,7 +369,7 @@
             </form>
         </main>
 
-        <main id="rangeslider" class="rangeslider form-data2" style="display: none;">
+        <main id="rangeslider" class="rangeslider form-data2" style="display: inline-block;">
             <form id="form2" action="#" method="post">
                 <img class="img-thumbnail gif"
                     src="https://uploads-ssl.webflow.com/6273d0f394159549d01b49ee/62751ad417e4eecc3df43387_carro.gif"
@@ -364,62 +378,73 @@
                 <div class="range">
                     <output id="output" class="result">30000</output>
                     <input id="sliderRange" class="form-range myslider" name="precoCarro" type="range" min="30000"
-                        max="120000" value="30000" oninput="this.previousElementSibling.value = this.value">
+                        max="120000" value="30000" step="10000"
+                        oninput="this.previousElementSibling.value = this.value">
                 </div>
                 <div class="cartoes">
                     <div class="row">
                         <p>Escolha o plano que mais se encaixa no seu bolso</p>
                         <div class="col-sm-6">
-                            <div class="card">
+                            <div class="card text-center">
                                 <input id="opcao80" class="check" name="opcao80" type="checkbox" value="375.00">
                                 <div class="card-body">
                                     <label for="opcao80" class="credito">
-                                        <strong>Crédito de</strong>
-                                        <input id="antes80" class="card-text" value="R$ 375.00" disabled>
-                                        <br>
-                                        <strong class="parcelas">em 80 parcelas</strong>
+                                        <p class="parcelas">Crédito de
+                                            <span id="valorCredito1" class="valorCredito">30000</span>
+                                            em 80 parcelas
+                                        </p>
+                                        <span class="valorParcela">Valor da parcela
+                                            <input id="antes80" class="card-text" value="R$ 375.00" disabled>
+                                        </span>
                                     </label>
                                 </div>
                             </div>
-                            <div class="card">
+                            <div class="card text-center">
                                 <input id="opcao50" class="check" name="opcao50" type="checkbox" value="600.00">
                                 <div class="card-body">
                                     <label class="credito" for="opcao50">
-                                        <strong>Crédito de</strong>
-                                        <input id="antes50" class="card-text" value="R$ 600.00" disabled>
-                                        <br>
-                                        <strong class="parcelas">em 50 parcelas</strong>
+                                        <p class="parcelas">Crédito de
+                                            <span id="valorCredito2" class="valorCredito">30000</span>
+                                            em 50 parcelas
+                                        </p>
+                                        <span class="valorParcela">Valor da parcela
+                                            <input id="antes50" class="card-text" value="R$ 600.00" disabled>
+                                        </span>
                                     </label>
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-6">
-                            <div class="card">
+                            <div class="card text-center">
                                 <input id="opcao60" class="check" name="opcao60" type="checkbox" value="500.00">
                                 <div class="card-body">
                                     <label for="opcao60" class="credito">
-                                        <strong>Crédito de</strong>
-                                        <input class="card-text" id="antes60" value="R$ 500.00" disabled>
-                                        <br>
-                                        <strong class="parcelas">em 60 parcelas</strong>
+                                        <p class="parcelas">Crédito de
+                                            <span id="valorCredito3" class="valorCredito">30000</span>
+                                            em 60 parcelas
+                                        </p>
+                                        <span class="valorParcela">Valor da parcela
+                                            <input id="antes60" class="card-text" value="R$ 500.00" disabled>
+                                        </span>
                                     </label>
                                 </div>
                             </div>
-
-                            <div class="card">
+                            <div class="card text-center">
                                 <input id="opcao36" class="check" name="opcao36" type="checkbox" value="833.33">
                                 <div class="card-body">
                                     <label for="opcao36" class="credito">
-                                        <strong>Crédito de</strong>
-                                        <input id="antes36" class="card-text" value="R$ 833.33" disabled>
-                                        <br>
-                                        <strong class="parcelas">em 36 parcelas</strong>
+                                        <p class="parcelas">Crédito de
+                                            <span id="valorCredito4" class="valorCredito">30000</span>
+                                            em 36 parcelas
+                                        </p>
+                                        <span class="valorParcela">Valor da parcela
+                                            <input id="antes36" class="card-text" value="R$ 833.33" disabled>
+                                        </span>
                                     </label>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <br>
                     <div class="botoes2">
                         <button class="btn btn-outline-success btn1" type="button">Continuar com humano</button>
                         <button class="btn btn-primary btn2" type="submit">Continuar com Lupi</button>

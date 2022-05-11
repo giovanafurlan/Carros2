@@ -66,6 +66,15 @@ document.getElementById('sliderRange').addEventListener('click', () => {
 
     const valueRange = document.getElementById('sliderRange').value;
 
+    const credito1 = document.getElementById('valorCredito1');
+    credito1.innerHTML = valueRange;
+    const credito2 = document.getElementById('valorCredito2');
+    credito2.innerHTML = valueRange;
+    const credito3 = document.getElementById('valorCredito3');
+    credito3.innerHTML = valueRange;
+    const credito4 = document.getElementById('valorCredito4');
+    credito4.innerHTML = valueRange;
+
     const valueAntes80 = document.getElementById("antes80");
     const valueAntes60 = document.getElementById("antes60");
     const valueAntes50 = document.getElementById("antes50");
@@ -559,7 +568,7 @@ document.getElementById('sliderRange').addEventListener('click', () => {
 
         valueOpcao36.setAttribute('value', 3055.56);
     }
-    if (valueRange >= 120000 && valueRange <= 12000) {
+    if (valueRange >= 120000) {
         img.src = "https://uploads-ssl.webflow.com/6273d0f394159549d01b49ee/627a9b8111627c2215f03f89_r.jpg";
         tl.fromTo(divImage, 1, {
             width: "0%"
