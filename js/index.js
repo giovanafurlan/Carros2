@@ -90,13 +90,14 @@ document.getElementById('sliderRange').addEventListener('click', () => {
     const divImage = document.querySelector(".img1");
 
     const tl = new TimelineMax();
-    
+
 
     if (valueRange >= 30000 && valueRange <= 32499) {
-        tl.fromTo(divImage, 1, {
-            width: "0%"
-        }, {
-            width: "23vw"
+        tl.from(divImage, {
+            duration: 1,
+            x: "20vw",
+            opacity: 0,
+            scale: 0.5
         });
         img.src = "https://uploads-ssl.webflow.com/6273d0f394159549d01b49ee/6273d4b7ad189838f1e3b3a2_a.jpg";
 
@@ -121,10 +122,11 @@ document.getElementById('sliderRange').addEventListener('click', () => {
         valueOpcao36.setAttribute('value', 833.33);
     }
     if (valueRange >= 32500 && valueRange <= 34999) {
-        tl.fromTo(divImage, 1, {
-            width: "0%"
-        }, {
-            width: "23vw"
+        tl.from(divImage, {
+            duration: 1,
+            x: "20vw",
+            opacity: 0,
+            scale: 0.5
         });
         img.src = "https://uploads-ssl.webflow.com/6273d0f394159549d01b49ee/627a9b80cbdbeddbcd6e4df8_b.jpg";
 
@@ -149,10 +151,11 @@ document.getElementById('sliderRange').addEventListener('click', () => {
         valueOpcao36.setAttribute('value', 902.78);
     }
     if (valueRange >= 35000 && valueRange <= 37499) {
-        tl.fromTo(divImage, 1, {
-            width: "0%"
-        }, {
-            width: "23vw"
+        tl.from(divImage, {
+            duration: 1,
+            x: "20vw",
+            opacity: 0,
+            scale: 0.5
         });
         img.src = "https://uploads-ssl.webflow.com/6273d0f394159549d01b49ee/627a9b819d7a13852c5c716b_c.jpg";
 
@@ -177,10 +180,11 @@ document.getElementById('sliderRange').addEventListener('click', () => {
         valueOpcao36.setAttribute('value', 972.22);
     }
     if (valueRange >= 37500 && valueRange <= 39999) {
-        tl.fromTo(divImage, 1, {
-            width: "0%"
-        }, {
-            width: "23vw"
+        tl.from(divImage, {
+            duration: 1,
+            x: "20vw",
+            opacity: 0,
+            scale: 0.5
         });
         img.src = "https://uploads-ssl.webflow.com/6273d0f394159549d01b49ee/627a9c5d91983f1e7beca9b3_d.jpg";
 
@@ -205,10 +209,11 @@ document.getElementById('sliderRange').addEventListener('click', () => {
         valueOpcao36.setAttribute('value', 1041.67);
     }
     if (valueRange >= 40000 && valueRange <= 42999) {
-        tl.fromTo(divImage, 1, {
-            width: "0%"
-        }, {
-            width: "23vw"
+        tl.from(divImage, {
+            duration: 1,
+            x: "20vw",
+            opacity: 0,
+            scale: 0.5
         });
         img.src = "https://uploads-ssl.webflow.com/6273d0f394159549d01b49ee/627a9d89d34da3294cbf8e6f_e.jpg";
 
@@ -233,10 +238,11 @@ document.getElementById('sliderRange').addEventListener('click', () => {
         valueOpcao36.setAttribute('value', 1111.11);
     }
     if (valueRange >= 42500 && valueRange <= 44999) {
-        tl.fromTo(divImage, 1, {
-            width: "0%"
-        }, {
-            width: "23vw"
+        tl.from(divImage, {
+            duration: 1,
+            x: "20vw",
+            opacity: 0,
+            scale: 0.5
         });
         img.src = "https://uploads-ssl.webflow.com/6273d0f394159549d01b49ee/627a9b82cbdbedb2ae6e4e3d_f.jpg";
 
@@ -261,10 +267,11 @@ document.getElementById('sliderRange').addEventListener('click', () => {
         valueOpcao36.setAttribute('value', 1180.56);
     }
     if (valueRange >= 45000 && valueRange <= 49999) {
-        tl.fromTo(divImage, 1, {
-            width: "0%"
-        }, {
-            width: "23vw"
+        tl.from(divImage, {
+            duration: 1,
+            x: "20vw",
+            opacity: 0,
+            scale: 0.5
         });
         img.src = "https://uploads-ssl.webflow.com/6273d0f394159549d01b49ee/627a9b81000a03940598300b_g.jpg";
 
@@ -289,10 +296,11 @@ document.getElementById('sliderRange').addEventListener('click', () => {
         valueOpcao36.setAttribute('value', 1250.00);
     }
     if (valueRange >= 50000 && valueRange <= 54999) {
-        tl.fromTo(divImage, 1, {
-            width: "0%"
-        }, {
-            width: "23vw"
+        tl.from(divImage, {
+            duration: 1,
+            x: "20vw",
+            opacity: 0,
+            scale: 0.5
         });
         img.src = "https://uploads-ssl.webflow.com/6273d0f394159549d01b49ee/627a9b84386137b3794572d6_h.jpg";
 
@@ -318,10 +326,11 @@ document.getElementById('sliderRange').addEventListener('click', () => {
     }
     if (valueRange >= 55000 && valueRange <= 59999) {
         img.src = "https://uploads-ssl.webflow.com/6273d0f394159549d01b49ee/627a9b81aeb204ff39174652_i.jpg";
-        tl.fromTo(divImage, 1, {
-            width: "0%"
-        }, {
-            width: "23vw"
+        tl.from(divImage, {
+            duration: 1,
+            x: "20vw",
+            opacity: 0,
+            scale: 0.5
         });
 
         const novoValueAntes80 = valueAntes80.setAttribute('value', 'R$ ' + 687.50);
@@ -345,10 +354,11 @@ document.getElementById('sliderRange').addEventListener('click', () => {
         valueOpcao36.setAttribute('value', 1527.78);
     }
     if (valueRange >= 60000 && valueRange <= 64999) {
-        tl.fromTo(divImage, 1, {
-            width: "0%"
-        }, {
-            width: "23vw"
+        tl.from(divImage, {
+            duration: 1,
+            x: "20vw",
+            opacity: 0,
+            scale: 0.5
         });
         img.src = "https://uploads-ssl.webflow.com/6273d0f394159549d01b49ee/627a9b81002313e783a412d3_j.jpg";
 
@@ -373,10 +383,11 @@ document.getElementById('sliderRange').addEventListener('click', () => {
         valueOpcao36.setAttribute('value', 1666.67);
     }
     if (valueRange >= 65000 && valueRange <= 69999) {
-        tl.fromTo(divImage, 1, {
-            width: "0%"
-        }, {
-            width: "23vw"
+        tl.from(divImage, {
+            duration: 1,
+            x: "20vw",
+            opacity: 0,
+            scale: 0.5
         });
         img.src = "https://uploads-ssl.webflow.com/6273d0f394159549d01b49ee/627a9b8109cdd109393b725d_k.jpg";
 
@@ -401,10 +412,11 @@ document.getElementById('sliderRange').addEventListener('click', () => {
         valueOpcao36.setAttribute('value', 1805.56);
     }
     if (valueRange >= 70000 && valueRange <= 74999) {
-        tl.fromTo(divImage, 1, {
-            width: "0%"
-        }, {
-            width: "23vw"
+        tl.from(divImage, {
+            duration: 1,
+            x: "20vw",
+            opacity: 0,
+            scale: 0.5
         });
         img.src = "https://uploads-ssl.webflow.com/6273d0f394159549d01b49ee/627a9b81781722ec28eb3479_l.jpg";
 
@@ -430,10 +442,11 @@ document.getElementById('sliderRange').addEventListener('click', () => {
     }
     if (valueRange >= 75000 && valueRange <= 79999) {
         img.src = "https://uploads-ssl.webflow.com/6273d0f394159549d01b49ee/627a9b81c0a15b809a7bf835_m.jpg";
-        tl.fromTo(divImage, 1, {
-            width: "0%"
-        }, {
-            width: "23vw"
+        tl.from(divImage, {
+            duration: 1,
+            x: "20vw",
+            opacity: 0,
+            scale: 0.5
         });
 
         const novoValueAntes80 = valueAntes80.setAttribute('value', 'R$ ' + 0);
@@ -458,10 +471,11 @@ document.getElementById('sliderRange').addEventListener('click', () => {
     }
     if (valueRange >= 80000 && valueRange <= 89999) {
         img.src = "https://uploads-ssl.webflow.com/6273d0f394159549d01b49ee/627a9b81440d33afa24ea0a1_n.jpg";
-        tl.fromTo(divImage, 1, {
-            width: "0%"
-        }, {
-            width: "23vw"
+        tl.from(divImage, {
+            duration: 1,
+            x: "20vw",
+            opacity: 0,
+            scale: 0.5
         });
 
         const novoValueAntes80 = valueAntes80.setAttribute('value', 'R$ ' + 0);
@@ -486,10 +500,11 @@ document.getElementById('sliderRange').addEventListener('click', () => {
     }
     if (valueRange >= 90000 && valueRange <= 99999) {
         img.src = "https://uploads-ssl.webflow.com/6273d0f394159549d01b49ee/627a9b818fc5f85be21ce2f6_o.jpg";
-        tl.fromTo(divImage, 1, {
-            width: "0%"
-        }, {
-            width: "23vw"
+        tl.from(divImage, {
+            duration: 1,
+            x: "20vw",
+            opacity: 0,
+            scale: 0.5
         });
 
         const novoValueAntes80 = valueAntes80.setAttribute('value', 'R$ ' + 0);
@@ -514,10 +529,11 @@ document.getElementById('sliderRange').addEventListener('click', () => {
     }
     if (valueRange >= 100000 && valueRange <= 109999) {
         img.src = "https://uploads-ssl.webflow.com/6273d0f394159549d01b49ee/627a9b8158f34388e0d07665_p.jpg";
-        tl.fromTo(divImage, 1, {
-            width: "0%"
-        }, {
-            width: "23vw"
+        tl.from(divImage, {
+            duration: 1,
+            x: "20vw",
+            opacity: 0,
+            scale: 0.5
         });
 
         const novoValueAntes80 = valueAntes80.setAttribute('value', 'R$ ' + 0);
@@ -542,10 +558,11 @@ document.getElementById('sliderRange').addEventListener('click', () => {
     }
     if (valueRange >= 110000 && valueRange <= 119999) {
         img.src = "https://uploads-ssl.webflow.com/6273d0f394159549d01b49ee/627a9b81aeb2040869174651_q.jpg";
-        tl.fromTo(divImage, 1, {
-            width: "0%"
-        }, {
-            width: "23vw"
+        tl.from(divImage, {
+            duration: 1,
+            x: "20vw",
+            opacity: 0,
+            scale: 0.5
         });
 
         const novoValueAntes80 = valueAntes80.setAttribute('value', 'R$ ' + 0);
@@ -570,10 +587,11 @@ document.getElementById('sliderRange').addEventListener('click', () => {
     }
     if (valueRange >= 120000) {
         img.src = "https://uploads-ssl.webflow.com/6273d0f394159549d01b49ee/627a9b8111627c2215f03f89_r.jpg";
-        tl.fromTo(divImage, 1, {
-            width: "0%"
-        }, {
-            width: "23vw"
+        tl.from(divImage, {
+            duration: 1,
+            x: "20vw",
+            opacity: 0,
+            scale: 0.5
         });
 
         const novoValueAntes80 = valueAntes80.setAttribute('value', 'R$ ' + 0);
@@ -617,17 +635,17 @@ const handleFormSubmit = event => {
     objeto.nome = nome;
     objeto.email = email;
     objeto.whats = whats;
-    objeto.precoCarro = valueRange;
+    objeto.precoCredito = valueRange;
 
     $('input[type=checkbox]').map(function () {
         if ($(this).is(':checked')) {
-            objeto.valor = $(this).val();
+            objeto.valorParcela = $(this).val();
         }
     }).get();
 
     $('input[type=checkbox]').map(function () {
         if ($(this).is(':checked')) {
-            objeto.parcelas = $(this).attr("name");
+            objeto.quantidadeParcelas = $(this).attr("name");
         }
     }).get();
 

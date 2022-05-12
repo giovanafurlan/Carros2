@@ -39,8 +39,8 @@
     .image .img1 {
         background-color: #f1eeee;
         width: 25vw;
-        height: 510px;
-        border-radius: 20px;
+        height: 500px;
+        border-radius: 40px;
         border: transparent;
     }
 
@@ -149,6 +149,10 @@
         font-weight: bold;
     }
 
+    .card-body{
+        padding: 0.5vw!important;
+    }
+
     .check {
         margin: 10px;
     }
@@ -249,8 +253,7 @@
     }
 
     @media (max-width: 960px) and (min-width: 200px) {
-
-        #form1,
+         #form1,
         #form2 {
             width: 100vw;
         }
@@ -321,7 +324,7 @@
                     alt="Homem com celular na mão - UP">
             </div>
         </section>
-        <main class="form-data1" style="display: none;">
+        <main class="form-data1" style="display: inline-block;">
             <form id="form1" class="needs-validation" novalidate action="#" method="post">
                 <img class="img-thumbnail gif"
                     src="https://uploads-ssl.webflow.com/6273d0f394159549d01b49ee/62751ad417e4eecc3df43387_carro.gif"
@@ -369,7 +372,7 @@
             </form>
         </main>
 
-        <main id="rangeslider" class="rangeslider form-data2" style="display: inline-block;">
+        <main id="rangeslider" class="rangeslider form-data2" style="display: none;">
             <form id="form2" action="#" method="post">
                 <img class="img-thumbnail gif"
                     src="https://uploads-ssl.webflow.com/6273d0f394159549d01b49ee/62751ad417e4eecc3df43387_carro.gif"
@@ -377,7 +380,7 @@
                 <h3>Escolha o valor que precisa</h3>
                 <div class="range">
                     <output id="output" class="result">30000</output>
-                    <input id="sliderRange" class="form-range myslider" name="precoCarro" type="range" min="30000"
+                    <input id="sliderRange" class="form-range myslider" name="precoCredito" type="range" min="30000"
                         max="120000" value="30000" step="10000"
                         oninput="this.previousElementSibling.value = this.value">
                 </div>
@@ -386,12 +389,12 @@
                         <p>Escolha o plano que mais se encaixa no seu bolso</p>
                         <div class="col-sm-6">
                             <div class="card text-center">
-                                <input id="opcao80" class="check" name="opcao80" type="checkbox" value="375.00">
+                                <input id="opcao80" class="check" name="80" type="checkbox" value="375.00">
                                 <div class="card-body">
                                     <label for="opcao80" class="credito">
                                         <p class="parcelas">Crédito de
                                             <span id="valorCredito1" class="valorCredito">30000</span>
-                                            em 80 parcelas
+                                            em <span class="numParcelas">80</span> parcelas
                                         </p>
                                         <span class="valorParcela">Valor da parcela
                                             <input id="antes80" class="card-text" value="R$ 375.00" disabled>
@@ -400,7 +403,7 @@
                                 </div>
                             </div>
                             <div class="card text-center">
-                                <input id="opcao50" class="check" name="opcao50" type="checkbox" value="600.00">
+                                <input id="opcao50" class="check" name="50" type="checkbox" value="600.00">
                                 <div class="card-body">
                                     <label class="credito" for="opcao50">
                                         <p class="parcelas">Crédito de
@@ -416,7 +419,7 @@
                         </div>
                         <div class="col-sm-6">
                             <div class="card text-center">
-                                <input id="opcao60" class="check" name="opcao60" type="checkbox" value="500.00">
+                                <input id="opcao60" class="check" name="60" type="checkbox" value="500.00">
                                 <div class="card-body">
                                     <label for="opcao60" class="credito">
                                         <p class="parcelas">Crédito de
@@ -430,7 +433,7 @@
                                 </div>
                             </div>
                             <div class="card text-center">
-                                <input id="opcao36" class="check" name="opcao36" type="checkbox" value="833.33">
+                                <input id="opcao36" class="check" name="36" type="checkbox" value="833.33">
                                 <div class="card-body">
                                     <label for="opcao36" class="credito">
                                         <p class="parcelas">Crédito de
@@ -455,12 +458,7 @@
     </div>
 
     <script src="js/index.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"
-        integrity="sha512-DkPsH9LzNzZaZjCszwKrooKwgjArJDiEjA5tTgr3YX4E6TYv93ICS8T41yFHJnnSmGpnf0Mvb5NhScYbwvhn2w=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js"
-        integrity="sha512-0xrMWUXzEAc+VY7k48pWd5YT6ig03p4KARKxs4Bqxb9atrcn2fV41fWs+YXTKb8lD2sbPAmZMjKENiyzM/Gagw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="js/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
