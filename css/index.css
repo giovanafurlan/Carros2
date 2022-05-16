@@ -139,12 +139,7 @@ body {
     background: none;
     border: 1px solid rgb(132, 50, 195, .5);
     margin-bottom: 1vw;
-    height: min-content;
     margin-top: 1vw;
-}
-
-.card-body {
-    padding: 1vw;
 }
 
 .check {
@@ -157,6 +152,12 @@ body {
 
 .credito {
     font-size: 18px;
+    width: 100%;
+}
+
+.credito label{
+    width: 100%;
+
 }
 
 h3 {

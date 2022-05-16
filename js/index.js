@@ -1,17 +1,14 @@
 //Função que valida o Login para poder mudar a página
-document.getElementById("form1").addEventListener('submit', () => {
+const acesso = document.getElementById("btn-acessa");
 
-    const acesso = document.getElementById("btn-acessa");
+acesso.addEventListener("click", () => {
+    var dados = document.getElementById("form1");
+    var isValid = dados.checkValidity();
 
-    acesso.addEventListener("click", () => {
-        var dados = document.getElementById("form1");
-        var isValid = dados.checkValidity();
-
-        if (isValid == true) {
-            document.getElementById('form1').style.display = "none";
-            document.getElementById('rangeslider').style.display = "inline-block";
-        }
-    });
+    if (isValid == true) {
+        document.getElementById('form1').style.display = "none";
+        document.getElementById('rangeslider').style.display = "inline-block";
+    }
 });
 
 //Função do bootstrap que valid o Login
